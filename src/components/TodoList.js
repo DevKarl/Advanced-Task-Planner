@@ -1,25 +1,41 @@
 
 import classes from './TodoList.module.css';
 import trashImage from '../assets/trash.png';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const ToDoList = props => {
 
+    const [todos, updateToDos] = useState(() => {
+        const savedTodos = localStorage.getItem("todos");
+        if (savedTodos) {
+          return JSON.parse(savedTodos);
+        } else {
+          return [];
+        }
+    });
+    
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]);
 
     useEffect(() => {
-        const listItems = document.querySelectorAll('li');
-        listItems.forEach(item => {
-            const textContent = item.textContent.toLowerCase().trim();
-            if (textContent.includes('important')
-             || textContent.includes('urgent')) {
-                item.style.color = 'darkred';
-                item.style.border = '2px solid darkred';
+        if (props.newToDo) {
+            updateToDos(prevTodos => [...prevTodos, props.newToDo]);
+        }
+    }, [props.newToDo]);
 
-            } else {
-                item.style.color = 'black';
-            }
-        });
-    });
+
+    const removeTodoHandler = (i) => {
+        const newToDos = [...todos];
+        newToDos.splice(i,1);
+        updateToDos(newToDos);
+    }
+    
+    const checkHandler = (i) => {
+        const newToDos = [...todos];
+        newToDos[i].isChecked = !newToDos[i].isChecked;
+        updateToDos(newToDos);
+    }
 
     const emojiMap = {
         'cat': ' 🐈‍⬛',
@@ -30,38 +46,41 @@ const ToDoList = props => {
         'gym': ' 🏋️',
         'code': ' 👨🏼‍💻',
         'walk': ' 🚶',
+        'react': ' ⚛️'
     };
 
-
+    // if (!todos || todos.length === 0) return;
+        
     return (
         <div className = {classes.todolist}>
             <ul className = {classes.todoUl}>
-                {props.todos.map((li, i) => 
+                {todos.map((li, i) => 
                 <li key = {i} className = {classes['todoListItem']}>
                     <h3 
-                        className = {props.todos[i].isChecked ? classes.hasBeenChecked : ''} 
-                        onClick = {() => props.onCheck(i)}>
+                        className = {todos[i].isChecked ? classes.hasBeenChecked : ''} 
+                        onClick = {() => checkHandler(i)}>
                         {li.toDoText}
                         {Object.keys(emojiMap).map(keyword => li.toDoText.toLowerCase().trim().includes(keyword.toLowerCase().trim()) && emojiMap[keyword])}
-                     </h3>
-                     <div className={classes.icons}>
+                        </h3>
+                        <div className={classes.icons}>
                         <input 
                             type="checkbox" 
                             id = "check" 
-                            onChange= {() => props.onCheck(i)} 
+                            onChange= {() => checkHandler(i)} 
                             className = {classes.check}
-                            checked = {props.todos[i].isChecked}
+                            checked = {todos[i].isChecked}
                         />
                         <img src={trashImage} 
                             alt = 'delete icon' 
                             className={classes.delete} 
-                            onClick = {() => props.onDelete(i)}/>
+                            onClick = {() => removeTodoHandler(i)}/>
                     </div>
                 </li>
-            )}
+                )}
             </ul>
         </div>
     )
+
 };
 
 export default ToDoList;

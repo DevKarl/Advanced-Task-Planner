@@ -3,8 +3,6 @@ import classes from './InputField.module.css';
 
 const InputField = props => {
 
-    console.log('being re-rendered');
-
     const handleKeyDown = e  => {
         if (e.keyCode === 13) {
             props.addTodoHandler()
