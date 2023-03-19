@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+# React to-do app - first small react project
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
