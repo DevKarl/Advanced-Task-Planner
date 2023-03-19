@@ -1,0 +1,164 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2d7fd7;
+    --primaty-transition: 0.2s all ease-in-out;
+}
+
+::-webkit-scrollbar {
+    background: rgba(255, 255, 255, 0.468);
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2d7fd7a4;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2d7fd7;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: white;
+}
+
+.todolist {
+    height: 50%;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+}
+
+.todoUl {
+    width: 100%;
+    height: 100%;
+    list-style-type: none;
+    padding: 0;
+}
+
+.todoListItem {
+    font-size: larger;
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.todoListItem {
+    opacity: 0;
+    animation: fadeIn 0.2s ease-in forwards;
+    display: flex;
+    justify-content: space-between;
+    word-wrap: break-word;
+    align-items: center;
+    /* transition: var(--primary-transition); */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-80px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.icons {
+    display: flex;
+}
+
+.check {
+    width: 24px;
+    height: 24px;
+    transition: var(--primaty-transition);
+    border: 2px solid var(--primary-color);
+    background-color: white;
+}
+
+input[type=checkbox] {
+    accent-color: var(--primary-color);
+}
+
+.check:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: var(--primary-transition);
+}
+
+.todoListItem {
+    background-color: #2d7fd725;
+}
+
+
+.todoListItem h3 {
+    margin-left: 20px;
+    color: black;
+}
+
+.todoListItem h3:hover {
+    cursor: pointer;
+}
+
+.hasBeenChecked {
+    text-decoration: line-through;
+    opacity: 50%;
+}
+
+.delete {
+    width: 25px;
+    height: 25px;
+    margin-right: 13px;
+    margin-left: 30px;
+    margin-top: 1px;
+    transition: 0.2s;
+}
+
+.delete:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.2s;
+}
+
+
+@media only screen and (max-width: 950px) {
+
+    .todolist {
+        height: 60%;
+        width: 80%;
+    }
+
+    .todoListItem {
+        height: 90px;
+        overflow: hidden;
+    }
+
+    .todoListItem h3 {
+        font-size: x-large;
+    }
+
+    .delete {
+        width: 32px;
+        height: 32px;
+    }
+
+
+}
+
+@media only screen and (max-width: 500px) {
+
+    .todolist {
+        width: 90%;
+    }
+
+    .delete {
+        margin-top: 0px;
+    }
+
+}
+
+
+

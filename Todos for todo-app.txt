@@ -1,0 +1,6 @@
+Next up:
+
+1) Implement context API and refactor entire state and prop system (no more re-rendering input field etc.)
+2) Implement icon for editing the li's
+3) add smooth transition when deleting (translate X to the right) useTimeout 0.2s make it move to the righ then gone
+4) add three dots on mobile instead of icons laid out --> make popup small window where todo can be changed? 

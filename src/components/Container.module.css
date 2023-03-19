@@ -1,0 +1,29 @@
+.container {
+    height: 600px;
+    width: 900px;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: auto;
+    margin-top: 5%;
+    background-color: rgba(243, 251, 255, 0.825);
+    overflow: auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;}
+
+
+@media only screen and (max-width: 950px) {
+    .container {
+        width: 90%;
+        height: 80vh;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+
+    .container {
+        height: 90vh;
+    }
+}

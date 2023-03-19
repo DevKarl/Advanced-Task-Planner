@@ -1,24 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+
+import Container from "./components/Container";
+import Header from "./components/Header";
+import InputField from "./components/InputField";
+import ToDoList from "./components/TodoList";
+import {useState, useEffect} from 'react';
+
 
 function App() {
+  
+
+  const [todos, updateToDos] = useState(() => {
+    const savedTodos = localStorage.getItem("todos");
+    if (savedTodos) {
+      return JSON.parse(savedTodos);
+    } else {
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
+  
+
+  const addTodo = () => {
+    const todoTextInput = document.getElementById("inputfield").value;
+    if (!todoTextInput || todoTextInput === ' ') return; // --> Add modal error window here instead!
+    const newToDo = {
+      toDoText: todoTextInput,
+      isChecked: false
+    }
+    updateToDos(prevTodos => [...prevTodos, newToDo]);
+    document.getElementById("inputfield").value = '';
+  }
+
+  const removeTodoHandler = (i) => {
+    const newToDos = [...todos];
+    newToDos.splice(i,1);
+    updateToDos(newToDos);
+  }
+
+  const checkHandler = (i) => {
+    const newToDos = [...todos];
+    newToDos[i].isChecked = !newToDos[i].isChecked;
+    updateToDos(newToDos);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Header/>
+      <InputField addTodoHandler = {addTodo}/>
+      <ToDoList todos = {todos} onDelete = {removeTodoHandler} onCheck = {checkHandler}/>
+    </Container>
   );
 }
 
