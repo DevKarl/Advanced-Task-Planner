@@ -15,7 +15,8 @@ const Container = props => {
         document.getElementById("inputfield").value = '';
         setNewToDo ({
           toDoText: todoTextInput,
-          isChecked: false
+          isChecked: false,
+          hasNotAppeared: false
         })
       }
 

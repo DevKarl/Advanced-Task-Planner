@@ -48,22 +48,36 @@
 
 .todoListItem {
     opacity: 0;
-    animation: fadeIn 0.2s ease-in forwards;
     display: flex;
+    animation: fadeIn 0.1s ease-in forwards;
     justify-content: space-between;
     word-wrap: break-word;
     align-items: center;
-    /* transition: var(--primary-transition); */
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateX(-80px);
+        transform: translateX(-50px);
     }
     to {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+
+.dissapearingToDo {
+    animation: fadeOut 0.3s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(50px);
     }
 }
 
@@ -103,16 +117,20 @@ input[type=checkbox] {
     cursor: pointer;
 }
 
-.hasBeenChecked {
+.hasBeenCheckedH3 {
     text-decoration: line-through;
     opacity: 50%;
+}
+
+.hasBeenCheckedLi {
+    border: 2px dashed var(--primary-color);
 }
 
 .delete {
     width: 25px;
     height: 25px;
     margin-right: 13px;
-    margin-left: 30px;
+    margin-left: 15px;
     margin-top: 1px;
     transition: 0.2s;
 }
@@ -143,6 +161,12 @@ input[type=checkbox] {
     .delete {
         width: 32px;
         height: 32px;
+        margin-left: 25px;
+    }
+
+    .check {
+        width: 30px;
+        height: 30px;
     }
 
 
@@ -152,10 +176,6 @@ input[type=checkbox] {
 
     .todolist {
         width: 90%;
-    }
-
-    .delete {
-        margin-top: 0px;
     }
 
 }

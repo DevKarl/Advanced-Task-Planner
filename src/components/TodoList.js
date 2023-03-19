@@ -27,8 +27,12 @@ const ToDoList = props => {
 
     const removeTodoHandler = (i) => {
         const newToDos = [...todos];
-        newToDos.splice(i,1);
+        newToDos[i].beingRemoved = true;
         updateToDos(newToDos);
+        setTimeout(() => {
+            const updatedToDos = newToDos.filter((_, index) => index !== i);
+            updateToDos(updatedToDos);
+        }, 100); 
     }
     
     const checkHandler = (i) => {
@@ -46,7 +50,10 @@ const ToDoList = props => {
         'gym': ' 🏋️',
         'code': ' 👨🏼‍💻',
         'walk': ' 🚶',
-        'react': ' ⚛️'
+        'react': ' ⚛️',
+        'stupid': ' 🥴',
+        'fix': ' 🔧',
+        'build': ' 🛠️',
     };
 
     // if (!todos || todos.length === 0) return;
@@ -55,14 +62,19 @@ const ToDoList = props => {
         <div className = {classes.todolist}>
             <ul className = {classes.todoUl}>
                 {todos.map((li, i) => 
-                <li key = {i} className = {classes['todoListItem']}>
+                <li 
+                    key = {i} 
+                    className = {`
+                    ${classes.todoListItem}
+                    ${todos[i].beingRemoved ? classes.dissapearingToDo : ''}
+                    `}>
                     <h3 
-                        className = {todos[i].isChecked ? classes.hasBeenChecked : ''} 
+                        className = {todos[i].isChecked ? classes.hasBeenCheckedH3 : ''} 
                         onClick = {() => checkHandler(i)}>
                         {li.toDoText}
                         {Object.keys(emojiMap).map(keyword => li.toDoText.toLowerCase().trim().includes(keyword.toLowerCase().trim()) && emojiMap[keyword])}
-                        </h3>
-                        <div className={classes.icons}>
+                    </h3>
+                    <div className={classes.icons}>
                         <input 
                             type="checkbox" 
                             id = "check" 
