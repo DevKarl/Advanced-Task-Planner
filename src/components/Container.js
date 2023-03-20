@@ -16,7 +16,6 @@ const Container = props => {
         setNewToDo ({
           toDoText: todoTextInput,
           isChecked: false,
-          hasNotAppeared: false
         })
       }
 

@@ -47,37 +47,49 @@
 }
 
 .todoListItem {
-    opacity: 0;
     display: flex;
-    animation: fadeIn 0.1s ease-in forwards;
     justify-content: space-between;
     word-wrap: break-word;
     align-items: center;
+    animation: fadeDefault 0.1s ease-in forwards;
+}
+
+@keyframes fadeDefault {
+    from {
+        transform: translateY(20px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+}
+
+.appearingTodo {
+    animation: fadeIn 0.2s ease-in forwards;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateX(-50px);
+        transform: translateY(-30px);
     }
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(0);
     }
 }
 
-.dissapearingToDo {
-    animation: fadeOut 0.3s ease-out forwards;
+.dissapearingTodo {
+    animation: fadeOut 0.2s ease-out forwards;
 }
 
 @keyframes fadeOut {
     from {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateX(0px);
     }
     to {
         opacity: 0;
-        transform: translateX(50px);
+        transform: translateX(40px);
     }
 }
 

@@ -1,6 +1,6 @@
 Next up:
-1. Remove animation on todo-ul update, on delete or sort(will implement later) (only on first appearance)
-    THEN .. move checkmark to the left instead? leaves more space for delete + edit icons?
+1. move checkmark to the left instead? leaves more space for delete + edit icons?
+    THEN.. hover on entire li, except from delete-icon, should trigger "check" button and check-functionality
 2. Add edit-todo functionality 
 3. Add sorting functionality (ascending, descending and default) --> based on index as timestamp
 4. Add clear-all button (deletes all todos)
@@ -14,4 +14,5 @@ Next up:
 8. add progress bar that fills up (percentage of completed tasks)
 9. make sure there are no bugs in local storage (annoying async hell with timeout)
 10. improve button animations: don't use scale on all of them(add modern hover effects)
+11. in future: use Firebase or store todos in backend instead of local storage ? 
 10. Run react-testing library?

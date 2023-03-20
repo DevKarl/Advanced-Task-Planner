@@ -1,7 +1,7 @@
 
 import classes from './TodoList.module.css';
 import trashImage from '../assets/trash.png';
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 
 const ToDoList = props => {
 
@@ -13,26 +13,32 @@ const ToDoList = props => {
           return [];
         }
     });
+
+    const [todoAppeared, updateTodoAppeared] = useState(false);
     
     useEffect(() => {
+        // updateToDos(todos => todos.map(todo => todo.hasNotAppeared = false));
         localStorage.setItem("todos", JSON.stringify(todos));
     }, [todos]);
 
     useEffect(() => {
         if (props.newToDo) {
+            console.log('useffect for new todo is rendered');
+            updateTodoAppeared(true);
             updateToDos(prevTodos => [...prevTodos, props.newToDo]);
         }
-    }, [props.newToDo]);
+    }, [props.newToDo, updateTodoAppeared]);
 
 
     const removeTodoHandler = (i) => {
+        updateTodoAppeared(false);
         const newToDos = [...todos];
         newToDos[i].beingRemoved = true;
         updateToDos(newToDos);
         setTimeout(() => {
             const updatedToDos = newToDos.filter((_, index) => index !== i);
             updateToDos(updatedToDos);
-        }, 100); 
+        }, 150); 
     }
     
     const checkHandler = (i) => {
@@ -66,7 +72,8 @@ const ToDoList = props => {
                     key = {i} 
                     className = {`
                     ${classes.todoListItem}
-                    ${todos[i].beingRemoved ? classes.dissapearingToDo : ''}
+                    ${todoAppeared ? classes.appearingTodo : ''}
+                    ${todos[i].beingRemoved ? classes.dissapearingTodo: ''}
                     `}>
                     <h3 
                         className = {todos[i].isChecked ? classes.hasBeenCheckedH3 : ''} 
