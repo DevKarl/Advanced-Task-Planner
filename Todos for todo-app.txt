@@ -1,6 +1,16 @@
 Next up:
-
-1) Implement context API and refactor entire state and prop system (no more re-rendering input field etc.)
-2) Implement icon for editing the li's
-3) add smooth transition when deleting (translate X to the right) useTimeout 0.2s make it move to the righ then gone
-4) add three dots on mobile instead of icons laid out --> make popup small window where todo can be changed? 
+1. Remove animation on todo-ul update, on delete or sort(will implement later) (only on first appearance)
+    THEN .. move checkmark to the left instead? leaves more space for delete + edit icons?
+2. Add edit-todo functionality 
+3. Add sorting functionality (ascending, descending and default) --> based on index as timestamp
+4. Add clear-all button (deletes all todos)
+5. Fix mobile responsiveness (3 dots with small windwow-popup(maybe modal))
+6. Improve guard clauses (many spaces or too long todo) --> add modal window error message (use react portal)
+7. Once user starts typing inside of input field --> make new button popup next to add: "more" where...
+    - user can add priority level 
+    - user can add due date (read up on JS-date features)
+        if due date is in less than 3 days --> add orange label with due-date warning tag
+        if due date is in 1 day -->  add red label with due date in one day
+8. add progress bar that fills up (percentage of completed tasks)
+9. make sure there are no bugs in local storage (annoying async hell with timeout)
+10. Run react-testing library?
