@@ -75,13 +75,7 @@ const ToDoList = props => {
                     ${todoAppeared ? classes.appearingTodo : ''}
                     ${todos[i].beingRemoved ? classes.dissapearingTodo: ''}
                     `}>
-                    <h3 
-                        className = {todos[i].isChecked ? classes.hasBeenCheckedH3 : ''} 
-                        onClick = {() => checkHandler(i)}>
-                        {li.toDoText}
-                        {Object.keys(emojiMap).map(keyword => li.toDoText.toLowerCase().trim().includes(keyword.toLowerCase().trim()) && emojiMap[keyword])}
-                    </h3>
-                    <div className={classes.icons}>
+                    <div className={classes.checkBoxAndText}>
                         <input 
                             type="checkbox" 
                             id = "check" 
@@ -89,11 +83,18 @@ const ToDoList = props => {
                             className = {classes.check}
                             checked = {todos[i].isChecked}
                         />
-                        <img src={trashImage} 
-                            alt = 'delete icon' 
-                            className={classes.delete} 
-                            onClick = {() => removeTodoHandler(i)}/>
+                        <h3 
+                            className = {todos[i].isChecked ? classes.hasBeenCheckedH3 : ''} 
+                            onClick = {() => checkHandler(i)}>
+                            {li.toDoText}
+                            {Object.keys(emojiMap).map(keyword => li.toDoText.toLowerCase().trim().includes(keyword.toLowerCase().trim()) && emojiMap[keyword])}
+                        </h3>
                     </div>
+                    <img src={trashImage} 
+                        alt = 'delete icon' 
+                        className={classes.delete} 
+                        onClick = {() => removeTodoHandler(i)}
+                    />
                 </li>
                 )}
             </ul>

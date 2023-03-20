@@ -44,15 +44,19 @@
     border: 2px solid var(--primary-color);
     border-radius: 12px;
     margin-bottom: 20px;
-}
-
-.todoListItem {
     display: flex;
     justify-content: space-between;
     word-wrap: break-word;
     align-items: center;
-    animation: fadeDefault 0.1s ease-in forwards;
+    animation: fadeDefault 0.2s ease forwards;
 }
+
+.checkBoxAndText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 @keyframes fadeDefault {
     from {
@@ -70,7 +74,7 @@
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-30px);
+        transform: translateY(-20px);
     }
     to {
         opacity: 1;
@@ -93,14 +97,11 @@
     }
 }
 
-.icons {
-    display: flex;
-}
-
 .check {
     width: 24px;
     height: 24px;
-    transition: var(--primaty-transition);
+    margin-left: 15px;
+    transition: var(--primary-transition);
     border: 2px solid var(--primary-color);
     background-color: white;
 }
@@ -121,8 +122,8 @@ input[type=checkbox] {
 
 
 .todoListItem h3 {
-    margin-left: 20px;
     color: black;
+    margin-left: 15px;
 }
 
 .todoListItem h3:hover {
