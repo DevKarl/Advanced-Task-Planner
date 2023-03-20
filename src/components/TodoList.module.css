@@ -4,7 +4,7 @@
 
 :root {
     --primary-color: #2d7fd7;
-    --primaty-transition: 0.2s all ease-in-out;
+    --primary-transition: 0.2s all ease-in-out;
 }
 
 ::-webkit-scrollbar {
@@ -52,6 +52,12 @@
 }
 
 .checkBoxAndText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editAndDeleteIcons {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -120,7 +126,6 @@ input[type=checkbox] {
     background-color: #2d7fd725;
 }
 
-
 .todoListItem h3 {
     color: black;
     margin-left: 15px;
@@ -146,8 +151,9 @@ input[type=checkbox] {
     width: 31px;
     height: 31px;
     margin-right: 15px;
+    margin-left: 20px;
     transition: all 0.2s ease;
-    opacity: 80%;
+    opacity: 70%;
 }
 
 .delete:hover {
@@ -156,6 +162,25 @@ input[type=checkbox] {
     transform: scale(1.3);
     transform: translate(2px, -1px);
     transition: all 0.2s ease;
+    opacity: 100%;
+}
+
+.edit {
+    background-image: url(../assets/edit.png);
+    background-size: cover;
+    background-position: center;
+    width: 31px;
+    height: 31px;
+    transition: all 0.2s ease-in-out;
+    opacity: 70%;
+    margin-left: 10px;
+}
+
+.edit:hover {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    transform: rotate(10deg);
+    opacity: 100%;
 }
 
 
@@ -178,7 +203,6 @@ input[type=checkbox] {
     .delete {
         width: 32px;
         height: 32px;
-        margin-left: 25px;
     }
 
     .check {

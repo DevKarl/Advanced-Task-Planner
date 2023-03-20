@@ -1,7 +1,6 @@
 Next up:
 
-.Add trash bin opening animation on hover 
-.Add edit-todo functionality
+.create checkText function and create guard clause in TodoList.js
 . Add sorting functionality (ascending, descending and default) --> based on index as timestamp
 . Add clear-all button (deletes all todos)
 . Fix mobile responsiveness (3 dots with small windwow-popup(maybe modal))

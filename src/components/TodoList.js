@@ -1,6 +1,7 @@
 
 import classes from './TodoList.module.css';
 import { useState, useEffect} from 'react';
+import EditTodoModal from './Modal/EditTodoModal';
 
 const ToDoList = props => {
 
@@ -14,9 +15,11 @@ const ToDoList = props => {
     });
 
     const [todoAppeared, updateTodoAppeared] = useState(false);
+    const [todoTextContent, changeTodoTextContent] = useState(null);
+    const [todoChangeIndex, updatetodoChangeIndex] = useState(null);
+    const [modal, toggleModal] = useState(false);
     
     useEffect(() => {
-        // updateToDos(todos => todos.map(todo => todo.hasNotAppeared = false));
         localStorage.setItem("todos", JSON.stringify(todos));
     }, [todos]);
 
@@ -38,6 +41,21 @@ const ToDoList = props => {
             const updatedToDos = newToDos.filter((_, index) => index !== i);
             updateToDos(updatedToDos);
         }, 150); 
+    }
+
+    const editTodoHandler = (i) => {
+        // open the default modal window form with simple input with preloaded text from todo
+        // when change button is clicked --> close modal, loop over todo, find specific todo and update its text content
+        updatetodoChangeIndex(i);
+        changeTodoTextContent(todos[i].toDoText);
+        toggleModal(prev => !prev);
+    }
+
+    const receivedChangedTodoText = (i, newText) => {
+        console.log(i, newText);
+        const newTodos = [...todos];
+        newTodos[i].toDoText = newText;
+        updateToDos(newTodos);
     }
     
     const checkHandler = (i) => {
@@ -89,10 +107,19 @@ const ToDoList = props => {
                             {Object.keys(emojiMap).map(keyword => li.toDoText.toLowerCase().trim().includes(keyword.toLowerCase().trim()) && emojiMap[keyword])}
                         </h3>
                     </div>
-                    <div className={classes.delete} onClick = {() => removeTodoHandler(i)}></div>
+                    <div className={classes.editAndDeleteIcons}>
+                        <div className={classes.edit} onClick = {() => editTodoHandler(i)}></div>
+                        <div className={classes.delete} onClick = {() => removeTodoHandler(i)}></div>
+                    </div>
                 </li>
                 )}
             </ul>
+        {modal && <EditTodoModal
+            todoText = {todoTextContent}
+            index = {todoChangeIndex}
+            toggleModal = {toggleModal}
+            receivedChangedTodoText = {receivedChangedTodoText}
+            />}
         </div>
     )
 
