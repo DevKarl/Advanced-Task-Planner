@@ -140,18 +140,22 @@ input[type=checkbox] {
 }
 
 .delete {
-    width: 25px;
-    height: 25px;
-    margin-right: 13px;
-    margin-left: 15px;
-    margin-top: 1px;
-    transition: 0.2s;
+    background-image: url(../assets/closedBin.png);
+    background-size: cover;
+    background-position: center;
+    width: 31px;
+    height: 31px;
+    margin-right: 15px;
+    transition: all 0.2s ease;
+    opacity: 80%;
 }
 
 .delete:hover {
+    background-image: url('../assets/openBin.png');
     cursor: pointer;
-    transform: scale(1.1);
-    transition: 0.2s;
+    transform: scale(1.3);
+    transform: translate(2px, -1px);
+    transition: all 0.2s ease;
 }
 
 

@@ -1,6 +1,5 @@
 
 import classes from './TodoList.module.css';
-import trashImage from '../assets/trash.png';
 import { useState, useEffect} from 'react';
 
 const ToDoList = props => {
@@ -90,11 +89,7 @@ const ToDoList = props => {
                             {Object.keys(emojiMap).map(keyword => li.toDoText.toLowerCase().trim().includes(keyword.toLowerCase().trim()) && emojiMap[keyword])}
                         </h3>
                     </div>
-                    <img src={trashImage} 
-                        alt = 'delete icon' 
-                        className={classes.delete} 
-                        onClick = {() => removeTodoHandler(i)}
-                    />
+                    <div className={classes.delete} onClick = {() => removeTodoHandler(i)}></div>
                 </li>
                 )}
             </ul>
