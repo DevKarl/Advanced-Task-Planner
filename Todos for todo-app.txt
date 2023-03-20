@@ -7,10 +7,11 @@ Next up:
 5. Fix mobile responsiveness (3 dots with small windwow-popup(maybe modal))
 6. Improve guard clauses (many spaces or too long todo) --> add modal window error message (use react portal)
 7. Once user starts typing inside of input field --> make new button popup next to add: "more" where...
-    - user can add priority level 
+    - user can add priority level (exclamation mark-value from 1 to 3 --> icons lighting up functionality)
     - user can add due date (read up on JS-date features)
         if due date is in less than 3 days --> add orange label with due-date warning tag
         if due date is in 1 day -->  add red label with due date in one day
 8. add progress bar that fills up (percentage of completed tasks)
 9. make sure there are no bugs in local storage (annoying async hell with timeout)
+10. improve button animations: don't use scale on all of them(add modern hover effects)
 10. Run react-testing library?
