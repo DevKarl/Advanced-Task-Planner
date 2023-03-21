@@ -15,3 +15,5 @@ Next up:
 . improve button animations: don't use scale on all of them(add modern hover effects)
 . in future: use Firebase or store todos in backend instead of local storage ? 
 . Run react-testing library?
+
+TEST
