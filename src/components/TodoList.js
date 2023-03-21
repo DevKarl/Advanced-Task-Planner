@@ -5,6 +5,8 @@ import EditTodoModal from './Modal/EditTodoModal';
 
 const ToDoList = props => {
 
+    // STATES _______________________________________________________
+
     const [todos, updateToDos] = useState(() => {
         const savedTodos = localStorage.getItem("todos");
         if (savedTodos) {
@@ -18,6 +20,8 @@ const ToDoList = props => {
     const [todoTextContent, changeTodoTextContent] = useState(null);
     const [todoChangeIndex, updatetodoChangeIndex] = useState(null);
     const [modal, toggleModal] = useState(false);
+
+    // USE EFFECTS _______________________________________________________
     
     useEffect(() => {
         localStorage.setItem("todos", JSON.stringify(todos));
@@ -30,6 +34,8 @@ const ToDoList = props => {
             updateToDos(prevTodos => [...prevTodos, props.newToDo]);
         }
     }, [props.newToDo, updateTodoAppeared]);
+
+    // HANDLERS _______________________________________________________
 
 
     const removeTodoHandler = (i) => {
@@ -51,7 +57,7 @@ const ToDoList = props => {
         toggleModal(prev => !prev);
     }
 
-    const receivedChangedTodoText = (i, newText) => {
+    const receivedChangedTodoTextHandler = (i, newText) => {
         console.log(i, newText);
         const newTodos = [...todos];
         newTodos[i].toDoText = newText;
@@ -62,6 +68,29 @@ const ToDoList = props => {
         const newToDos = [...todos];
         newToDos[i].isChecked = !newToDos[i].isChecked;
         updateToDos(newToDos);
+    }
+
+    // OTHER FUNCTIONS _______________________________________________________
+
+    const checkValidInput = todoText => {
+        // Check if todoText is a string and is not empty
+        if (typeof todoText !== 'string' || todoText.trim() === '') {
+        return false;
+        }
+        // Check if todoText is not longer than 100 characters
+        if (todoText.length > 100) {
+        return false;
+        }
+        // Check if todoText has more than 2 consecutive spaces
+        if (/\s{3,}/.test(todoText)) {
+        return false;
+        }
+        // Check if todoText has any words longer than 20 characters
+        if (/\b\w{20,}\b/.test(todoText)) {
+        return false;
+        }
+        // If all checks pass, return true
+        return true;
     }
 
     const emojiMap = {
@@ -118,7 +147,7 @@ const ToDoList = props => {
             todoText = {todoTextContent}
             index = {todoChangeIndex}
             toggleModal = {toggleModal}
-            receivedChangedTodoText = {receivedChangedTodoText}
+            receivedChangedTodoText = {receivedChangedTodoTextHandler}
             />}
         </div>
     )
@@ -126,5 +155,3 @@ const ToDoList = props => {
 };
 
 export default ToDoList;
-
-// test 

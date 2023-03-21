@@ -45,6 +45,7 @@
     border-radius: 12px;
     margin-bottom: 20px;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     word-wrap: break-word;
     align-items: center;
@@ -107,6 +108,7 @@
     width: 24px;
     height: 24px;
     margin-left: 15px;
+    flex-shrink: 0;
     transition: var(--primary-transition);
     border: 2px solid var(--primary-color);
     background-color: white;
@@ -221,5 +223,14 @@ input[type=checkbox] {
 
 }
 
+/* Transition from word wrap to break word */
+
+@media only screen and (max-width: 570px) {
+
+    .todoListItem {
+        word-break: break-all;
+    }
+
+}
 
 

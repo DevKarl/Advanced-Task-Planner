@@ -16,6 +16,7 @@ Next up:
         if due date is in less than 3 days --> add orange label with due-date warning tag
         if due date is in 1 day -->  add red label with due date in one day
 . add progress bar that fills up (percentage of completed tasks)
+. activate emojis button (btw add badge('activate emojies?' or 'deactive emojies') on hover on this option)
 . make sure there are no bugs in local storage (annoying async hell with timeout)
 . improve button animations: don't use scale on all of them(add modern hover effects)
 . in future: use Firebase or store todos in backend instead of local storage ? 

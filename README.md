@@ -1,7 +1,7 @@
 # React to-do app - first small react project
 
-Todos can be added, updated, checked off, deleted and are
-stored dynamically in local storage.
+Todos can be added, edited, checked off, deleted, filtered and are stored in local storage.
+Every todo has optional feature: urgency(1-3) and deadline with dynamic icons displayed.
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
