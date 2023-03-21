@@ -7,7 +7,6 @@ import { useState } from 'react';
 const Container = props => {
 
     const [newToDo, setNewToDo] = useState()
- 
     
       const addTodo = () => {
         const todoTextInput = document.getElementById("inputfield").value;
