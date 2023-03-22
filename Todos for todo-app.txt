@@ -7,7 +7,8 @@ Next up:
     - contains a super long string (will break the design!)
     THEN --> implement errorModalWinodw --> refactor so previous modal window design is reusable and can be a
     resuable component --> then all these erros should trigger that error-version of the modal component
-. Add sorting functionality (ascending, descending and default) --> based on index as timestamp
+.Fix textarea input for modal window, then make general re-usable component for modal window
+.Add sorting functionality (ascending, descending and default) --> based on index as timestamp
 . Add clear-all button (deletes all todos)
 . Fix mobile responsiveness (3 dots with small windwow-popup(maybe modal))
 . Once user starts typing inside of input field --> make new button popup next to add: "more" where...

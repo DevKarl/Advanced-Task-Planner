@@ -29,7 +29,6 @@ const ToDoList = props => {
 
     useEffect(() => {
         if (props.newToDo) {
-            console.log('useffect for new todo is rendered');
             updateTodoAppeared(true);
             updateToDos(prevTodos => [...prevTodos, props.newToDo]);
         }
@@ -58,7 +57,6 @@ const ToDoList = props => {
     }
 
     const receivedChangedTodoTextHandler = (i, newText) => {
-        console.log(i, newText);
         const newTodos = [...todos];
         newTodos[i].toDoText = newText;
         updateToDos(newTodos);

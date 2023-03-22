@@ -1,5 +1,5 @@
 .container {
-    height: 600px;
+    height: 85vh;
     width: 900px;
     border-radius: 12px;
     text-align: center;
@@ -24,6 +24,7 @@
 @media only screen and (max-width: 500px) {
 
     .container {
-        height: 90vh;
+        height: 95%;
+        width: 95%;
     }
 }

@@ -30,14 +30,14 @@ const Modal = props => {
         <>
         <div className={classes.modalContent}>
             <h1>Edit Current Todo</h1>
-            <input
+            <textarea
                 ref={inputRef}
                 autoFocus 
                 type='text' 
                 defaultValue={props.todoText}
                 className = {classes.modalInputField}
                 onKeyDown={handleKeyDown}
-                ></input>
+                ></textarea>
             <button className={classes.modalBtn} onClick = {changeTodoTextHandler}>Change</button>
             <div className={classes.closeModalBtn} onClick = {closeModalHandler}></div>
         </div>

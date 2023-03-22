@@ -40,10 +40,12 @@
 }
 
 .todoListItem {
+    height: auto;
     font-size: larger;
     border: 2px solid var(--primary-color);
     border-radius: 12px;
     margin-bottom: 20px;
+    background-color: #2d7fd725;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -124,13 +126,10 @@ input[type=checkbox] {
     transition: var(--primary-transition);
 }
 
-.todoListItem {
-    background-color: #2d7fd725;
-}
-
 .todoListItem h3 {
     color: black;
     margin-left: 15px;
+    flex-grow: 1;
 }
 
 .todoListItem h3:hover {
@@ -194,12 +193,12 @@ input[type=checkbox] {
     }
 
     .todoListItem {
-        height: 90px;
-        overflow: hidden;
+        height: auto;
     }
 
     .todoListItem h3 {
         font-size: x-large;
+        flex-grow: 1;
     }
 
     .delete {
@@ -212,7 +211,6 @@ input[type=checkbox] {
         height: 30px;
     }
 
-
 }
 
 @media only screen and (max-width: 500px) {
@@ -221,14 +219,17 @@ input[type=checkbox] {
         width: 90%;
     }
 
-}
+    .delete {
+        margin-left: 8px;
+        margin-right: 8px;
+    }
 
-/* Transition from word wrap to break word */
+}
 
 @media only screen and (max-width: 570px) {
 
-    .todoListItem {
-        word-break: break-all;
+    .edit {
+        display: none;
     }
 
 }
