@@ -1,4 +1,4 @@
-# React to-do app - first small react project
+# Advanced React To-Do app - first react project
 
 Todos can be added, edited, checked off, deleted, filtered and are stored in local storage.
 Every todo has optional feature: urgency(1-3) and deadline with dynamic icons displayed.
