@@ -1,6 +1,6 @@
 Next up:
 
-.add ValidateInput function that will run on BOTH main input and edit-todo-input(use as boolean guard clause in both)
+. Implement Error boundaries with ValidateInput function that will run on BOTH main input and edit-todo-input(use as boolean guard clause in both)
     ERROR IF:
     - overall todo is too long
     - does not contains any letters/numbers at all (only spaces, maybe if it starts with more than 3 spaces)

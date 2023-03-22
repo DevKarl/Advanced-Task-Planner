@@ -6,23 +6,26 @@ import { useState } from 'react';
 
 const Container = props => {
 
-    const [newToDo, setNewToDo] = useState()
+    const [newToDo, setNewToDo] = useState();
     
       const addTodo = () => {
         const todoTextInput = document.getElementById("inputfield").value;
         if (!todoTextInput || todoTextInput === ' ') return; // --> Add modal error window here instead!
         document.getElementById("inputfield").value = '';
         setNewToDo ({
-          toDoText: todoTextInput,
+          todoText: todoTextInput,
           isChecked: false,
         })
-      }
+      };
+
+
+
 
     return(
         <main className = {classes.container}>
             {props.children}
             <InputField addTodoHandler = {addTodo}/>
-            <ToDoList newToDo = {newToDo}/>
+            <ToDoList newTodo = {newToDo}/>
         </main>
     )
 

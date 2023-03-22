@@ -64,6 +64,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 }
 
 
@@ -227,11 +228,13 @@ input[type=checkbox] {
 }
 
 @media only screen and (max-width: 570px) {
-
     .edit {
         display: none;
     }
-
 }
 
+/* Conditional classes  */
 
+.longInputWord {
+    word-break: break-all;
+}

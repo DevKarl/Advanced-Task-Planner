@@ -7,7 +7,7 @@ const Modal = props => {
     const inputRef = useRef(null);
 
     const closeModalHandler = () => {
-        props.toggleModal();
+        props.toggleEditTodoModal();
     }
 
     const changeTodoTextHandler = () => {
@@ -37,7 +37,7 @@ const Modal = props => {
                 defaultValue={props.todoText}
                 className = {classes.modalInputField}
                 onKeyDown={handleKeyDown}
-                ></textarea>
+            ></textarea>
             <button className={classes.modalBtn} onClick = {changeTodoTextHandler}>Change</button>
             <div className={classes.closeModalBtn} onClick = {closeModalHandler}></div>
         </div>

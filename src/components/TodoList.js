@@ -19,20 +19,25 @@ const ToDoList = props => {
     const [todoAppeared, updateTodoAppeared] = useState(false);
     const [todoTextContent, changeTodoTextContent] = useState(null);
     const [todoChangeIndex, updatetodoChangeIndex] = useState(null);
-    const [modal, toggleModal] = useState(false);
+    const [modal, toggleEditTodoModal] = useState(false);
+    const [longInputWord, togglelongInputWord] = useState(false);
 
     // USE EFFECTS _______________________________________________________
     
     useEffect(() => {
+        // check if any todos have textIsLong prop
+            // if so --> then change togglelongInputWord to true
+            // if not, do nothing
         localStorage.setItem("todos", JSON.stringify(todos));
     }, [todos]);
 
     useEffect(() => {
-        if (props.newToDo) {
-            updateTodoAppeared(true);
-            updateToDos(prevTodos => [...prevTodos, props.newToDo]);
+        if (props.newTodo) {
+            checkValidInput(props.newTodo.todoText)
+            !updateTodoAppeared && updateTodoAppeared(true);
+            updateToDos(prevTodos => [...prevTodos, props.newTodo]);
         }
-    }, [props.newToDo, updateTodoAppeared]);
+    }, [props.newTodo, updateTodoAppeared]);
 
     // HANDLERS _______________________________________________________
 
@@ -52,13 +57,16 @@ const ToDoList = props => {
         // open the default modal window form with simple input with preloaded text from todo
         // when change button is clicked --> close modal, loop over todo, find specific todo and update its text content
         updatetodoChangeIndex(i);
-        changeTodoTextContent(todos[i].toDoText);
-        toggleModal(prev => !prev);
+        changeTodoTextContent(todos[i].todoText);
+        toggleEditTodoModal(prev => !prev);
     }
 
     const receivedChangedTodoTextHandler = (i, newText) => {
+        checkValidInput(newText) // --> throw error if false?
+        // only check length of todo-text and add css class if it's not been done
+        !togglelongInputWord && checkInputWordLength(newText);
         const newTodos = [...todos];
-        newTodos[i].toDoText = newText;
+        newTodos[i].todoText = newText;
         updateToDos(newTodos);
     }
     
@@ -73,22 +81,28 @@ const ToDoList = props => {
     const checkValidInput = todoText => {
         // Check if todoText is a string and is not empty
         if (typeof todoText !== 'string' || todoText.trim() === '') {
+        // throw error about invalid input? 
         return false;
         }
         // Check if todoText is not longer than 100 characters
         if (todoText.length > 100) {
-        return false;
-        }
-        // Check if todoText has more than 2 consecutive spaces
-        if (/\s{3,}/.test(todoText)) {
-        return false;
-        }
-        // Check if todoText has any words longer than 20 characters
-        if (/\b\w{20,}\b/.test(todoText)) {
+        // throw error about too long todo?
         return false;
         }
         // If all checks pass, return true
         return true;
+    }
+
+    const checkInputWordLength = todoText => {
+        // first check if any other todos have true on textIsLong
+        // if so, return and exit this function
+        // Check if todoText has any words longer than 20 characters
+        if (/\b\w{20,}\b/.test(todoText)) {
+            // first check if any other todos have true on textIsLong
+            // if so --> don't do anything (CSS class already active)
+            // if not --> do a toggle on togglelongInputWord state
+            togglelongInputWord(true);
+        }
     }
 
     const emojiMap = {
@@ -105,11 +119,9 @@ const ToDoList = props => {
         'fix': ' 🔧',
         'build': ' 🛠️',
     };
-
-    // if (!todos || todos.length === 0) return;
         
     return (
-        <div className = {classes.todolist}>
+        <div className = {`${classes.todolist} ${longInputWord? 'longInputWord' : ''}`}>
             <ul className = {classes.todoUl}>
                 {todos.map((li, i) => 
                 <li 
@@ -130,8 +142,8 @@ const ToDoList = props => {
                         <h3 
                             className = {todos[i].isChecked ? classes.hasBeenCheckedH3 : ''} 
                             onClick = {() => checkHandler(i)}>
-                            {li.toDoText}
-                            {Object.keys(emojiMap).map(keyword => li.toDoText.toLowerCase().trim().includes(keyword.toLowerCase().trim()) && emojiMap[keyword])}
+                            {li.todoText}
+                            {Object.keys(emojiMap).map(keyword => li.todoText.toLowerCase().trim().includes(keyword.toLowerCase().trim()) && emojiMap[keyword])}
                         </h3>
                     </div>
                     <div className={classes.editAndDeleteIcons}>
@@ -144,7 +156,7 @@ const ToDoList = props => {
         {modal && <EditTodoModal
             todoText = {todoTextContent}
             index = {todoChangeIndex}
-            toggleModal = {toggleModal}
+            toggleEditTodoModal = {toggleEditTodoModal}
             receivedChangedTodoText = {receivedChangedTodoTextHandler}
             />}
         </div>
