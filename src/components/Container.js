@@ -3,6 +3,7 @@ import classes from './Container.module.css';
 import InputField from "./InputField";
 import ToDoList from "./TodoList";
 import { useState } from 'react';
+import ErrorBoundary from './ErrorBoundary.js/ErrorBoundary';
 
 const Container = props => {
 
@@ -18,14 +19,13 @@ const Container = props => {
         })
       };
 
-
-
-
     return(
         <main className = {classes.container}>
             {props.children}
-            <InputField addTodoHandler = {addTodo}/>
-            <ToDoList newTodo = {newToDo}/>
+            <ErrorBoundary>
+              <InputField addTodoHandler = {addTodo}/>
+              <ToDoList newTodo = {newToDo}/>
+            </ErrorBoundary>
         </main>
     )
 
