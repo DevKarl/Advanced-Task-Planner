@@ -2,7 +2,6 @@
 import classes from './TodoList.module.css';
 import { useState, useEffect} from 'react';
 import EditTodoModal from './Modal/EditTodoModal';
-import Modal from './UI/Modal';
 
 const ToDoList = props => {
 
