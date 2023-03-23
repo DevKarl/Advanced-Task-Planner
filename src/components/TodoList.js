@@ -2,6 +2,7 @@
 import classes from './TodoList.module.css';
 import { useState, useEffect} from 'react';
 import EditTodoModal from './Modal/EditTodoModal';
+import Modal from './UI/Modal';
 
 const ToDoList = props => {
 
@@ -19,7 +20,7 @@ const ToDoList = props => {
     const [todoAppeared, updateTodoAppeared] = useState(false);
     const [todoTextContent, changeTodoTextContent] = useState(null);
     const [todoChangeIndex, updatetodoChangeIndex] = useState(null);
-    const [modal, toggleEditTodoModal] = useState(false);
+    const [editTodoModal, toggleEditTodoModal] = useState(false);
     const [longInputWord, togglelongInputWord] = useState(false);
 
     // USE EFFECTS _______________________________________________________
@@ -153,12 +154,14 @@ const ToDoList = props => {
                 </li>
                 )}
             </ul>
-        {modal && <EditTodoModal
+        {editTodoModal && <EditTodoModal
+            btnText = 'Change'
             todoText = {todoTextContent}
             index = {todoChangeIndex}
             toggleEditTodoModal = {toggleEditTodoModal}
             receivedChangedTodoText = {receivedChangedTodoTextHandler}
-            />}
+        />}
+        
         </div>
     )
 

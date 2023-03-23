@@ -1,8 +1,9 @@
 
 import classes from './EditTodoModal.module.css';
 import { useRef } from 'react';
+import Modal from '../UI/Modal';
 
-const Modal = props => {
+const EditTodoModal = props => {
 
     const inputRef = useRef(null);
 
@@ -27,23 +28,19 @@ const Modal = props => {
     }
 
     return(
-        <>
-        <div className={classes.modalContent}>
-            <h1>Edit Current Todo</h1>
-            <textarea
-                ref={inputRef}
-                autoFocus 
-                type='text' 
-                defaultValue={props.todoText}
-                className = {classes.modalInputField}
-                onKeyDown={handleKeyDown}
-            ></textarea>
-            <button className={classes.modalBtn} onClick = {changeTodoTextHandler}>Change</button>
-            <div className={classes.closeModalBtn} onClick = {closeModalHandler}></div>
-        </div>
-        <div className={classes.modalOverlay} onClick = {closeModalHandler}></div>
-        </>
+        <Modal>
+                <h1>Edit Current Todo</h1>
+                <textarea
+                    ref={inputRef}
+                    autoFocus 
+                    type='text' 
+                    defaultValue={props.todoText}
+                    className = {classes.modalInputField}
+                    onKeyDown={handleKeyDown}
+                ></textarea>
+                <button className={classes.modalBtn} onClick = {changeTodoTextHandler}>Change</button>
+        </Modal>
     )
 }
 
-export default Modal;
+export default EditTodoModal;

@@ -1,4 +1,5 @@
 import { Component } from "react";
+import ErrorModal from "../Modal/ErrorModal";
 
 class ErrorBoundary extends Component {
 
@@ -15,9 +16,14 @@ class ErrorBoundary extends Component {
     render() {
         if(this.state.hasError) {
             return(
-                <Modal onClose = {() => this.setState({hasError: false}) }>
-                    {this.state.errorMessage}
-                </Modal>
+                <>
+                    {this.props.children}
+                    <ErrorModal 
+                        onClose = {() => this.setState({hasError: false})}
+                        showModal = {true} 
+                        errorMsg = {this.state.errorMessage}
+                    />
+                </>
             );
         }
         return this.props.children;
