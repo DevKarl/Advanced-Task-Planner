@@ -1,78 +1,24 @@
 
-.modalContent {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 300px;
-    height: 200px;
-    border: 2px solid var(--primary-color);
-    position: fixed;
-    z-index: 100;
-    background-color: var(--primary-color);
-    border-radius: 12px;
-}
-
-.closeModalBtn {
-    background-image: url(../../assets/close.png);
-    background-size: cover;
-    background-position: center;
-    width: 20px;
-    height: 20px;
-    opacity: 70%;
-    position: absolute;
-    margin-right: 5px;
-    margin-top: 5px;
-    right: 0;
-    top: 0;
-    transition: all 0.2s ease-in-out;
-}
-
-.closeModalBtn:hover {
-    opacity: 100%;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    transform: scale(1.1);
-}
-
 .modalInputField {
     padding: 10px 20px;
     border: 2px solid var(--primary-color);
     border-radius: 12px;
     font-size: large;
-
-}
-
-.modalBtn {
-    padding: 12px 20px;
-    border-radius: 12px;
-    border: 2px solid var(--primary-color);
-    background-color: white;
-    font-size: large;
-    color: black;
-    font-weight: 700;
-    text-transform: uppercase;
-    transition: all 0.2s ease-in-out;
-    margin-top: 10px;
-    opacity: 80%;
-}
-
-.modalBtn:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-    opacity: 100%;
-    transition: all 0.2s ease-in-out;
 }
 
 
-.modalOverlay {
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: fixed;
-    z-index: 50;
-    background: rgba(49,49,49,0.8);
+/* Very small phones (galaxy fold etc.)*/
+@media only screen and (max-width: 330px) {
+
+    .editTodoH3 {
+        font-size: 28px;
+    }
+
+    .modalInputField {
+        padding: 6px 12px;
+        border: 2px solid var(--primary-color);
+        border-radius: 12px;
+        font-size: large;
+    }
+
 }

@@ -28,8 +28,8 @@ const EditTodoModal = props => {
     }
 
     return(
-        <Modal>
-                <h1>Edit Current Todo</h1>
+        <Modal btnText = {'Change Todo'}>
+                <h1 className={classes.editTodoH3}>Edit Current Todo</h1>
                 <textarea
                     ref={inputRef}
                     autoFocus 
@@ -38,7 +38,6 @@ const EditTodoModal = props => {
                     className = {classes.modalInputField}
                     onKeyDown={handleKeyDown}
                 ></textarea>
-                <button className={classes.modalBtn} onClick = {changeTodoTextHandler}>Change</button>
         </Modal>
     )
 }

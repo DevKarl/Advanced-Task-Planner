@@ -154,7 +154,6 @@ const ToDoList = props => {
                 )}
             </ul>
         {editTodoModal && <EditTodoModal
-            btnText = 'Change'
             todoText = {todoTextContent}
             index = {todoChangeIndex}
             toggleEditTodoModal = {toggleEditTodoModal}
