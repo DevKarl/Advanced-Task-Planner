@@ -97,7 +97,7 @@
     .modal {
         width: 16rem;
         left: calc(50% - 8rem);
-        height: 16rem;
-        top: calc(50% - 8rem);
+        height: 18rem;
+        top: calc(50% - 9rem);
     }
 }

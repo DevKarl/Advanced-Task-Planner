@@ -20,6 +20,7 @@ Reminder: No need to conditionally render error modal from TodoList.js --> ONLY 
 . add progress bar that fills up (percentage of completed tasks)
 . activate emojis button (btw add badge('activate emojies?' or 'deactive emojies') on hover on this option)
 . make sure there are no bugs in local storage (annoying async hell with timeout)
+.use Context API for modal to avoid todolist <--> editodomodal <--> modal prop drilling and lifting state twice?
 . improve button animations: don't use scale on all of them(add modern hover effects)
 . in future: use Firebase or store todos in backend instead of local storage ? 
 . Run react-testing library?

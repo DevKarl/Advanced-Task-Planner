@@ -5,8 +5,6 @@ import Modal from '../UI/Modal';
 
 const EditTodoModal = props => {
 
-    console.log(props);
-
     const inputRef = useRef(null);
 
     const closeModalHandler = () => {
@@ -19,7 +17,6 @@ const EditTodoModal = props => {
     }
 
     const handleKeyDown = e  => {
-
         if (e.keyCode === 27) {
             closeModalHandler();
         }
@@ -31,8 +28,10 @@ const EditTodoModal = props => {
 
     return(
         <Modal 
-        btnText = {'Change Todo'}
-
+        btnText = {'Change'}
+        handleKeyDown= {handleKeyDown}
+        closeModalHandler = {closeModalHandler}
+        btnClick = {changeTodoTextHandler}
         >
                 <h1 className={classes.editTodoH3}>Edit Current Todo</h1>
                 <textarea
@@ -41,7 +40,6 @@ const EditTodoModal = props => {
                     type='text' 
                     defaultValue={props.todoText}
                     className = {classes.modalInputField}
-                    onKeyDown={handleKeyDown}
                 ></textarea>
         </Modal>
     )
