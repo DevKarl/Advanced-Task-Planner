@@ -1,10 +1,6 @@
+
 * {
     box-sizing: border-box;
-}
-
-:root {
-    --primary-color: #2d7fd7;
-    --primary-transition: 0.2s all ease-in-out;
 }
 
 ::-webkit-scrollbar {

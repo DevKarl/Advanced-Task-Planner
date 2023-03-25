@@ -1,10 +1,10 @@
 import classes from './Modal.module.css';
 import ReactDOM from 'react-dom';
 import React from 'react';
+import '../UI/CSSvariables.module.css';
 
 const Modal = props => {
-
-
+    
     return ReactDOM.createPortal(
         <>
             <div className = {classes.modal}>

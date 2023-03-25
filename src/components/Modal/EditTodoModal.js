@@ -5,6 +5,8 @@ import Modal from '../UI/Modal';
 
 const EditTodoModal = props => {
 
+    console.log(props);
+
     const inputRef = useRef(null);
 
     const closeModalHandler = () => {
@@ -28,7 +30,10 @@ const EditTodoModal = props => {
     }
 
     return(
-        <Modal btnText = {'Change Todo'}>
+        <Modal 
+        btnText = {'Change Todo'}
+
+        >
                 <h1 className={classes.editTodoH3}>Edit Current Todo</h1>
                 <textarea
                     ref={inputRef}
