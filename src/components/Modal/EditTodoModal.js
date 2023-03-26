@@ -2,6 +2,7 @@
 import classes from './EditTodoModal.module.css';
 import { useRef } from 'react';
 import Modal from '../UI/Modal';
+import validateInput from '../Helpers/validateInput';
 
 const EditTodoModal = props => {
 
@@ -12,7 +13,13 @@ const EditTodoModal = props => {
     }
 
     const changeTodoTextHandler = () => {
-        props.receivedChangedTodoText(props.index, inputRef.current.value)
+
+        try {
+            validateInput(inputRef.current.value);
+            props.receivedChangedTodoText(props.index, inputRef.current.value)
+        } catch(error) {
+            throw error;
+        }
         closeModalHandler();
     }
 

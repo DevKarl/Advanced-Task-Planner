@@ -1,35 +1,35 @@
 
 import classes from './Container.module.css';
+import Header from "./Header";
 import InputField from "./InputField";
 import ToDoList from "./TodoList";
 import { useState } from 'react';
-import ErrorBoundary from './ErrorBoundary.js/ErrorBoundary';
 import './UI/CSSvariables.module.css';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
-const Container = props => {
+const Container = () => {
 
     const [newToDo, setNewToDo] = useState();
     
-      const addTodo = () => {
-        const todoTextInput = document.getElementById("inputfield").value;
-        if (!todoTextInput || todoTextInput === ' ') return; // --> Add modal error window here instead!
-        document.getElementById("inputfield").value = '';
+      const addTodo = todoText => {
         setNewToDo ({
-          todoText: todoTextInput,
+          todoText: todoText,
           isChecked: false,
         })
       };
 
+      console.log('Container is running');
+      
+
     return(
         <main className = {classes.container}>
-            {props.children}
-            <ErrorBoundary>
-              <InputField addTodoHandler = {addTodo}/>
-              <ToDoList newTodo = {newToDo}/>
-            </ErrorBoundary>
+              <Header/>
+              <ErrorBoundary>
+                <InputField addTodoHandler = {addTodo}/>
+                <ToDoList newTodo = {newToDo}/>
+              </ErrorBoundary>
         </main>
     )
-
 }
 
 export default Container;

@@ -1,6 +1,9 @@
 Next up:
 
-. Implement Error boundaries with ValidateInput function that will run on BOTH main input and edit-todo-input(use as boolean guard clause in both)
+. Create utility/helper function for validating input for todos --> will only run through 
+InputField and EditTodoModal as guard clause
+
+.Implement Error boundaries with ValidateInput function that will run on BOTH main input and edit-todo-input(use as boolean guard clause in both)
 Reminder: No need to conditionally render error modal from TodoList.js --> ONLY ErrorBoundary should use ErrorModal.js
     ERROR IF:
     - overall todo is too long

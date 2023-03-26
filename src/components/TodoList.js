@@ -1,8 +1,8 @@
 
 import classes from './TodoList.module.css';
+import './UI/CSSvariables.module.css';
 import { useState, useEffect} from 'react';
 import EditTodoModal from './Modal/EditTodoModal';
-import './UI/CSSvariables.module.css';
 
 const ToDoList = props => {
 
@@ -34,7 +34,6 @@ const ToDoList = props => {
 
     useEffect(() => {
         if (props.newTodo) {
-            checkValidInput(props.newTodo.todoText)
             !updateTodoAppeared && updateTodoAppeared(true);
             updateToDos(prevTodos => [...prevTodos, props.newTodo]);
         }
@@ -63,8 +62,6 @@ const ToDoList = props => {
     }
 
     const receivedChangedTodoTextHandler = (i, newText) => {
-        checkValidInput(newText) // --> throw error if false?
-        // only check length of todo-text and add css class if it's not been done
         !togglelongInputWord && checkInputWordLength(newText);
         const newTodos = [...todos];
         newTodos[i].todoText = newText;
@@ -78,21 +75,6 @@ const ToDoList = props => {
     }
 
     // OTHER FUNCTIONS _______________________________________________________
-
-    const checkValidInput = todoText => {
-        // Check if todoText is a string and is not empty
-        if (typeof todoText !== 'string' || todoText.trim() === '') {
-        // throw error about invalid input? 
-        return false;
-        }
-        // Check if todoText is not longer than 100 characters
-        if (todoText.length > 100) {
-        // throw error about too long todo?
-        return false;
-        }
-        // If all checks pass, return true
-        return true;
-    }
 
     const checkInputWordLength = todoText => {
         // first check if any other todos have true on textIsLong
