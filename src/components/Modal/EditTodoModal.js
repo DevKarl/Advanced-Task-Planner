@@ -16,15 +16,6 @@ const EditTodoModal = props => {
         closeModalHandler();
     }
 
-    // const handleKeyDown = e  => {
-    //     if (e.keyCode === 27) {
-    //         closeModalHandler();
-    //     }
-    //     if (e.keyCode === 13) {
-    //         changeTodoTextHandler();
-    //     }
-    // }
-
     return(
         <Modal 
         btnText = {'Change'}
