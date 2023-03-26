@@ -19,7 +19,7 @@ const ToDoList = props => {
 
     const [todoAppeared, updateTodoAppeared] = useState(false);
     const [todoTextContent, changeTodoTextContent] = useState(null);
-    const [todoChangeIndex, updatetodoChangeIndex] = useState(null);
+    const [todoChangeIndex, updateTodoChangeIndex] = useState(null);
     const [editTodoModal, toggleEditTodoModal] = useState(false);
     const [longInputWord, togglelongInputWord] = useState(false);
 
@@ -57,7 +57,7 @@ const ToDoList = props => {
     const editTodoHandler = (i) => {
         // open the default modal window form with simple input with preloaded text from todo
         // when change button is clicked --> close modal, loop over todo, find specific todo and update its text content
-        updatetodoChangeIndex(i);
+        updateTodoChangeIndex(i);
         changeTodoTextContent(todos[i].todoText);
         toggleEditTodoModal(prev => !prev);
     }

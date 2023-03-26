@@ -22,7 +22,8 @@ Reminder: No need to conditionally render error modal from TodoList.js --> ONLY 
 . make sure there are no bugs in local storage (annoying async hell with timeout)
 .use Context API for modal to avoid todolist <--> editodomodal <--> modal prop drilling and lifting state twice?
 . improve button animations: don't use scale on all of them(add modern hover effects)
-. in future: use Firebase or store todos in backend instead of local storage ? 
+. in future: use Firebase or store todos in backend instead of local storage ?
+. Consider changing from CRA to Vite? 
 . Run react-testing library?
 
 TEST
