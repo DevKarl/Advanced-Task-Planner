@@ -16,22 +16,22 @@ const EditTodoModal = props => {
         closeModalHandler();
     }
 
-    const handleKeyDown = e  => {
-        if (e.keyCode === 27) {
-            closeModalHandler();
-        }
-        if (e.keyCode === 13) {
-            changeTodoTextHandler();
-            closeModalHandler();
-        }
-    }
+    // const handleKeyDown = e  => {
+    //     if (e.keyCode === 27) {
+    //         closeModalHandler();
+    //     }
+    //     if (e.keyCode === 13) {
+    //         changeTodoTextHandler();
+    //     }
+    // }
 
     return(
         <Modal 
         btnText = {'Change'}
-        handleKeyDown= {handleKeyDown}
         closeModalHandler = {closeModalHandler}
-        btnClick = {changeTodoTextHandler}
+        mainBtnClick = {changeTodoTextHandler}
+        clickedEnter = {changeTodoTextHandler}
+
         >
                 <h1 className={classes.editTodoH3}>Edit Current Todo</h1>
                 <textarea

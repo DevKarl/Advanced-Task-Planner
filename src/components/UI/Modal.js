@@ -5,22 +5,34 @@ import '../UI/CSSvariables.module.css';
 
 const Modal = props => {
 
+    const closeModal = () => props.closeModalHandler();
+
+    const handleKeyDown = e  => {
+        if (e.keyCode === 27) {
+            closeModal();
+        }
+        if (e.keyCode === 13 && props.clickedEnter) {
+            props.clickedEnter();
+        }
+    }
+
     return ReactDOM.createPortal(
         <>
             <div 
                 className = {classes.modal} 
-                onKeyDown = {props.handleKeyDown}
+                onKeyDown = {handleKeyDown}
                 tabIndex = {0}
                 >
-                <button className={classes.closeModalBtn} onClick = {props.closeModalHandler}></button>
-                <div className = {classes.content}>{props.children}</div>
+                <button className={classes.closeModalBtn} onClick = {closeModal}></button>
+                <div>{props.children}</div>
                 <button 
                     className={classes.modalBtn}
-                    onClick = {props.btnClick}
-                >{props.btnText}
+                    onClick = {props.mainBtnClick}
+                >
+                    {props.btnText}
                 </button>
             </div>
-            <div className = {classes.backdrop} onClick = {props.closeModalHandler}></div>
+            <div className = {classes.backdrop} onClick = {closeModal}></div>
         </>,
         document.getElementById('portal')
     )
