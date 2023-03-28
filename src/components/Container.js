@@ -5,7 +5,7 @@ import InputField from "./InputField";
 import ToDoList from "./TodoList";
 import { useState } from 'react';
 import './UI/CSSvariables.module.css';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 const Container = () => {
 
