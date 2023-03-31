@@ -1,26 +1,32 @@
 
 import classes from './EditTodoModal.module.css';
-import { useRef } from 'react';
+import { useState } from 'react';
 import Modal from '../UI/Modal';
 import validateInput from '../Helpers/validateInput';
 
 const EditTodoModal = props => {
 
-    const inputRef = useRef(null);
+    const [enteredTodoText, setEnteredTodoText] = useState(props.todoText);
+    const [error, setError] = useState(null);
+
+    if(error) {throw error};
+
+    const handleChange = e => {
+        setEnteredTodoText(e.target.value);
+    }
 
     const closeModalHandler = () => {
         props.toggleEditTodoModal();
     }
 
     const changeTodoTextHandler = () => {
-
         try {
-            validateInput(inputRef.current.value);
-            props.receivedChangedTodoText(props.index, inputRef.current.value)
+            validateInput(enteredTodoText.trim());
+            if(!error) props.receivedChangedTodoText(props.index, enteredTodoText);
+            closeModalHandler();
         } catch(error) {
-            throw error;
+            setError(error);
         }
-        closeModalHandler();
     }
 
     return(
@@ -29,14 +35,13 @@ const EditTodoModal = props => {
         closeModalHandler = {closeModalHandler}
         mainBtnClick = {changeTodoTextHandler}
         clickedEnter = {changeTodoTextHandler}
-
         >
                 <h1 className={classes.editTodoH3}>Edit Current Todo</h1>
                 <textarea
-                    ref={inputRef}
+                    value={enteredTodoText}
+                    onChange = {handleChange}
                     autoFocus 
                     type='text' 
-                    defaultValue={props.todoText}
                     className = {classes.modalInputField}
                 ></textarea>
         </Modal>

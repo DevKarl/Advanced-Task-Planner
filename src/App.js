@@ -1,12 +1,14 @@
 
 import Container from "./components/Container";
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 
 function App() {
 
-
   return (
-      <Container>
-      </Container>
+      <ErrorBoundary>
+        <Container>
+        </Container>
+      </ErrorBoundary>
   );
 }
 

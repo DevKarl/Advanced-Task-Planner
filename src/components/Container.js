@@ -5,11 +5,10 @@ import InputField from "./InputField";
 import ToDoList from "./TodoList";
 import { useState } from 'react';
 import './UI/CSSvariables.module.css';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 const Container = () => {
 
-    const [newToDo, setNewToDo] = useState();
+    const [newToDo, setNewToDo] = useState(null);
     
       const addTodo = todoText => {
         setNewToDo ({
@@ -18,16 +17,11 @@ const Container = () => {
         })
       };
 
-      console.log('Container is running');
-      
-
     return(
         <main className = {classes.container}>
-              <Header/>
-              <ErrorBoundary>
-                <InputField addTodoHandler = {addTodo}/>
-                <ToDoList newTodo = {newToDo}/>
-              </ErrorBoundary>
+            <Header/>
+              <InputField addTodoHandler = {addTodo}/>
+              <ToDoList newTodo = {newToDo}/>
         </main>
     )
 }

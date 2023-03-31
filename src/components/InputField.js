@@ -5,9 +5,6 @@ import { useState } from 'react';
 
 const InputField = props => {
 
-    console.log('input field is running');
-    
-
     const [todoText, setTodoText] = useState(''); 
     const [error, setError] = useState(null);
 
@@ -21,9 +18,7 @@ const InputField = props => {
         try {
             const newTodoText = todoText.trim();
             validateInput(newTodoText);
-            if(!error) {
-                props.addTodoHandler(newTodoText);
-            }
+            if(!error) props.addTodoHandler(newTodoText)
         } 
         catch(error) {
             setError(error);
@@ -43,6 +38,7 @@ const InputField = props => {
             <input 
                 type = 'text' 
                 id = 'inputfield'
+                value={todoText}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
                 />
