@@ -1,28 +1,28 @@
 
-import classes from './EditTodoModal.module.css';
+import classes from './EditTaskModal.module.css';
 import { useState } from 'react';
 import Modal from '../UI/Modal';
 import validateInput from '../Helpers/validateInput';
 
-const EditTodoModal = props => {
+const EditTaskModal = props => {
 
-    const [enteredTodoText, setEnteredTodoText] = useState(props.todoText);
+    const [enteredTaskText, setEnteredTaskText] = useState(props.taskText);
     const [error, setError] = useState(null);
 
     if(error) {throw error};
 
     const handleChange = e => {
-        setEnteredTodoText(e.target.value);
+        setEnteredTaskText(e.target.value);
     }
 
     const closeModalHandler = () => {
-        props.toggleEditTodoModal();
+        props.toggleEditTaskModal();
     }
 
-    const changeTodoTextHandler = () => {
+    const changeTaskTextHandler = () => {
         try {
-            validateInput(enteredTodoText.trim());
-            if(!error) props.receivedChangedTodoText(props.index, enteredTodoText);
+            validateInput(enteredTaskText.trim());
+            if(!error) props.receivedChangedTaskText(props.index, enteredTaskText);
             closeModalHandler();
         } catch(error) {
             setError(error);
@@ -33,12 +33,12 @@ const EditTodoModal = props => {
         <Modal 
         btnText = {'Change'}
         closeModalHandler = {closeModalHandler}
-        mainBtnClick = {changeTodoTextHandler}
-        clickedEnter = {changeTodoTextHandler}
+        mainBtnClick = {changeTaskTextHandler}
+        clickedEnter = {changeTaskTextHandler}
         >
-                <h1 className={classes.editTodoH3}>Edit Current Todo</h1>
+                <h1 className={classes.editTodoH3}>Edit Current Task</h1>
                 <textarea
-                    value={enteredTodoText}
+                    value={enteredTaskText}
                     onChange = {handleChange}
                     autoFocus 
                     type='text' 
@@ -48,4 +48,4 @@ const EditTodoModal = props => {
     )
 }
 
-export default EditTodoModal;
+export default EditTaskModal;

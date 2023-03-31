@@ -5,31 +5,31 @@ import { useState } from 'react';
 
 const InputField = props => {
 
-    const [todoText, setTodoText] = useState(''); 
+    const [taskText, setTaskText] = useState(''); 
     const [error, setError] = useState(null);
 
     if(error) {throw error};
 
     const handleChange = event => {
-        setTodoText(event.target.value);
+        setTaskText(event.target.value);
     }
 
-    const addNewTodo = () => {
+    const addNewTask = () => {
         try {
-            const newTodoText = todoText.trim();
-            validateInput(newTodoText);
-            if(!error) props.addTodoHandler(newTodoText)
+            const newTaskText = taskText.trim();
+            validateInput(newTaskText);
+            if(!error) props.addTaskHandler(newTaskText)
         } 
         catch(error) {
             setError(error);
         }
-        setTodoText('');
+        setTaskText('');
     }
 
 
     const handleKeyDown = e  => {
         if (e.keyCode === 13) {
-            addNewTodo();
+            addNewTask();
         }
     };
 
@@ -38,11 +38,11 @@ const InputField = props => {
             <input 
                 type = 'text' 
                 id = 'inputfield'
-                value={todoText}
+                value={taskText}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
                 />
-            <button onClick= {addNewTodo}>Add</button>
+            <button onClick= {addNewTask}>Add</button>
         </div>
     )
 };

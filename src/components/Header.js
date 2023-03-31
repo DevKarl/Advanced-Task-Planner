@@ -4,7 +4,7 @@ const Header = () => {
 
     return(
         <div className = {classes.header}>
-            <h1>To do list ✔</h1>
+            <h1>Task Planner ✔</h1>
         </div>
     )
 };

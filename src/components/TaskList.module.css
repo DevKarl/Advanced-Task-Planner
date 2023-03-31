@@ -21,21 +21,21 @@
     background: white;
 }
 
-.todolist {
+.tasklist {
     height: 50%;
     width: 70%;
     display: flex;
     justify-content: center;
 }
 
-.todoUl {
+.taskUl {
     width: 100%;
     height: 100%;
     list-style-type: none;
     padding: 0;
 }
 
-.todoListItem {
+.taskListItem {
     height: auto;
     font-size: larger;
     border: 2px solid var(--primary-color);
@@ -73,7 +73,7 @@
     }
 }
 
-.appearingTodo {
+.appearingTask {
     animation: fadeIn 0.2s ease-in forwards;
 }
 
@@ -88,7 +88,7 @@
     }
 }
 
-.dissapearingTodo {
+.dissapearingTask {
     animation: fadeOut 0.2s ease-out forwards;
 }
 
@@ -123,13 +123,13 @@ input[type=checkbox] {
     transition: var(--primary-transition);
 }
 
-.todoListItem h3 {
+.taskListItem h3 {
     color: black;
     margin-left: 15px;
     flex-grow: 1;
 }
 
-.todoListItem h3:hover {
+.taskListItem h3:hover {
     cursor: pointer;
 }
 
@@ -184,16 +184,16 @@ input[type=checkbox] {
 
 @media only screen and (max-width: 950px) {
 
-    .todolist {
+    .tasklist {
         height: 60%;
         width: 80%;
     }
 
-    .todoListItem {
+    .taskListItem {
         height: auto;
     }
 
-    .todoListItem h3 {
+    .taskListItem h3 {
         font-size: x-large;
         flex-grow: 1;
     }
@@ -212,7 +212,7 @@ input[type=checkbox] {
 
 @media only screen and (max-width: 500px) {
 
-    .todolist {
+    .tasklist {
         width: 90%;
     }
 

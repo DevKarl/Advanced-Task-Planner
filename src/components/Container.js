@@ -2,17 +2,17 @@
 import classes from './Container.module.css';
 import Header from "./Header";
 import InputField from "./InputField";
-import ToDoList from "./TodoList";
+import TaskList from "./TaskList";
 import { useState } from 'react';
 import './UI/CSSvariables.module.css';
 
 const Container = () => {
 
-    const [newToDo, setNewToDo] = useState(null);
+    const [newTask, setNewTask] = useState(null);
     
-      const addTodo = todoText => {
-        setNewToDo ({
-          todoText: todoText,
+      const addTask = taskText => {
+        setNewTask ({
+          taskText: taskText,
           isChecked: false,
         })
       };
@@ -20,8 +20,8 @@ const Container = () => {
     return(
         <main className = {classes.container}>
             <Header/>
-              <InputField addTodoHandler = {addTodo}/>
-              <ToDoList newTodo = {newToDo}/>
+              <InputField addTaskHandler = {addTask}/>
+              <TaskList newTask = {newTask}/>
         </main>
     )
 }

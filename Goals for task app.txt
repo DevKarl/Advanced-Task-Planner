@@ -1,19 +1,19 @@
 Next up:
 
-. Create utility/helper function for validating input for todos --> will only run through 
-InputField and EditTodoModal as guard clause
+. Create utility/helper function for validating input for tasks --> will only run through 
+InputField and EditTaskModal as guard clause
 
-.Implement Error boundaries with ValidateInput function that will run on BOTH main input and edit-todo-input(use as boolean guard clause in both)
-Reminder: No need to conditionally render error modal from TodoList.js --> ONLY ErrorBoundary should use ErrorModal.js
+.Implement Error boundaries with ValidateInput function that will run on BOTH main input and edit-task-input(use as boolean guard clause in both)
+Reminder: No need to conditionally render error modal from TaskList.js --> ONLY ErrorBoundary should use ErrorModal.js
     ERROR IF:
-    - overall todo is too long
+    - overall task is too long
     - does not contains any letters/numbers at all (only spaces, maybe if it starts with more than 3 spaces)
     - contains a super long string (will break the design!)
     THEN --> implement errorModalWinodw --> refactor so previous modal window design is reusable and can be a
     resuable component --> then all these erros should trigger that error-version of the modal component
 .Fix textarea input for modal window, then make general re-usable component for modal window
 .Add sorting functionality (ascending, descending and default) --> based on index as timestamp
-. Add clear-all button (deletes all todos)
+. Add clear-all button (deletes all tasks)
 . Fix mobile responsiveness (3 dots with small windwow-popup(maybe modal))
 . Once user starts typing inside of input field --> make new button popup next to add: "more" where...
     - user can add priority level (exclamation mark-value from 1 to 3 --> icons lighting up functionality)
@@ -23,9 +23,9 @@ Reminder: No need to conditionally render error modal from TodoList.js --> ONLY 
 . add progress bar that fills up (percentage of completed tasks)
 . activate emojis button (btw add badge('activate emojies?' or 'deactive emojies') on hover on this option)
 . make sure there are no bugs in local storage (annoying async hell with timeout)
-. use Context API for modal to avoid todolist <--> editodomodal <--> modal prop drilling and lifting state twice?
+. use Context API for modal to avoid tasklist <--> editaskmodal <--> modal prop drilling and lifting state twice?
 . improve button animations: don't use scale on all of them(add modern hover effects)
-. in future: use Firebase or store todos in backend instead of local storage ?
+. in future: use Firebase or store tasks in backend instead of local storage ?
 . Consider changing from CRA to Vite? 
 . Run react-testing library?
 
