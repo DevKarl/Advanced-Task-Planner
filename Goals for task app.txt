@@ -1,16 +1,5 @@
 Next up:
 
-. Create utility/helper function for validating input for tasks --> will only run through 
-InputField and EditTaskModal as guard clause
-
-.Implement Error boundaries with ValidateInput function that will run on BOTH main input and edit-task-input(use as boolean guard clause in both)
-Reminder: No need to conditionally render error modal from TaskList.js --> ONLY ErrorBoundary should use ErrorModal.js
-    ERROR IF:
-    - overall task is too long
-    - does not contains any letters/numbers at all (only spaces, maybe if it starts with more than 3 spaces)
-    - contains a super long string (will break the design!)
-    THEN --> implement errorModalWinodw --> refactor so previous modal window design is reusable and can be a
-    resuable component --> then all these erros should trigger that error-version of the modal component
 .Fix textarea input for modal window, then make general re-usable component for modal window
 .Add sorting functionality (ascending, descending and default) --> based on index as timestamp
 . Add clear-all button (deletes all tasks)
@@ -28,5 +17,6 @@ Reminder: No need to conditionally render error modal from TaskList.js --> ONLY 
 . in future: use Firebase or store tasks in backend instead of local storage ?
 . Consider changing from CRA to Vite? 
 . Run react-testing library?
+. add DarkMode with moon icon
 
 TEST
