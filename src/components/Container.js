@@ -13,7 +13,7 @@ const Container = () => {
       const addTask = taskText => {
         setNewTask ({
           taskText: taskText,
-          isChecked: false,
+          isChecked: false
         })
       };
 

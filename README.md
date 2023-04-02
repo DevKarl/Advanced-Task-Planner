@@ -23,9 +23,10 @@ Poential challenges for later
 
 
 Key takeaways - react concepts, architecture etc:
-- Reusable components (modal, UI (card, btns) etc.)
+- Reusable components (modal, UI with card, btns etc.)
 - Error boundary 
-- Memoization 
+- Memoization
+- Dynamic CSS styling (word-break ) 
 
 
 

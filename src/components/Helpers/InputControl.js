@@ -1,5 +1,5 @@
 
-const validateInput = inputValue => {
+export const validateInput = inputValue => {
     // Check if inputValue is empty
     if (inputValue.trim() === '') {
       throw new Error('Task cannot be empty 🙄 Please enter something!');
@@ -10,6 +10,16 @@ const validateInput = inputValue => {
     }
     // If all checks pass, return null(no error)
     return null;
+}
+
+export const checkInputWordLength = taskText => {
+  // Check if todoText has any words longer than 12 characters
+  if (/\b\w{12,}\b/.test(taskText)) {
+      console.log('is true');
+      return true;
   }
-  
-  export default validateInput;
+  return false;
+}
+
+
+

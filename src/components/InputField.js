@@ -1,5 +1,5 @@
 
-import validateInput from './Helpers/validateInput';
+import { validateInput } from './Helpers/InputControl';
 import classes from './InputField.module.css';
 import { useState } from 'react';
 

@@ -1,6 +1,6 @@
 Next up:
 
-.Fix textarea input for modal window, then make general re-usable component for modal window
+.Refactor Emoji as seperate component in Helpers and render it conditionally 
 .Add sorting functionality (ascending, descending and default) --> based on index as timestamp
 . Add clear-all button (deletes all tasks)
 . Fix mobile responsiveness (3 dots with small windwow-popup(maybe modal))
@@ -14,6 +14,7 @@ Next up:
 . make sure there are no bugs in local storage (annoying async hell with timeout)
 . use Context API for modal to avoid tasklist <--> editaskmodal <--> modal prop drilling and lifting state twice?
 . improve button animations: don't use scale on all of them(add modern hover effects)
+. Fix textarea input for modal window?
 . in future: use Firebase or store tasks in backend instead of local storage ?
 . Consider changing from CRA to Vite? 
 . Run react-testing library?

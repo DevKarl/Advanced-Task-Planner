@@ -2,7 +2,7 @@
 import classes from './EditTaskModal.module.css';
 import { useState } from 'react';
 import Modal from '../UI/Modal';
-import validateInput from '../Helpers/validateInput';
+import { validateInput } from '../Helpers/InputControl';
 
 const EditTaskModal = props => {
 

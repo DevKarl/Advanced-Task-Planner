@@ -46,6 +46,7 @@
     flex-direction: row;
     justify-content: space-between;
     word-wrap: break-word;
+    overflow: hidden;
     align-items: center;
     animation: fadeDefault 0.2s ease forwards;
 }
@@ -217,20 +218,61 @@ input[type=checkbox] {
     }
 
     .delete {
-        margin-left: 8px;
         margin-right: 8px;
     }
 
 }
 
-@media only screen and (max-width: 570px) {
+/* small phones */ 
+@media only screen and (max-width: 380px) {
+    .taskListItem h3 {
+        font-size: large;
+    }
+
     .edit {
-        display: none;
+        width: 28px;
+        height: 28px;
+    }
+    .check {
+        width: 23px;
+        height: 23px;
+    }
+
+    .delete {
+        width: 28px;
+        height: 28px;
+        margin-left: 10px;
     }
 }
 
-/* Conditional classes  */
+/* VERY small phones */ 
 
-.longInputWord {
+
+@media only screen and (max-width: 320px) {
+
+    .taskListItem h3 {
+        font-size:medium;
+    }
+
+    .edit {
+        width: 25px;
+        height: 25px;
+    }
+    .check {
+        width: 20px;
+        height: 20px;
+    }
+
+    .delete {
+        width: 25px;
+        height: 25px;
+        margin-left: 8px;
+    }
+    
+}
+
+/* Conditional classes */
+
+.hasLongWord {
     word-break: break-all;
 }
