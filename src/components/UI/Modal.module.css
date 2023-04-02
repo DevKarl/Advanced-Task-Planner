@@ -18,7 +18,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--card-background-color);
+    background-color: rgba(243, 251, 255, 0.850);
     padding: 1rem;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);

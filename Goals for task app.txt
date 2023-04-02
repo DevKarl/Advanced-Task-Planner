@@ -1,6 +1,20 @@
 Next up:
 
-.Refactor Emoji as seperate component in Helpers and render it conditionally 
+
+Add div with 3 buttons in flexbox container under input field:
+
+EMOJI: Add Emoji button with text: "activate/deactive automatic emojies" and make it smile when activated
+and sad when deactivated
+
+SORT: Add Sort button: when hovered on PC: open a small box with the different options
+                        but when clicked on mobile, open the same field
+
+CLEAR: clear all 
+
+NEW IDEA: when user starts typing 
+
+
+
 .Add sorting functionality (ascending, descending and default) --> based on index as timestamp
 . Add clear-all button (deletes all tasks)
 . Fix mobile responsiveness (3 dots with small windwow-popup(maybe modal))
@@ -18,6 +32,5 @@ Next up:
 . in future: use Firebase or store tasks in backend instead of local storage ?
 . Consider changing from CRA to Vite? 
 . Run react-testing library?
-. add DarkMode with moon icon
 
 TEST
