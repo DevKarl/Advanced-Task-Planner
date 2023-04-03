@@ -1,6 +1,6 @@
 .inputfield {
     border-radius: 12px;
-    margin-bottom: 10%;
+    margin-bottom: 20px;
 }
 
 .inputfield input {
@@ -53,9 +53,8 @@
 
     .inputfield button:hover{
         cursor: pointer;
-        transform: scale(1.05);
+        transform: scale(1.02);
         border-radius: 12px;
     }
-
 
 }

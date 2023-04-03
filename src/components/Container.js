@@ -5,6 +5,7 @@ import InputField from "./InputField";
 import TaskList from "./TaskList";
 import { useState } from 'react';
 import './UI/CSSvariables.module.css';
+import TaskActions from './TaskActions';
 
 const Container = () => {
 
@@ -20,8 +21,9 @@ const Container = () => {
     return(
         <main className = {classes.container}>
             <Header/>
-              <InputField addTaskHandler = {addTask}/>
-              <TaskList newTask = {newTask}/>
+            <InputField addTaskHandler = {addTask}/>
+            <TaskActions/>
+            <TaskList newTask = {newTask}/>
         </main>
     )
 }

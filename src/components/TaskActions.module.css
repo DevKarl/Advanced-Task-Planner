@@ -1,0 +1,51 @@
+
+
+.taskActionsContainer {
+    display: flex;
+    align-items: row;
+    gap: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.taskActionsContainer button {
+    padding: 20px 20px;
+    border-radius: 12px;
+    border: 2px solid var(--primary-color);
+    font-size: large;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.taskActionsContainer button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+
+.sortBtn {
+    background-image: url(../assets/sort.png);
+    background-size: cover;
+    background-color: var(--secondary-color);
+}
+
+
+.clearAllTasksBtn {
+    background-image: url(../assets/clear.png);
+    background-size: cover;
+    background-color: var(--secondary-color);
+}
+
+.toggleEmojiesBtn {
+    background-image: url(../assets/emoji.png);
+    background-size: 70%;
+    background-color: var(--secondary-color);
+}
+
+.activatedEmojies {
+    background-color: var(--primary-color);
+}
