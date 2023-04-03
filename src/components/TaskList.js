@@ -2,7 +2,7 @@
 import classes from './TaskList.module.css';
 import './UI/CSSvariables.module.css';
 import { useState, useEffect} from 'react';
-import EditTaskModal from './Modal/EditTaskModal';
+import EditTaskModal from './Modals/EditTaskModal';
 import { checkInputWordLength } from './Helpers/InputControl';
 
 const TaskList = props => {
@@ -127,8 +127,8 @@ const TaskList = props => {
                         </h3>
                     </div>
                     <div className={classes.editAndDeleteIcons}>
-                        <div className={classes.edit} onClick = {() => editTaskHandler(i)}></div>
-                        <div className={classes.delete} onClick = {() => removeTaskHandler(i)}></div>
+                        <button className={classes.edit} onClick = {() => editTaskHandler(i)}></button>
+                        <button className={classes.delete} onClick = {() => removeTaskHandler(i)}></button>
                     </div>
                 </li>
                 )}

@@ -1,7 +1,6 @@
 
 ON BOTH:
 
-- can delete quickly
 - can open edit modal:
      edit task
      add urgency
@@ -18,8 +17,6 @@ ON MOBILE:
     sorting - needs to be clicked --> opens MODAL with tab with options(ascending, descending, urgency, importance(!))
     auto-emojies - needs to be clicked like on desktop - but, now hover effect with text tab: "activate/deactive auto-emojies"
 
-    
-
 ON DESKTOP:
 
 once user starts typing in input field, new button "more" pops up: can add urgency and deadline
@@ -31,13 +28,8 @@ more swift ability to add tasks quickly then edit them later)
     auto-emojies - needs to be clicked like on mobile - but has hover effect with text tab: "activate/deactive auto-emojies"
 
 
-
 Important feature with urgency: exclamation marks scale 1-3 (!, !!, !!!) will be appended with 
 special design that breaks the top-border and animates with glow-effect
-
-
-
-
 
 .Add sorting functionality (ascending, descending and default) --> based on index as timestamp
 . Add clear-all button (deletes all tasks)
@@ -48,6 +40,7 @@ special design that breaks the top-border and animates with glow-effect
         if due date is in less than 3 days --> add orange label with due-date warning tag
         if due date is in 1 day -->  add red label with due date in one day
 . add progress bar that fills up (percentage of completed tasks)
+. Refactor taskList (create seperate components for emojimap + what else?)
 . activate emojis button (btw add badge('activate emojies?' or 'deactive emojies') on hover on this option)
 . make sure there are no bugs in local storage (annoying async hell with timeout)
 . use Context API for modal to avoid tasklist <--> editaskmodal <--> modal prop drilling and lifting state twice?
