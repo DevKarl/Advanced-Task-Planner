@@ -77,6 +77,12 @@
     opacity: 80%;
 }
 
+.hasTwoBtnsBtnContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
 .modalBtn:hover {
     cursor: pointer;
     transform: scale(1.03);

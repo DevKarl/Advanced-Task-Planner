@@ -25,12 +25,28 @@ const Modal = props => {
                 >
                 <button className={classes.closeModalBtn} onClick = {closeModal}></button>
                 <div>{props.children}</div>
-                <button 
+                {props.btnText && <button 
                     className={classes.modalBtn}
                     onClick = {props.mainBtnClick}
                 >
                     {props.btnText}
-                </button>
+                </button>}
+                {props.hasTwoBtns &&
+                <div className={classes.hasTwoBtnsBtnContainer}>
+                    <button 
+                        className={classes.modalBtn}
+                        onClick = {props.btn1Click}
+                    >
+                        {props.btn1Text}
+                    </button>
+                    <button 
+                    className={classes.modalBtn}
+                    onClick = {props.btn2Click}
+                    >
+                        {props.btn2Text}
+                    </button>
+                </div> 
+                }
             </div>
             <div className = {classes.backdrop} onClick = {closeModal}></div>
         </>,

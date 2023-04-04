@@ -15,28 +15,43 @@
     font-weight: 700;
     border: 2px solid var(--primary-color);
     text-transform: uppercase;
-    transition: all 0.3s ease;
     background-repeat: no-repeat;
     background-position: center;
     background-color: var(--secondary-color);
-    box-shadow: 3px 4px 0px var(--primary-color),
-                3px 4px 0px #222222;
+    box-shadow: 3px 3px 0px var(--primary-color),
+                3px 3px 0px #222222;
 }
 
 .taskActionsContainer button:hover{
     cursor: pointer;
 }
 
-.activatedButton {
-    animation: bounce 0.5s ease-out;
-    background-color: white !important;
+.taskActionsContainer button:active {
+    animation: button-click 0.2s ease;
+    animation-fill-mode: forwards;
     box-shadow: 0 0 10px white,
                 0 0 10px white,
                 0 0 10px white,
                 0 0 10px white !important;
-    transform: translateY(3px);
-    transform: translateX(3px);
-    border: 1px solid var(--primary-color);
+}
+
+@keyframes button-click {
+    0% {
+      transform: translateY(0);
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateY(3px);
+      transform: translateX(3px);
+    }
+    100% {
+      transform: translateY(0);
+      transform: translateX(0);
+    }
+}
+
+.activatedBtn {
+    background-color: rgba(255, 255, 255, 0.799) !important;
 }
 
 
