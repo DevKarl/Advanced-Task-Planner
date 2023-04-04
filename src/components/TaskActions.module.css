@@ -3,49 +3,81 @@
 .taskActionsContainer {
     display: flex;
     align-items: row;
-    gap: 20px;
+    gap: 40px;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .taskActionsContainer button {
     padding: 20px 20px;
     border-radius: 12px;
-    border: 2px solid var(--primary-color);
     font-size: large;
-    color: white;
     font-weight: 700;
+    border: 2px solid var(--primary-color);
     text-transform: uppercase;
     transition: all 0.3s ease;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: var(--secondary-color);
+    box-shadow: 3px 4px 0px var(--primary-color),
+                3px 4px 0px #222222;
 }
 
 .taskActionsContainer button:hover{
     cursor: pointer;
-    transform: scale(1.05);
+}
+
+.activatedButton {
+    animation: bounce 0.5s ease-out;
+    background-color: white !important;
+    box-shadow: 0 0 10px white,
+                0 0 10px white,
+                0 0 10px white,
+                0 0 10px white !important;
+    transform: translateY(3px);
+    transform: translateX(3px);
+    border: 1px solid var(--primary-color);
 }
 
 
 .sortBtn {
     background-image: url(../assets/sort.png);
     background-size: cover;
-    background-color: var(--secondary-color);
 }
 
 
 .clearAllTasksBtn {
     background-image: url(../assets/clear.png);
     background-size: cover;
-    background-color: var(--secondary-color);
 }
 
 .toggleEmojiesBtn {
     background-image: url(../assets/emoji.png);
     background-size: 70%;
-    background-color: var(--secondary-color);
 }
 
-.activatedEmojies {
-    background-color: var(--primary-color);
+.hoveredTaskActionText {
+    margin: 0px;
+    color: var(--primary-color);
+    font-size: large;
+}
+
+.hoveredTaskActionTextH3 {
+    margin: 0px;
+    height: 30px;
+    
+}
+
+/* medium size phones */
+
+@media only screen and (max-width: 500px) {
+
+    .taskActionsContainer button {
+        padding: 25px 25px;
+    }
+
+    .hoveredTaskActionText {
+        display: none;
+    }
+
 }
