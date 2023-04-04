@@ -19,7 +19,7 @@ const Modal = props => {
     return ReactDOM.createPortal(
         <>
             <div 
-                className = {classes.modal} 
+                className = {`${classes.modalRegularSize} ${props.modalTaller ? classes.modalTaller : ''}`} 
                 onKeyDown = {handleKeyDown}
                 tabIndex = {0}
                 >

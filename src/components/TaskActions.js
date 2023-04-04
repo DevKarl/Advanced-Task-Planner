@@ -13,25 +13,43 @@ const TaskActions = props => {
     const [filterTasksModal, togglefilterTasksModal] = useState(false);
     const [hoveredText, setHoveredText] = useState("");
 
-    // State-related handlers 
+    // Handlers 
 
     const handleToggleEmoji = () => {
         handleEnterEmoji();
         toggleEmojiesActivated(prev => !prev)
+        // PUT EMOJI STATE INSIDE CONTEXT API, TOGGLE FROM HERE
     }
 
-    const handleToggleFilter = filterBasedOn => {
-        togglefilterTasksModal();
-        toggleFilterActivated(prev => !prev)
+    const handleToggleFilter = () => {
+        if(!filterActivated) {
+            togglefilterTasksModal(true);
+            toggleFilterActivated(true);
+            return;
+        }
+    }
+
+    const handleFilterOption = filterOption => {
+        console.log(filterOption);
     }
 
     const handleClearAllTasks = () => {
         toggleclearTasksModal(true);
     }
 
+    const handleConfirmedClearTasks = () => {
+        console.log('yes confirmed on clear all');
+        toggleclearTasksModal(prev => !prev)
+    }
+
+    const handleExitFilterTasksModal = () => {
+        togglefilterTasksModal(prev => !prev);
+        toggleFilterActivated(prev => !prev);
+    }
+
     // CSS Enter btn related handlers
     const handleEnterEmoji = () => setHoveredText(`${emojiesActivated ? 'Deactivate' : 'Activate'} Auto-Emojies`);
-    const handleEnterSort = () => setHoveredText("Sort tasks");
+    const handleEnterSort = () => setHoveredText("Filter tasks");
     const handleEnterClearAll = () => setHoveredText("Clear all tasks");
     const handleLeave = () => setHoveredText("");
 
@@ -60,15 +78,15 @@ const TaskActions = props => {
         <div className={classes.hoveredTaskActionText}><h3 className={classes.hoveredTaskActionTextH3}>{hoveredText}</h3></div>
         <div> Add feature: filtering based on: autoemojies activated etc.</div>
         {clearTasksModal && <ClearAllTasksModal
-        
-        /* add props here */ 
+        onClose = {() => toggleclearTasksModal(prev => !prev)}
+        onYesClick = {handleConfirmedClearTasks}
         />}
         {filterTasksModal && <FilterTasksModal
-        /* add props here */
+        onClose = {handleExitFilterTasksModal}
+        enteredFilterOption = {handleFilterOption}
         />}
         </>
     )
-
 }
 
 export default TaskActions;

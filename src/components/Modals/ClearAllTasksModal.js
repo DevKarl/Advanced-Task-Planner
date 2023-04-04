@@ -6,7 +6,7 @@ const ClearAllTasksModal = props => {
 
     const closeModalHandler = () => props.onClose();
 
-    const btnYesClick = () => props.onClose();
+    const btnYesClickHandler = () => props.onYesClick();
 
     return(
         <Modal
@@ -14,7 +14,7 @@ const ClearAllTasksModal = props => {
         btn1Text = {'NO'}
         btn2Text = {'YES'}
         btn1Click = {closeModalHandler}
-        btn2Click = {btnYesClick}
+        btn2Click = {btnYesClickHandler}
         closeModalHandler = {closeModalHandler}
         >
             <div className={classes.clearTasksWarningContainer}>

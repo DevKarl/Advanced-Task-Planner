@@ -8,7 +8,7 @@
     background-color: rgba(0, 0, 0, 0.75);
 }
 
-.modal {
+.modalRegularSize {
     position: fixed;
     width: 30rem;
     left: calc(50% - 15rem);
@@ -24,6 +24,13 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     z-index: 30;
     animation: slide-down 400ms ease-out forwards;
+}
+
+.modalTaller {
+    height: 22rem !important;
+    top: calc(50% - 11rem) Im !important;
+    width: 24rem;
+    left: calc(50% - 12rem);
 }
 
 @keyframes slide-down {
@@ -91,7 +98,7 @@
 }
 
 @media only screen and (max-width: 570px) {
-    .modal {
+    .modalRegularSize {
         width: 20rem;
         left: calc(50% - 10rem);
     }
@@ -100,7 +107,7 @@
 
 /* Very small phones (galaxy fold etc.)*/
 @media only screen and (max-width: 330px) {
-    .modal {
+    .modalRegularSize {
         width: 16rem;
         left: calc(50% - 8rem);
         height: 19rem;

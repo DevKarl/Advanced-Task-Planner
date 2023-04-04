@@ -5,7 +5,7 @@ ON BOTH:
 
 - can open edit modal:
      edit task
-     add urgency
+     add importance
      add deadline
 
 - container with 3 buttons under input field: difference between mobile(click) and desktop(hover)
