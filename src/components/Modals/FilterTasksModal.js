@@ -17,10 +17,10 @@ const FilterTasksModal = props => {
             <div className={classes.filterTasksContainer}>
                 <h2 className={classes.filterTasksTitle}>Filter based on..</h2>
                 <div className={classes.filterOptionsContainer}>
-                    <button onClick={() => handleStartFiltering('NEW')}>Newest 🔼</button>
-                    <button onClick={() => handleStartFiltering('OLD')}>Oldest 🔽</button>
-                    <button onClick={() => handleStartFiltering('IMP')}>Importance ❗️</button>
-                    <button onClick={() => handleStartFiltering('DEA')}>Deadline ⏳</button>
+                    <button onClick={() => handleStartFiltering('newest')}>Newest</button>
+                    <button onClick={() => handleStartFiltering('oldest')}>Oldest</button>
+                    <button onClick={() => handleStartFiltering('importance')}>Importance ❗️</button>
+                    <button onClick={() => handleStartFiltering('deadline')}>Deadline ⏳</button>
                 </div>
             </div>
         </Modal>

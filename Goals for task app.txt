@@ -8,27 +8,11 @@ ON BOTH:
      add importance
      add deadline
 
-- container with 3 buttons under input field: difference between mobile(click) and desktop(hover)
-    clear all: same on both, click to clear all tasks --> needs to open modal "are you sure?" then "YES" btn and "NO"
-    sorting: different --> read below
-    auto emojies: sleeping when deactivated, energetic when activated, but read differene below
-    
-ON MOBILE:
-
-- container with 3 buttons under input field for
-    sorting - needs to be clicked --> opens MODAL with tab with options(ascending, descending, urgency, importance(!))
-    auto-emojies - needs to be clicked like on desktop - but, now hover effect with text tab: "activate/deactive auto-emojies"
-
 ON DESKTOP:
 
 once user starts typing in input field, new button "more" pops up: can add urgency and deadline
 (not possible on mobile due to default keyboard blocking UI, not worth implementing, better to have
 more swift ability to add tasks quickly then edit them later)
-
-- container with 3 buttons under input field for
-    sorting - needs to be clicked --> opens MODAL with tab with options(ascending, descending, urgency, importance(!))
-    auto-emojies - needs to be clicked like on mobile - but has hover effect with text tab: "activate/deactive auto-emojies"
-
 
 Important feature with urgency: exclamation marks scale 1-3 (!, !!, !!!) will be appended with 
 special design that breaks the top-border and animates with glow-effect
@@ -48,4 +32,7 @@ special design that breaks the top-border and animates with glow-effect
 . use Context API for modal to avoid tasklist <--> editaskmodal <--> modal prop drilling and lifting state twice?
 . improve button animations: don't use scale on all of them(add modern hover effects)
 . CHALLENGE: add settings-wheel with modal where user can cutomize todo colors, what more
+. Refactor notes:
+    - check if two way bindings are implemented correctly (value and onChange)
+    - naming convention.. rename everything to somethingHandler from handleSomething
 . Fix textarea input for modal window?

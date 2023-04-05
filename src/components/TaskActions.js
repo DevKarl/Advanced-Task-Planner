@@ -9,16 +9,25 @@ const TaskActions = props => {
     // states 
     const [emojiesActivated, toggleEmojiesActivated] = useState(false);
     const [filterActivated, toggleFilterActivated] = useState(false);
-    const [clearTasksModal, toggleclearTasksModal] = useState(false);
     const [filterTasksModal, togglefilterTasksModal] = useState(false);
-    const [hoveredText, setHoveredText] = useState("");
+    const [clearTasksModal, toggleclearTasksModal] = useState(false);
+
+    const [hoveredText, setHoveredText] = useState('');
+    const [filterMsg, setfilterMsg] = useState('');
+    const [emojiMsg, setEmojiMsg] = useState('');
 
     // Handlers 
 
     const handleToggleEmoji = () => {
-        handleEnterEmoji();
-        toggleEmojiesActivated(prev => !prev)
-        // PUT EMOJI STATE INSIDE CONTEXT API, TOGGLE FROM HERE
+        if (!emojiesActivated) {
+            toggleEmojiesActivated(true);
+            setHoveredText(`${!emojiesActivated ? 'Deactivate' : 'Activate'} Auto-Emojies`);
+            setEmojiMsg('Automatic Emojies Activated 🙋‍♂️');
+            return
+        }
+        toggleEmojiesActivated(false);
+        setHoveredText(`${!emojiesActivated ? 'Deactivate' : 'Activate'} Auto-Emojies`);
+        setEmojiMsg('');
     }
 
     const handleToggleFilter = () => {
@@ -27,10 +36,15 @@ const TaskActions = props => {
             toggleFilterActivated(true);
             return;
         }
+        // disable filter in context from HERE
+        toggleFilterActivated(false);
+        setfilterMsg("");
     }
 
     const handleFilterOption = filterOption => {
         console.log(filterOption);
+        setfilterMsg(`Filtering based on: ${filterOption} ⤵️`);
+        togglefilterTasksModal(false);
     }
 
     const handleClearAllTasks = () => {
@@ -47,9 +61,9 @@ const TaskActions = props => {
         toggleFilterActivated(prev => !prev);
     }
 
-    // CSS Enter btn related handlers
+    // CSS handlers for animations 
     const handleEnterEmoji = () => setHoveredText(`${emojiesActivated ? 'Deactivate' : 'Activate'} Auto-Emojies`);
-    const handleEnterSort = () => setHoveredText("Filter tasks");
+    const handleEnterSort = () => setHoveredText(`${filterActivated ? 'Deactivate' : 'Activate'} Filter`);
     const handleEnterClearAll = () => setHoveredText("Clear all tasks");
     const handleLeave = () => setHoveredText("");
 
@@ -58,9 +72,9 @@ const TaskActions = props => {
         <div className={classes.taskActionsContainer}>
             <button 
                 className={`${classes.sortBtn} ${filterActivated ? classes.activatedBtn : ''}`}
-                onMouseEnter={handleEnterSort}
-                onClick={handleToggleFilter} 
+                onMouseEnter={handleEnterSort} 
                 onMouseLeave={handleLeave}
+                onClick={handleToggleFilter}
             ></button>
             <button 
                 className={classes.clearAllTasksBtn}
@@ -68,15 +82,18 @@ const TaskActions = props => {
                 onMouseLeave = {handleLeave}
                 onClick={handleClearAllTasks}
             ></button>
-            <button 
+            <button
+                onClick={handleToggleEmoji} 
                 className={`${classes.toggleEmojiesBtn} ${emojiesActivated ? classes.activatedBtn : ''}`}
                 onMouseEnter={handleEnterEmoji}
-                onClick={handleToggleEmoji}
                 onMouseLeave = {handleLeave}
             ></button>
         </div>
         <div className={classes.hoveredTaskActionText}><h3 className={classes.hoveredTaskActionTextH3}>{hoveredText}</h3></div>
-        <div> Add feature: filtering based on: autoemojies activated etc.</div>
+        <div className={classes.taskActionsMessages}>
+            <h4 className={classes.taskActionMsg}>{emojiMsg}</h4>
+            <h4 className={classes.taskActionMsg}>{filterMsg}</h4>
+        </div>
         {clearTasksModal && <ClearAllTasksModal
         onClose = {() => toggleclearTasksModal(prev => !prev)}
         onYesClick = {handleConfirmedClearTasks}
