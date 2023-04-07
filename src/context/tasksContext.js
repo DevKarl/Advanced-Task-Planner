@@ -8,6 +8,9 @@ export const tasksContext = React.createContext({
     filterOn: false,
     emojiesOn: false,
     addTask: () => {},
+    updateTasks: () => {},
+    toggleEmojies: () => {},
+    toggleFilter: () => {}
 });
 
 export const TasksContextProvider = props => {
@@ -24,6 +27,8 @@ export const TasksContextProvider = props => {
     });
 
     const [newTask, setNewTask] = useState(null);
+    const [emojiesOn, toggleEmojies] = useState(true);
+    const [filterOn, toggleFilter] = useState(false);
     
     const addTask = taskText => {
       setNewTask ({
@@ -57,10 +62,12 @@ export const TasksContextProvider = props => {
         <tasksContext.Provider
         value={{
             tasks: tasks,
-            filterOn: false,
-            emojiesOn: false,
+            filterOn: filterOn,
+            emojiesOn: emojiesOn,
             addTask: addTask,
-            updateTasks: updateTasks
+            updateTasks: updateTasks,
+            toggleEmojies: toggleEmojies,
+            toggleFilter: toggleFilter
         }}
         
         >

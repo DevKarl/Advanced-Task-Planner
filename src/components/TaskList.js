@@ -1,9 +1,10 @@
 
 import classes from './TaskList.module.css';
+import { tasksContext } from '../context/tasksContext';
 import './UI/CSSvariables.module.css';
 import { useState, useContext} from 'react';
-import { tasksContext } from '../context/tasksContext';
 import EditTaskModal from './Modals/EditTaskModal';
+import getEmoji from './Helpers/getEmoji';
 import { checkInputWordLength } from './Helpers/InputControl';
 
 const TaskList = () => {
@@ -57,24 +58,6 @@ const TaskList = () => {
         newTasks[i].isChecked = !newTasks[i].isChecked;
         tContx.updateTasks(newTasks);
     }
-
-    const emojiMap = {
-        'cat': ' 🐈‍⬛',
-        'movie': ' 📽️',
-        'dinner': ' 🍲',
-        'food': ' 🍔',
-        'dog': ' 🐶',
-        'gym': ' 🏋️',
-        'code': ' 👨🏼‍💻',
-        'walk': ' 🚶',
-        'react': ' ⚛️',
-        'stupid': ' 🥴',
-        'fix': ' 🔧',
-        'build': ' 🛠️',
-    };
-
-    tContx.tasks.map((task, i) => console.log(task.isChecked));
-    
         
     return (
         <div className = {classes.tasklist}>
@@ -102,8 +85,7 @@ const TaskList = () => {
                             className = {task.isChecked ? classes.hasBeenCheckedH3 : ''} 
                             onClick = {() => checkHandler(i)}>
                             {task.taskText}
-                            {Object.keys(emojiMap).map(keyword => 
-                            task.taskText.toLowerCase().trim().includes(keyword.toLowerCase().trim()) && emojiMap[keyword])}
+                            {tContx.emojiesOn && getEmoji(task.taskText)}
                         </h3>
                     </div>
                     <div className={classes.editAndDeleteIcons}>

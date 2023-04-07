@@ -4,7 +4,7 @@ import { tasksContext } from '../context/tasksContext';
 import { validateInput } from './Helpers/InputControl';
 import classes from './InputField.module.css';
 
-const InputField = props => {
+const InputField = () => {
 
     const taskC = useContext(tasksContext);
     

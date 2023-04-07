@@ -75,6 +75,8 @@ input[type=checkbox] {
     color: black;
     margin-left: 15px;
     flex-grow: 1;
+    line-height: 1.2;
+
 }
 
 .taskListItem h3:hover {

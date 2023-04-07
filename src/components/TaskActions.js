@@ -1,14 +1,15 @@
 
 import classes from './TaskActions.module.css';
-import { React, useState } from 'react';
+import { tasksContext } from '../context/tasksContext';
+import { React, useState, useContext } from 'react';
 import ClearAllTasksModal from './Modals/ClearAllTasksModal';
 import FilterTasksModal from './Modals/FilterTasksModal';
 
-const TaskActions = props => {
+const TaskActions = () => {
+
+    const {filterOn, emojiesOn, toggleEmojies, toggleFilter} = useContext(tasksContext);
 
     // states 
-    const [emojiesActivated, toggleEmojiesActivated] = useState(false);
-    const [filterActivated, toggleFilterActivated] = useState(false);
     const [filterTasksModal, togglefilterTasksModal] = useState(false);
     const [clearTasksModal, toggleclearTasksModal] = useState(false);
 
@@ -19,25 +20,25 @@ const TaskActions = props => {
     // Handlers 
 
     const handleToggleEmoji = () => {
-        if (!emojiesActivated) {
-            toggleEmojiesActivated(true);
-            setHoveredText(`${!emojiesActivated ? 'Deactivate' : 'Activate'} Auto-Emojies`);
+        if (!emojiesOn) {
+            toggleEmojies(true);
+            setHoveredText(`${!emojiesOn ? 'Deactivate' : 'Activate'} Auto-Emojies`);
             setEmojiMsg('Automatic Emojies Activated 🙋‍♂️');
             return
         }
-        toggleEmojiesActivated(false);
-        setHoveredText(`${!emojiesActivated ? 'Deactivate' : 'Activate'} Auto-Emojies`);
+        toggleEmojies(false);
+        setHoveredText(`${!emojiesOn ? 'Deactivate' : 'Activate'} Auto-Emojies`);
         setEmojiMsg('');
     }
 
     const handleToggleFilter = () => {
-        if(!filterActivated) {
+        if(!filterOn) {
             togglefilterTasksModal(true);
-            toggleFilterActivated(true);
+            toggleFilter(true);
             return;
         }
         // disable filter in context from HERE
-        toggleFilterActivated(false);
+        toggleFilter(false);
         setfilterMsg("");
     }
 
@@ -58,12 +59,12 @@ const TaskActions = props => {
 
     const handleExitFilterTasksModal = () => {
         togglefilterTasksModal(prev => !prev);
-        toggleFilterActivated(prev => !prev);
+        toggleFilter(prev => !prev);
     }
 
     // CSS handlers for animations 
-    const handleEnterEmoji = () => setHoveredText(`${emojiesActivated ? 'Deactivate' : 'Activate'} Auto-Emojies`);
-    const handleEnterSort = () => setHoveredText(`${filterActivated ? 'Deactivate' : 'Activate'} Filter`);
+    const handleEnterEmoji = () => setHoveredText(`${emojiesOn ? 'Deactivate' : 'Activate'} Auto-Emojies`);
+    const handleEnterSort = () => setHoveredText(`${filterOn ? 'Deactivate' : 'Activate'} Filter`);
     const handleEnterClearAll = () => setHoveredText("Clear all tasks");
     const handleLeave = () => setHoveredText("");
 
@@ -71,7 +72,7 @@ const TaskActions = props => {
         <>
         <div className={classes.taskActionsContainer}>
             <button 
-                className={`${classes.sortBtn} ${filterActivated ? classes.activatedBtn : ''}`}
+                className={`${classes.sortBtn} ${filterOn ? classes.activatedBtn : ''}`}
                 onMouseEnter={handleEnterSort} 
                 onMouseLeave={handleLeave}
                 onClick={handleToggleFilter}
@@ -84,7 +85,7 @@ const TaskActions = props => {
             ></button>
             <button
                 onClick={handleToggleEmoji} 
-                className={`${classes.toggleEmojiesBtn} ${emojiesActivated ? classes.activatedBtn : ''}`}
+                className={`${classes.toggleEmojiesBtn} ${emojiesOn ? classes.activatedBtn : ''}`}
                 onMouseEnter={handleEnterEmoji}
                 onMouseLeave = {handleLeave}
             ></button>
