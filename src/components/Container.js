@@ -1,29 +1,22 @@
 
 import classes from './Container.module.css';
+import { TasksContextProvider } from '../context/tasksContext';
 import Header from "./Header";
 import InputField from "./InputField";
 import TaskList from "./TaskList";
-import { useState } from 'react';
 import './UI/CSSvariables.module.css';
 import TaskActions from './TaskActions';
 
 const Container = () => {
 
-    const [newTask, setNewTask] = useState(null);
-    
-      const addTask = taskText => {
-        setNewTask ({
-          taskText: taskText,
-          isChecked: false
-        })
-      };
-
     return(
         <main className = {classes.container}>
+          <TasksContextProvider>
             <Header/>
-            <InputField addTaskHandler = {addTask}/>
+            <InputField/>
             <TaskActions/>
-            <TaskList newTask = {newTask}/>
+            <TaskList/>
+          </TasksContextProvider>
         </main>
     )
 }

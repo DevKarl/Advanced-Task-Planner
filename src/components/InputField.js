@@ -1,10 +1,13 @@
 
+import { useState, useContext } from 'react';
+import { tasksContext } from '../context/tasksContext';
 import { validateInput } from './Helpers/InputControl';
 import classes from './InputField.module.css';
-import { useState } from 'react';
 
 const InputField = props => {
 
+    const taskC = useContext(tasksContext);
+    
     const [taskText, setTaskText] = useState(''); 
     const [error, setError] = useState(null);
 
@@ -18,7 +21,7 @@ const InputField = props => {
         try {
             const newTaskText = taskText.trim();
             validateInput(newTaskText);
-            if(!error) props.addTaskHandler(newTaskText)
+            if(!error) taskC.addTask(newTaskText);
         } 
         catch(error) {
             setError(error);
