@@ -10,7 +10,8 @@ export const tasksContext = React.createContext({
     addTask: () => {},
     updateTasks: () => {},
     toggleEmojies: () => {},
-    toggleFilter: () => {}
+    toggleFilter: () => {},
+    clearAllTasks: () => {}
 });
 
 export const TasksContextProvider = props => {
@@ -29,6 +30,8 @@ export const TasksContextProvider = props => {
     const [newTask, setNewTask] = useState(null);
     const [emojiesOn, toggleEmojies] = useState(true);
     const [filterOn, toggleFilter] = useState(false);
+
+    // Task-functions 
     
     const addTask = taskText => {
       setNewTask ({
@@ -36,6 +39,10 @@ export const TasksContextProvider = props => {
         isChecked: false
       })
     };
+
+    const clearAllTasks = () => {
+        updateTasks([]);
+    }
 
     // Refactor later: const [taskAppeared, updateTaskAppeared] = useState(false);
 
@@ -67,7 +74,8 @@ export const TasksContextProvider = props => {
             addTask: addTask,
             updateTasks: updateTasks,
             toggleEmojies: toggleEmojies,
-            toggleFilter: toggleFilter
+            toggleFilter: toggleFilter,
+            clearAllTasks: clearAllTasks
         }}
         
         >

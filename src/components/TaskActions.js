@@ -7,7 +7,7 @@ import FilterTasksModal from './Modals/FilterTasksModal';
 
 const TaskActions = () => {
 
-    const {filterOn, emojiesOn, toggleEmojies, toggleFilter} = useContext(tasksContext);
+    const {filterOn, emojiesOn, toggleEmojies, toggleFilter, clearAllTasks} = useContext(tasksContext);
 
     // states 
     const [filterTasksModal, togglefilterTasksModal] = useState(false);
@@ -53,8 +53,8 @@ const TaskActions = () => {
     }
 
     const handleConfirmedClearTasks = () => {
-        console.log('yes confirmed on clear all');
-        toggleclearTasksModal(prev => !prev)
+        toggleclearTasksModal(prev => !prev);
+        clearAllTasks();
     }
 
     const handleExitFilterTasksModal = () => {
