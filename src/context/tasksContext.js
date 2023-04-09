@@ -61,6 +61,38 @@ export const TasksContextProvider = props => {
 
   const [newTask, setNewTask] = useState(null);
 
+    // USE EFFECTS
+
+  useEffect(() => {
+      localStorage.setItem("savedTasks", JSON.stringify(tasks));
+      if(tasks.length === 0) {
+        toggleSort(false);
+      }
+  }, [tasks]);
+
+  useEffect(() => {
+    localStorage.setItem("savedSortOn", JSON.stringify(sortOn));
+  }, [sortOn]);
+
+  useEffect(() => {
+    localStorage.setItem("savedEmojiesOn", JSON.stringify(emojiesOn));
+  }, [emojiesOn]);
+
+  useEffect(() => {
+    localStorage.setItem("savedSortOption", JSON.stringify(sortOption));
+  }, [sortOption]);  
+
+  useEffect(() => {
+    if (newTask) {
+      const hasLongWord = checkInputWordLength(newTask.taskText);
+      const updatedTask = {
+        ...newTask,
+        hasLongWord: hasLongWord
+      };
+      updateTasks(prevTasks => [...prevTasks, updatedTask]);
+    }
+  }, [newTask]);
+
   // FUNCTIONS 
   
   const addTask = taskText => {
@@ -70,7 +102,7 @@ export const TasksContextProvider = props => {
       date: new Date(),
       importance: 0,
       deadline: null
-    })
+    });
   };
 
   const sortTasks = chosenSortOption => {
@@ -113,37 +145,6 @@ export const TasksContextProvider = props => {
   const clearAllTasks = () => {
       updateTasks([]);
   }
-
-  // USE EFFECTS
-
-  useEffect(() => {
-      localStorage.setItem("savedTasks", JSON.stringify(tasks));
-  }, [tasks]);
-
-  useEffect(() => {
-    localStorage.setItem("savedSortOn", JSON.stringify(sortOn));
-  }, [sortOn]);
-
-  useEffect(() => {
-    localStorage.setItem("savedEmojiesOn", JSON.stringify(emojiesOn));
-  }, [emojiesOn]);
-
-  useEffect(() => {
-    localStorage.setItem("savedSortOption", JSON.stringify(sortOption));
-  }, [sortOption]);  
-
-  useEffect(() => {
-    if (newTask) {
-      const hasLongWord = checkInputWordLength(newTask.taskText);
-      const updatedTask = {
-        ...newTask,
-        hasLongWord: hasLongWord
-      };
-      updateTasks(prevTasks => [...prevTasks, updatedTask]);
-    }
-  }, [newTask]);
-
-
     
   return(
       <tasksContext.Provider

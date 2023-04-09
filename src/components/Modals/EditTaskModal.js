@@ -7,7 +7,7 @@ import { validateInput } from '../Helpers/InputControl';
 const EditTaskModal = props => {
 
     const [enteredTaskText, setEnteredTaskText] = useState(props.taskText);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(false);
 
     if(error) {throw error};
 

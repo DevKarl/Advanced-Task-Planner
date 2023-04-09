@@ -7,13 +7,18 @@ import SortTasksModal from './Modals/SortTasksModal';
 
 const TaskActions = () => {
 
-    const {sortOn, sortOption, emojiesOn, toggleEmojies, toggleSort, setSortOption, sortTasks, clearAllTasks} = useContext(tasksContext);
+    const {tasks, sortOn, sortOption, emojiesOn, toggleEmojies, toggleSort, setSortOption, sortTasks, clearAllTasks} = useContext(tasksContext);
 
     // States
     const [sortModal, toggleSortModal] = useState(false);
     const [clearTasksModal, toggleclearTasksModal] = useState(false);
     const [hoveredText, setHoveredText] = useState('');
     const [emojiMsg, setEmojiMsg] = useState('');
+    const [error, setError] = useState(false);
+
+    if(error) {
+        throw new Error(error);
+    };
 
     // Handlers 
     const handleToggleEmoji = () => {
@@ -29,6 +34,9 @@ const TaskActions = () => {
     }
 
     const handleToggleSort = () => {
+        if(tasks.length === 0) {
+            setError("Nothing to sort here 🤷‍♂️ Add some new tasks first!");
+        }
         if(!sortOn) {
             toggleSortModal(true);
             return;
@@ -46,6 +54,9 @@ const TaskActions = () => {
     }
 
     const handleClearAllTasks = () => {
+        if(tasks.length === 0) {
+            setError("All tasks are already cleared!");
+        }
         toggleclearTasksModal(true);
     }
 
@@ -105,6 +116,7 @@ const TaskActions = () => {
         onClose = {handleExitSortModal}
         enteredSortOption = {handleSortOption}
         />}
+        
         </>
     )
 }
