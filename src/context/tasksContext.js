@@ -75,9 +75,9 @@ const [newTask, setNewTask] = useState(null);
 
   const sortTasks = chosenSortOption => {
     switch(chosenSortOption) {
-      case "oldest":
-        const sortedTasksOld = [...tasks].sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
-        updateTasks(sortedTasksOld);
+      case "newest":
+        const sortedTasksNew = [...tasks].sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+        updateTasks(sortedTasksNew);
         break;
       case "importance":
         const sortedTasksImportance = [...tasks].sort((a, b) => b.importance - a.importance);
@@ -98,10 +98,10 @@ const [newTask, setNewTask] = useState(null);
         });
         updateTasks(sortedTasksDeadline);
         break;
-      // DEFAULT IS ALWAYS NEWEST FIRST 
+      // DEFAULT IS ALWAYS OLDEST FIRST 
       default:
-        const sortedTasksNew = [...tasks].sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
-        updateTasks(sortedTasksNew);
+        const sortedTasksOld = [...tasks].sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
+        updateTasks(sortedTasksOld);
         break;
     }
   }
