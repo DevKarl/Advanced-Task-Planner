@@ -8,6 +8,7 @@ const EditTaskModal = props => {
 
     const [enteredTaskText, setEnteredTaskText] = useState(props.taskText);
     const [error, setError] = useState(false);
+    const [importanceLvl, setimportanceLvl] = useState(null);
 
     if(error) {throw error};
 
@@ -22,12 +23,16 @@ const EditTaskModal = props => {
     const changeTaskTextHandler = () => {
         try {
             validateInput(enteredTaskText.trim());
-            if(!error) props.receivedChangedTaskText(props.index, enteredTaskText);
+            if(!error) {
+                props.receivedChangedTaskArgs(props.index, enteredTaskText, importanceLvl);
+            } 
             closeModalHandler();
         } catch(error) {
             setError(error);
         }
     }
+
+    console.log(importanceLvl);
 
     return(
         <Modal 
@@ -49,9 +54,9 @@ const EditTaskModal = props => {
                 <div className={classes.importanceAndDeadlineContainer}>
                     <div className={classes.importanceContainer}>
                         <h3>Importance</h3>
-                        <button>!</button>
-                        <button>!!</button>
-                        <button>!!!</button>
+                        <button onClick={() => setimportanceLvl(1)}>!</button>
+                        <button onClick={() => setimportanceLvl(2)}>!!</button>
+                        <button onClick={() => setimportanceLvl(3)}>!!!</button>
                     </div>
                     <div className={classes.deadlineContainer}>
                         <h3>Deadline</h3>

@@ -32,12 +32,13 @@ const TaskList = () => {
         toggleEditTaskModal(prev => !prev);
     }
 
-    const receivedChangedTaskTextHandler = (i, newText) => {
+    const receivedChangedTaskHandler = (i, newText, importanceLvl) => {
         const hasLongWord = checkInputWordLength(newText);
         const updatedTask = {
           ...tasks[i],
           taskText: newText,
-          hasLongWord: hasLongWord
+          hasLongWord: hasLongWord,
+          importance: importanceLvl
         };
         const newTasks = [...tasks];
         newTasks[i] = updatedTask;
@@ -50,18 +51,28 @@ const TaskList = () => {
         newTasks[i].isChecked = !newTasks[i].isChecked;
         updateTasks(newTasks);
     }
+
+    const taskImportanceToString = number => {
+        if(number === 0) return ''; 
+        if(number === 1) return '!'; 
+        if(number === 2) return '!!'; 
+        if(number === 3) return '!!!'; 
+    }
             
     return (
         <div className = {classes.tasklist}>
             <ul className = {classes.taskUl}>
-                {tasks.map((task, i) => 
-                <li 
-                    key = {i} 
-                    className = {`
-                    ${task.hasLongWord ? classes.hasLongWord : ''}
-                    ${classes.taskListItem}
-                    `}>
-                    <div className={classes.checkBoxAndText}>
+                {tasks.map((task, i) =>
+                    <li 
+                        key = {i} 
+                        className = {`
+                        ${task.hasLongWord ? classes.hasLongWord : ''}
+                        ${classes.taskListItem}
+                        `}>
+                        <div className={classes.checkBoxAndText}>
+                        <div className={classes.importanceAndDeadlineContainer}>
+                            <h5>{taskImportanceToString(task.importance)}</h5>
+                        </div>
                         <input 
                             type="checkbox" 
                             id = "check" 
@@ -75,19 +86,19 @@ const TaskList = () => {
                             {task.taskText}
                             {emojiesOn && getEmoji(task.taskText)}
                         </h3>
-                    </div>
-                    <div className={classes.editAndDeleteIcons}>
-                        <button className={classes.edit} onClick = {() => editTaskHandler(i)}></button>
-                        <button className={classes.delete} onClick = {() => removeTaskHandler(i)}></button>
-                    </div>
-                </li>
+                        </div>
+                        <div className={classes.editAndDeleteIcons}>
+                            <button className={classes.edit} onClick = {() => editTaskHandler(i)}></button>
+                            <button className={classes.delete} onClick = {() => removeTaskHandler(i)}></button>
+                        </div>
+                    </li>
                 )}
             </ul>
         {editTaskModal && <EditTaskModal
             taskText = {taskTextContent}
             index = {taskChangeIndex}
             toggleEditTaskModal = {toggleEditTaskModal}
-            receivedChangedTaskText = {receivedChangedTaskTextHandler}
+            receivedChangedTaskArgs = {receivedChangedTaskHandler}
         />}
         </div>
     )
