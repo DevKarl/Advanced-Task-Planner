@@ -35,7 +35,7 @@ const TaskActions = () => {
 
     const handleToggleSort = () => {
         if(tasks.length === 0) {
-            setError("Nothing to sort here 🤷‍♂️ Add some new tasks first!");
+            setError("Nothing to sort here 🤷‍♂️ Add some new tasks first.");
         }
         if(!sortOn) {
             toggleSortModal(true);
@@ -55,7 +55,7 @@ const TaskActions = () => {
 
     const handleClearAllTasks = () => {
         if(tasks.length === 0) {
-            setError("All tasks are already cleared!");
+            setError("All tasks are already cleared.");
         }
         toggleclearTasksModal(true);
     }

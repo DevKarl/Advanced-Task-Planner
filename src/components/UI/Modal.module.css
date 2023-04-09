@@ -27,10 +27,11 @@
 }
 
 .modalTaller {
-    height: 22rem !important;
-    top: calc(50% - 11rem) Im !important;
+    height: 26rem !important;
+    top: calc(50% - 13rem) Im !important;
     width: 24rem;
     left: calc(50% - 12rem);
+    margin: 0 !important;
 }
 
 @keyframes slide-down {
@@ -80,7 +81,7 @@
     font-weight: 700;
     text-transform: uppercase;
     transition: all 0.2s ease-in-out;
-    margin-top: 10px;
+    margin-top: 15px;
     opacity: 80%;
 }
 
@@ -112,5 +113,13 @@
         left: calc(50% - 8rem);
         height: 19rem;
         top: calc(50% - 9.5rem);
+    }
+
+    .modalTaller {
+        height: 26rem !important;
+        top: calc(50% - 13rem) Im !important;
+        width: 19rem;
+        left: calc(50% - 9.5rem);
+        margin: 0 !important;
     }
 }

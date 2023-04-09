@@ -32,11 +32,13 @@ const EditTaskModal = props => {
     return(
         <Modal 
         btnText = {'Change'}
+        modalTaller = {true}
         closeModalHandler = {closeModalHandler}
         mainBtnClick = {changeTaskTextHandler}
         clickedEnter = {changeTaskTextHandler}
         >
-                <h1 className={classes.editTodoH3}>Edit Current Task</h1>
+            <div className={classes.editTaskModalContainer}>
+                <h2 className={classes.editTodoH3}>Edit Current Task</h2>
                 <textarea
                     value={enteredTaskText}
                     onChange = {handleChange}
@@ -44,6 +46,19 @@ const EditTaskModal = props => {
                     type='text' 
                     className = {classes.modalInputField}
                 ></textarea>
+                <div className={classes.importanceAndDeadlineContainer}>
+                    <div className={classes.importanceContainer}>
+                        <h3>Importance</h3>
+                        <button>!</button>
+                        <button>!!</button>
+                        <button>!!!</button>
+                    </div>
+                    <div className={classes.deadlineContainer}>
+                        <h3>Deadline</h3>
+                        <input type='date'/>
+                    </div>
+                </div>
+            </div>
         </Modal>
     )
 }
