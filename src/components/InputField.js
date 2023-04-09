@@ -6,7 +6,7 @@ import classes from './InputField.module.css';
 
 const InputField = () => {
 
-    const taskC = useContext(tasksContext);
+    const {addTask} = useContext(tasksContext);
     
     const [taskText, setTaskText] = useState(''); 
     const [error, setError] = useState(null);
@@ -20,8 +20,8 @@ const InputField = () => {
     const addNewTask = () => {
         try {
             const newTaskText = taskText.trim();
-            validateInput(newTaskText);
-            if(!error) taskC.addTask(newTaskText);
+            validateInput(newTaskText); // <-- throws error if not valid
+            addTask(newTaskText);
         } 
         catch(error) {
             setError(error);

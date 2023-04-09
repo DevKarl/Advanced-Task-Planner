@@ -73,8 +73,8 @@ const [newTask, setNewTask] = useState(null);
     })
   };
 
-  const filterTasks = filterOption => {
-    switch(filterOption) {
+  const filterTasks = chosenFilterOption => {
+    switch(chosenFilterOption) {
       case "oldest":
         const tasksFilteredOld = [...tasks].sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
         updateTasks(tasksFilteredOld);
@@ -139,7 +139,9 @@ const [newTask, setNewTask] = useState(null);
         hasLongWord: hasLongWord
       };
       updateTasks(prevTasks => [...prevTasks, updatedTask]);
-    }}, [newTask]);
+    }
+  }, [newTask]);
+
 
     
   return(

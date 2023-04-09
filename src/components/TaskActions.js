@@ -42,7 +42,7 @@ const TaskActions = () => {
         togglefilterTasksModal(false);
         toggleFilter(true);
         setFilterOption(chosenFilterOption);
-        filterTasks(filterOption);
+        filterTasks(chosenFilterOption);
     }
 
     const handleClearAllTasks = () => {
@@ -55,8 +55,7 @@ const TaskActions = () => {
     }
 
     const handleExitFilterTasksModal = () => {
-        togglefilterTasksModal(prev => !prev);
-        toggleFilter(prev => !prev);
+        togglefilterTasksModal(false);
     }
 
     // CSS handlers for animations 
