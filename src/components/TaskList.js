@@ -8,10 +8,11 @@ import getEmoji from './Helpers/getEmoji';
 import { checkInputWordLength } from './Helpers/InputControl';
 
 const TaskList = () => {
+    
+    // CONTEXT 
+    const {tasks, updateTasks, emojiesOn} = useContext(tasksContext);
 
-    const tContx = useContext(tasksContext);
-
-    // const [taskAppeared, updateTaskAppeared] = useState(false);
+    // STATES
     const [taskTextContent, changeTaskTextContent] = useState(null);
     const [taskChangeIndex, updateTaskChangeIndex] = useState(null);
     const [editTaskModal, toggleEditTaskModal] = useState(false);
@@ -20,55 +21,42 @@ const TaskList = () => {
     // HANDLERS _______________________________________________________
 
     const removeTaskHandler = (i) => {
-        // Refactor later: updateTaskAppeared(false); 
-        const newTasks = [...tContx.tasks];
-        // Refactor later: newTasks[i].beingRemoved = true;
+        const newTasks = [...tasks];
         const updatedTasks = newTasks.filter((_, index) => index !== i);
-        tContx.updateTasks(updatedTasks);
-        /*
-        Refactor later: timeout for CSS animation
-        setTimeout(() => {
-            const updatedTasks = newTasks.filter((_, index) => index !== i);
-            updateTasks(updatedTasks);
-        }, 150); 
-        */
+        updateTasks(updatedTasks);
     }
 
     const editTaskHandler = (i) => {
         updateTaskChangeIndex(i);
-        changeTaskTextContent(tContx.tasks[i].taskText);
+        changeTaskTextContent(tasks[i].taskText);
         toggleEditTaskModal(prev => !prev);
     }
 
     const receivedChangedTaskTextHandler = (i, newText) => {
         const hasLongWord = checkInputWordLength(newText);
         const updatedTask = {
-          ...tContx.tasks[i],
+          ...tasks[i],
           taskText: newText,
           hasLongWord: hasLongWord
         };
-        const newTasks = [...tContx.tasks];
+        const newTasks = [...tasks];
         newTasks[i] = updatedTask;
-        tContx.updateTasks(newTasks);
+        updateTasks(newTasks);
       };
       
     
     const checkHandler = (i) => {
-        const newTasks = [...tContx.tasks];
+        const newTasks = [...tasks];
         newTasks[i].isChecked = !newTasks[i].isChecked;
-        tContx.updateTasks(newTasks);
+        updateTasks(newTasks);
     }
             
     return (
         <div className = {classes.tasklist}>
             <ul className = {classes.taskUl}>
-                {tContx.tasks.map((task, i) => 
+                {tasks.map((task, i) => 
                 <li 
                     key = {i} 
-                    /* refactor later, add these or re-do: 
-                        ${taskAppeared ? classes.appearingTask : ''}
-                        ${tasks[i].beingRemoved ? classes.dissapearingTask: ''} 
-                    */
                     className = {`
                     ${task.hasLongWord ? classes.hasLongWord : ''}
                     ${classes.taskListItem}
@@ -85,7 +73,7 @@ const TaskList = () => {
                             className = {task.isChecked ? classes.hasBeenCheckedH3 : ''} 
                             onClick = {() => checkHandler(i)}>
                             {task.taskText}
-                            {tContx.emojiesOn && getEmoji(task.taskText)}
+                            {emojiesOn && getEmoji(task.taskText)}
                         </h3>
                     </div>
                     <div className={classes.editAndDeleteIcons}>

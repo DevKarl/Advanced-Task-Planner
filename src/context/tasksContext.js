@@ -110,8 +110,6 @@ const [newTask, setNewTask] = useState(null);
       updateTasks([]);
   }
 
-  // Refactor later: const [taskAppeared, updateTaskAppeared] = useState(false);
-
   // USE EFFECTS
 
   useEffect(() => {
@@ -132,7 +130,6 @@ const [newTask, setNewTask] = useState(null);
 
   useEffect(() => {
     if (newTask) {
-    //  Refactor later: !taskAppeared && updateTaskAppeared(true);
       const hasLongWord = checkInputWordLength(newTask.taskText);
       const updatedTask = {
         ...newTask,
