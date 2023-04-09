@@ -3,14 +3,14 @@ import classes from './TaskActions.module.css';
 import { tasksContext } from '../context/tasksContext';
 import { React, useState, useContext, useEffect } from 'react';
 import ClearAllTasksModal from './Modals/ClearAllTasksModal';
-import FilterTasksModal from './Modals/FilterTasksModal';
+import SortTasksModal from './Modals/SortTasksModal';
 
 const TaskActions = () => {
 
-    const {filterOn, filterOption, emojiesOn, toggleEmojies, toggleFilter, setFilterOption, clearAllTasks, filterTasks} = useContext(tasksContext);
+    const {sortOn, sortOption, emojiesOn, toggleEmojies, toggleSort, setSortOption, sortTasks, clearAllTasks} = useContext(tasksContext);
 
     // States
-    const [filterTasksModal, togglefilterTasksModal] = useState(false);
+    const [sortModal, toggleSortModal] = useState(false);
     const [clearTasksModal, toggleclearTasksModal] = useState(false);
     const [hoveredText, setHoveredText] = useState('');
     const [emojiMsg, setEmojiMsg] = useState('');
@@ -28,21 +28,21 @@ const TaskActions = () => {
         setEmojiMsg('');
     }
 
-    const handleToggleFilter = () => {
-        if(!filterOn) {
-            togglefilterTasksModal(true);
+    const handleToggleSort = () => {
+        if(!sortOn) {
+            toggleSortModal(true);
             return;
         }
-        filterTasks(''); //back to default (newest first)
-        setFilterOption(''); 
-        toggleFilter(false);
+        sortTasks(''); //back to default (newest first)
+        setSortOption(''); 
+        toggleSort(false);
     }
 
-    const handleFilterOption = chosenFilterOption => {
-        togglefilterTasksModal(false);
-        toggleFilter(true);
-        setFilterOption(chosenFilterOption);
-        filterTasks(chosenFilterOption);
+    const handleSortOption = chosenSortOption => {
+        toggleSortModal(false);
+        toggleSort(true);
+        setSortOption(chosenSortOption);
+        sortTasks(chosenSortOption);
     }
 
     const handleClearAllTasks = () => {
@@ -54,17 +54,16 @@ const TaskActions = () => {
         clearAllTasks();
     }
 
-    const handleExitFilterTasksModal = () => {
-        togglefilterTasksModal(false);
+    const handleExitSortModal = () => {
+        toggleSortModal(false);
     }
 
     // CSS handlers for animations 
     const handleEnterEmoji = () => setHoveredText(`${emojiesOn ? 'Deactivate' : 'Activate'} Auto-Emojies`);
-    const handleEnterSort = () => setHoveredText(`${filterOn ? 'Deactivate' : 'Activate'} Filter`);
+    const handleEnterSort = () => setHoveredText(`${sortOn ? 'Deactivate' : 'Activate'} Sorting`);
     const handleEnterClearAll = () => setHoveredText("Clear all tasks");
     const handleLeave = () => setHoveredText("");
 
-    // useEffect for enabled actions messages (filterMsg and emojiMsg)
     useEffect(() => {
         if (emojiesOn) {
             setEmojiMsg('Automatic Emojies Activated 🙋‍♂️');
@@ -75,10 +74,10 @@ const TaskActions = () => {
         <>
         <div className={classes.taskActionsContainer}>
             <button 
-                className={`${classes.sortBtn} ${filterOn ? classes.activatedBtn : ''}`}
+                className={`${classes.sortBtn} ${sortOn ? classes.activatedBtn : ''}`}
                 onMouseEnter={handleEnterSort} 
                 onMouseLeave={handleLeave}
-                onClick={handleToggleFilter}
+                onClick={handleToggleSort}
             ></button>
             <button 
                 className={classes.clearAllTasksBtn}
@@ -96,15 +95,15 @@ const TaskActions = () => {
         <div className={classes.hoveredTaskActionText}><h3 className={classes.hoveredTaskActionTextH3}>{hoveredText}</h3></div>
         <div className={classes.taskActionsMessages}>
             {emojiesOn && <h4 className={classes.taskActionMsg}>{emojiMsg}</h4>}
-            {filterOn && <h4 className={classes.taskActionMsg}>{`Filtering based on: ${filterOption} ⤵️`}</h4>}
+            {sortOn && <h4 className={classes.taskActionMsg}>{`Sorting based on: ${sortOption} ⤵️`}</h4>}
         </div>
         {clearTasksModal && <ClearAllTasksModal
         onClose = {() => toggleclearTasksModal(prev => !prev)}
         onYesClick = {handleConfirmedClearTasks}
         />}
-        {filterTasksModal && <FilterTasksModal
-        onClose = {handleExitFilterTasksModal}
-        enteredFilterOption = {handleFilterOption}
+        {sortModal && <SortTasksModal
+        onClose = {handleExitSortModal}
+        enteredSortOption = {handleSortOption}
         />}
         </>
     )

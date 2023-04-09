@@ -5,15 +5,15 @@ import { checkInputWordLength } from "../components/Helpers/InputControl";
 export const tasksContext = React.createContext({
     // ONLY for syntax highlighting
     tasks: [],
-    filterOn: false,
-    filterOption: '',
+    sortOn: false,
+    sortOption: '',
     emojiesOn: false,
     addTask: () => {},
     updateTasks: () => {},
     toggleEmojies: () => {},
-    toggleFilter: () => {},
-    setFilterOption: () => {},
-    filterTasks: () => {},
+    toggleSort: () => {},
+    setSortOption: () => {},
+    sortTasks: () => {},
     clearAllTasks: () => {},
 });
 
@@ -39,19 +39,19 @@ export const TasksContextProvider = props => {
     }
 });
 
-const [filterOn, toggleFilter] = useState(() => {
-  const savedFilterOn = localStorage.getItem("savedFilterOn");
-  if (savedFilterOn) {
-    return JSON.parse(savedFilterOn);
+const [sortOn, toggleSort] = useState(() => {
+  const savedSortOn = localStorage.getItem("savedSortOn");
+  if (savedSortOn) {
+    return JSON.parse(savedSortOn);
   } else {
     return false;
   }
 });
 
-const [filterOption, setFilterOption] = useState(() => {
-  const savedFilterOption = localStorage.getItem("savedFilterOption");
-  if (savedFilterOption) {
-    return JSON.parse(savedFilterOption);
+const [sortOption, setSortOption] = useState(() => {
+  const savedSortOption = localStorage.getItem("savedSortOption");
+  if (savedSortOption) {
+    return JSON.parse(savedSortOption);
   } else {
     return '';
   }
@@ -73,18 +73,18 @@ const [newTask, setNewTask] = useState(null);
     })
   };
 
-  const filterTasks = chosenFilterOption => {
-    switch(chosenFilterOption) {
+  const sortTasks = chosenSortOption => {
+    switch(chosenSortOption) {
       case "oldest":
-        const tasksFilteredOld = [...tasks].sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
-        updateTasks(tasksFilteredOld);
+        const sortedTasksOld = [...tasks].sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+        updateTasks(sortedTasksOld);
         break;
       case "importance":
-        const tasksFilteredImportance = [...tasks].sort((a, b) => b.importance - a.importance);
-        updateTasks(tasksFilteredImportance);
+        const sortedTasksImportance = [...tasks].sort((a, b) => b.importance - a.importance);
+        updateTasks(sortedTasksImportance);
         break;
       case "deadline":
-        const tasksFilteredDeadline = [...tasks].sort((a, b) => {
+        const sortedTasksDeadline = [...tasks].sort((a, b) => {
           if (a.deadline === null && b.deadline === null) {
             return 0;
           }
@@ -96,12 +96,12 @@ const [newTask, setNewTask] = useState(null);
           }
           return Date.parse(a.deadline) - Date.parse(b.deadline);
         });
-        updateTasks(tasksFilteredDeadline);
+        updateTasks(sortedTasksDeadline);
         break;
       // DEFAULT IS ALWAYS NEWEST FIRST 
       default:
-        const tasksFilteredNew = [...tasks].sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
-        updateTasks(tasksFilteredNew);
+        const sortedTasksNew = [...tasks].sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
+        updateTasks(sortedTasksNew);
         break;
     }
   }
@@ -119,16 +119,16 @@ const [newTask, setNewTask] = useState(null);
   }, [tasks]);
 
   useEffect(() => {
-    localStorage.setItem("savedFilterOn", JSON.stringify(filterOn));
-  }, [filterOn]);
+    localStorage.setItem("savedSortOn", JSON.stringify(sortOn));
+  }, [sortOn]);
 
   useEffect(() => {
     localStorage.setItem("savedEmojiesOn", JSON.stringify(emojiesOn));
   }, [emojiesOn]);
 
   useEffect(() => {
-    localStorage.setItem("savedFilterOption", JSON.stringify(filterOption));
-  }, [filterOption]);  
+    localStorage.setItem("savedSortOption", JSON.stringify(sortOption));
+  }, [sortOption]);  
 
   useEffect(() => {
     if (newTask) {
@@ -148,15 +148,15 @@ const [newTask, setNewTask] = useState(null);
       <tasksContext.Provider
       value={{
           tasks: tasks,
-          filterOn: filterOn,
-          filterOption: filterOption,
+          sortOn: sortOn,
+          sortOption: sortOption,
           emojiesOn: emojiesOn,
           addTask: addTask,
           updateTasks: updateTasks,
           toggleEmojies: toggleEmojies,
-          toggleFilter: toggleFilter,
-          filterTasks: filterTasks,
-          setFilterOption: setFilterOption,
+          toggleSort: toggleSort,
+          sortTasks: sortTasks,
+          setSortOption: setSortOption,
           clearAllTasks: clearAllTasks
       }}
       

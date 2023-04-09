@@ -1,25 +1,25 @@
 
 
 
-.filterTasksTitle {
+.sortTasksTitle {
     margin-top: 0;
     margin-bottom: 10px;
 }
 
-.filterTasksContainer {
+.sortTasksContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.filterOptionsContainer {
+.sortOptionsContainer {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.filterOptionsContainer button {
+.sortOptionsContainer button {
     padding: 10px 24px;
     border-radius: 12px;
     border: 2px solid var(--primary-color);
@@ -32,7 +32,7 @@
     opacity: 80%;
 }
 
-.filterOptionsContainer button:hover {
+.sortOptionsContainer button:hover {
     opacity: 100%;
     cursor: pointer;
     transition: all 0.1s ease-in-out;
