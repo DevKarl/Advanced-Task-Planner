@@ -1,24 +1,21 @@
 
 import classes from './TaskActions.module.css';
 import { tasksContext } from '../context/tasksContext';
-import { React, useState, useContext } from 'react';
+import { React, useState, useContext, useEffect } from 'react';
 import ClearAllTasksModal from './Modals/ClearAllTasksModal';
 import FilterTasksModal from './Modals/FilterTasksModal';
 
 const TaskActions = () => {
 
-    const {filterOn, emojiesOn, toggleEmojies, toggleFilter, clearAllTasks} = useContext(tasksContext);
+    const {filterOn, filterOption, emojiesOn, toggleEmojies, toggleFilter, setFilterOption, clearAllTasks, filterTasks} = useContext(tasksContext);
 
-    // states 
+    // States
     const [filterTasksModal, togglefilterTasksModal] = useState(false);
     const [clearTasksModal, toggleclearTasksModal] = useState(false);
-
     const [hoveredText, setHoveredText] = useState('');
-    const [filterMsg, setfilterMsg] = useState('');
     const [emojiMsg, setEmojiMsg] = useState('');
 
     // Handlers 
-
     const handleToggleEmoji = () => {
         if (!emojiesOn) {
             toggleEmojies(true);
@@ -34,18 +31,18 @@ const TaskActions = () => {
     const handleToggleFilter = () => {
         if(!filterOn) {
             togglefilterTasksModal(true);
-            toggleFilter(true);
             return;
         }
-        // disable filter in context from HERE
+        filterTasks(''); //back to default (newest first)
+        setFilterOption(''); 
         toggleFilter(false);
-        setfilterMsg("");
     }
 
-    const handleFilterOption = filterOption => {
-        console.log(filterOption);
-        setfilterMsg(`Filtering based on: ${filterOption} ⤵️`);
+    const handleFilterOption = chosenFilterOption => {
         togglefilterTasksModal(false);
+        toggleFilter(true);
+        setFilterOption(chosenFilterOption);
+        filterTasks(filterOption);
     }
 
     const handleClearAllTasks = () => {
@@ -67,6 +64,13 @@ const TaskActions = () => {
     const handleEnterSort = () => setHoveredText(`${filterOn ? 'Deactivate' : 'Activate'} Filter`);
     const handleEnterClearAll = () => setHoveredText("Clear all tasks");
     const handleLeave = () => setHoveredText("");
+
+    // useEffect for enabled actions messages (filterMsg and emojiMsg)
+    useEffect(() => {
+        if (emojiesOn) {
+            setEmojiMsg('Automatic Emojies Activated 🙋‍♂️');
+        }
+    }, [emojiesOn]);
 
     return(
         <>
@@ -92,8 +96,8 @@ const TaskActions = () => {
         </div>
         <div className={classes.hoveredTaskActionText}><h3 className={classes.hoveredTaskActionTextH3}>{hoveredText}</h3></div>
         <div className={classes.taskActionsMessages}>
-            <h4 className={classes.taskActionMsg}>{emojiMsg}</h4>
-            <h4 className={classes.taskActionMsg}>{filterMsg}</h4>
+            {emojiesOn && <h4 className={classes.taskActionMsg}>{emojiMsg}</h4>}
+            {filterOn && <h4 className={classes.taskActionMsg}>{`Filtering based on: ${filterOption} ⤵️`}</h4>}
         </div>
         {clearTasksModal && <ClearAllTasksModal
         onClose = {() => toggleclearTasksModal(prev => !prev)}

@@ -58,7 +58,7 @@ const TaskList = () => {
         newTasks[i].isChecked = !newTasks[i].isChecked;
         tContx.updateTasks(newTasks);
     }
-        
+            
     return (
         <div className = {classes.tasklist}>
             <ul className = {classes.taskUl}>

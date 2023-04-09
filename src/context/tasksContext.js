@@ -6,82 +6,162 @@ export const tasksContext = React.createContext({
     // ONLY for syntax highlighting
     tasks: [],
     filterOn: false,
+    filterOption: '',
     emojiesOn: false,
     addTask: () => {},
     updateTasks: () => {},
     toggleEmojies: () => {},
     toggleFilter: () => {},
-    clearAllTasks: () => {}
+    setFilterOption: () => {},
+    filterTasks: () => {},
+    clearAllTasks: () => {},
 });
 
 export const TasksContextProvider = props => {
 
-    // STATES
+// STATES - IN LOCAL STORAGE 
 
-    const [tasks, updateTasks] = useState(() => {
-        const savedTasks = localStorage.getItem("tasks");
-        if (savedTasks) {
-          return JSON.parse(savedTasks);
-        } else {
-          return [];
-        }
-    });
+  const [tasks, updateTasks] = useState(() => {
+      const savedTasks = localStorage.getItem("savedTasks");
+      if (savedTasks) {
+        return JSON.parse(savedTasks);
+      } else {
+        return [];
+      }
+  });
 
-    const [newTask, setNewTask] = useState(null);
-    const [emojiesOn, toggleEmojies] = useState(true);
-    const [filterOn, toggleFilter] = useState(false);
-
-    // Task-functions 
-    
-    const addTask = taskText => {
-      setNewTask ({
-        taskText: taskText,
-        isChecked: false
-      })
-    };
-
-    const clearAllTasks = () => {
-        updateTasks([]);
+  const [emojiesOn, toggleEmojies] = useState(() => {
+    const savedEmojiesOn = localStorage.getItem("savedEmojiesOn");
+    if (savedEmojiesOn) {
+      return JSON.parse(savedEmojiesOn);
+    } else {
+      return false;
     }
+});
 
-    // Refactor later: const [taskAppeared, updateTaskAppeared] = useState(false);
+const [filterOn, toggleFilter] = useState(() => {
+  const savedFilterOn = localStorage.getItem("savedFilterOn");
+  if (savedFilterOn) {
+    return JSON.parse(savedFilterOn);
+  } else {
+    return false;
+  }
+});
 
-    // USE EFFECTS 
+const [filterOption, setFilterOption] = useState(() => {
+  const savedFilterOption = localStorage.getItem("savedFilterOption");
+  if (savedFilterOption) {
+    return JSON.parse(savedFilterOption);
+  } else {
+    return '';
+  }
+});
 
-    useEffect(() => {
-        localStorage.setItem("tasks", JSON.stringify(tasks));
-    }, [tasks]);
+// OTHER STATES
 
-    useEffect(() => {
-        if (newTask) {
-        //  Refactor later: !taskAppeared && updateTaskAppeared(true);
-          const hasLongWord = checkInputWordLength(newTask.taskText);
-          const updatedTask = {
-            ...newTask,
-            hasLongWord: hasLongWord
-          };
-          updateTasks(prevTasks => [...prevTasks, updatedTask]);
-        }
-      }, [newTask]);
+const [newTask, setNewTask] = useState(null);
 
+// FUNCTIONS 
+  
+  const addTask = taskText => {
+    setNewTask ({
+      taskText: taskText,
+      isChecked: false,
+      date: new Date(),
+      importance: 0,
+      deadline: null
+    })
+  };
+
+  const filterTasks = filterOption => {
+    switch(filterOption) {
+      case "oldest":
+        const tasksFilteredOld = [...tasks].sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+        updateTasks(tasksFilteredOld);
+        break;
+      case "importance":
+        const tasksFilteredImportance = [...tasks].sort((a, b) => b.importance - a.importance);
+        updateTasks(tasksFilteredImportance);
+        break;
+      case "deadline":
+        const tasksFilteredDeadline = [...tasks].sort((a, b) => {
+          if (a.deadline === null && b.deadline === null) {
+            return 0;
+          }
+          if (a.deadline === null) {
+            return 1;
+          }
+          if (b.deadline === null) {
+            return -1;
+          }
+          return Date.parse(a.deadline) - Date.parse(b.deadline);
+        });
+        updateTasks(tasksFilteredDeadline);
+        break;
+      // DEFAULT IS ALWAYS NEWEST FIRST 
+      default:
+        const tasksFilteredNew = [...tasks].sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
+        updateTasks(tasksFilteredNew);
+        break;
+    }
+  }
+
+  const clearAllTasks = () => {
+      updateTasks([]);
+  }
+
+  // Refactor later: const [taskAppeared, updateTaskAppeared] = useState(false);
+
+  // USE EFFECTS
+
+  useEffect(() => {
+      localStorage.setItem("savedTasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  useEffect(() => {
+    localStorage.setItem("savedFilterOn", JSON.stringify(filterOn));
+  }, [filterOn]);
+
+  useEffect(() => {
+    localStorage.setItem("savedEmojiesOn", JSON.stringify(emojiesOn));
+  }, [emojiesOn]);
+
+  useEffect(() => {
+    localStorage.setItem("savedFilterOption", JSON.stringify(filterOption));
+  }, [filterOption]);  
+
+  useEffect(() => {
+    if (newTask) {
+    //  Refactor later: !taskAppeared && updateTaskAppeared(true);
+      const hasLongWord = checkInputWordLength(newTask.taskText);
+      const updatedTask = {
+        ...newTask,
+        hasLongWord: hasLongWord
+      };
+      updateTasks(prevTasks => [...prevTasks, updatedTask]);
+    }}, [newTask]);
+
+    
+  return(
+      <tasksContext.Provider
+      value={{
+          tasks: tasks,
+          filterOn: filterOn,
+          filterOption: filterOption,
+          emojiesOn: emojiesOn,
+          addTask: addTask,
+          updateTasks: updateTasks,
+          toggleEmojies: toggleEmojies,
+          toggleFilter: toggleFilter,
+          filterTasks: filterTasks,
+          setFilterOption: setFilterOption,
+          clearAllTasks: clearAllTasks
+      }}
       
-    return(
-        <tasksContext.Provider
-        value={{
-            tasks: tasks,
-            filterOn: filterOn,
-            emojiesOn: emojiesOn,
-            addTask: addTask,
-            updateTasks: updateTasks,
-            toggleEmojies: toggleEmojies,
-            toggleFilter: toggleFilter,
-            clearAllTasks: clearAllTasks
-        }}
-        
-        >
-            {props.children}
-        </tasksContext.Provider>
-    )
+      >
+          {props.children}
+      </tasksContext.Provider>
+  )
 
 }
 
