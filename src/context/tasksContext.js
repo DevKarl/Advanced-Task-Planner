@@ -19,7 +19,7 @@ export const tasksContext = React.createContext({
 
 export const TasksContextProvider = props => {
 
-// STATES - IN LOCAL STORAGE 
+  // STATES - IN LOCAL STORAGE 
 
   const [tasks, updateTasks] = useState(() => {
       const savedTasks = localStorage.getItem("savedTasks");
@@ -37,31 +37,31 @@ export const TasksContextProvider = props => {
     } else {
       return false;
     }
-});
+  });
 
-const [sortOn, toggleSort] = useState(() => {
-  const savedSortOn = localStorage.getItem("savedSortOn");
-  if (savedSortOn) {
-    return JSON.parse(savedSortOn);
-  } else {
-    return false;
-  }
-});
+  const [sortOn, toggleSort] = useState(() => {
+    const savedSortOn = localStorage.getItem("savedSortOn");
+    if (savedSortOn) {
+      return JSON.parse(savedSortOn);
+    } else {
+      return false;
+    }
+  });
 
-const [sortOption, setSortOption] = useState(() => {
-  const savedSortOption = localStorage.getItem("savedSortOption");
-  if (savedSortOption) {
-    return JSON.parse(savedSortOption);
-  } else {
-    return '';
-  }
-});
+  const [sortOption, setSortOption] = useState(() => {
+    const savedSortOption = localStorage.getItem("savedSortOption");
+    if (savedSortOption) {
+      return JSON.parse(savedSortOption);
+    } else {
+      return '';
+    }
+  });
 
-// OTHER STATES
+  // OTHER STATES
 
-const [newTask, setNewTask] = useState(null);
+  const [newTask, setNewTask] = useState(null);
 
-// FUNCTIONS 
+  // FUNCTIONS 
   
   const addTask = taskText => {
     setNewTask ({
@@ -97,8 +97,12 @@ const [newTask, setNewTask] = useState(null);
           return Date.parse(a.deadline) - Date.parse(b.deadline);
         });
         updateTasks(sortedTasksDeadline);
+        break; 
+      case "unchecked":
+        const sortedTasksUnfinished = [...tasks].sort((a, b) => a.isChecked - b.isChecked);
+        updateTasks(sortedTasksUnfinished);
         break;
-      // DEFAULT IS ALWAYS OLDEST FIRST 
+      // DEFAULT IS ALWAYS OLDEST FIRST
       default:
         const sortedTasksOld = [...tasks].sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
         updateTasks(sortedTasksOld);

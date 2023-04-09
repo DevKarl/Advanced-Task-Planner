@@ -18,7 +18,7 @@ const SortTasksModal = props => {
                 <h2 className={classes.sortTasksTitle}>Sort based on..</h2>
                 <div className={classes.sortOptionsContainer}>
                     <button onClick={() => handleStartSorting('newest')}>Newest</button>
-                    <button onClick={() => handleStartSorting('oldest')}>Oldest</button>
+                    <button onClick={() => handleStartSorting('unchecked')}>Unchecked</button>
                     <button onClick={() => handleStartSorting('importance')}>Importance ❗️</button>
                     <button onClick={() => handleStartSorting('deadline')}>Deadline ⏳</button>
                 </div>

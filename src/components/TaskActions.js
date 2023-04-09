@@ -95,7 +95,7 @@ const TaskActions = () => {
         <div className={classes.hoveredTaskActionText}><h3 className={classes.hoveredTaskActionTextH3}>{hoveredText}</h3></div>
         <div className={classes.taskActionsMessages}>
             {emojiesOn && <h4 className={classes.taskActionMsg}>{emojiMsg}</h4>}
-            {sortOn && <h4 className={classes.taskActionMsg}>{`Sorting based on: ${sortOption} ${sortOption === 'oldest' ? '(default)': ''} ⤵️`}</h4>}
+            {sortOn && <h4 className={classes.taskActionMsg}>{`Sorting based on: ${sortOption} ⤵️`}</h4>}
         </div>
         {clearTasksModal && <ClearAllTasksModal
         onClose = {() => toggleclearTasksModal(prev => !prev)}

@@ -15,7 +15,6 @@ export const validateInput = inputValue => {
 export const checkInputWordLength = taskText => {
   // Check if todoText has any words longer than 12 characters
   if (/\b\w{12,}\b/.test(taskText)) {
-      console.log('is true');
       return true;
   }
   return false;
