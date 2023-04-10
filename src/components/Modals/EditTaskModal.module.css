@@ -10,7 +10,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 100%;
+}
+
+.importanceTitle {
+    margin: 0;
+    margin-bottom: 12px;
 }
 
 .importanceContainer {
@@ -27,19 +33,55 @@
     width: 50px;
     height: 50px;
     font-size: xx-large;
-    background-color: var(--secondary-color);
-    opacity: 0.6;
     transition: all 0.2s ease-in;
-
 }
 
-.importanceContainer button:hover{
-    cursor: pointer;
+.importanceContainer button:hover {
+    transform: scale(1.1);
+    transition: all 0.2s ease-in;
+}
+
+.importanceLvlBtnStandard {
+    background-color: var(--secondary-color);
+    opacity: 0.6;
+}
+
+.importanceLvlBtnActive {
     opacity: 1;
     background-color: var(--primary-color);
 }
 
+.importanceLvlBtnStandard:hover, .importanceLvlBtnActive:hover {
+    cursor: pointer;
+    opacity: 1;
+}
 
+.noneBtn {
+    border: 1px solid var(--primary-color);
+    border-radius: 12px;
+    width: 60px;
+    height: 40px;
+    font-size: small;
+    margin-left: 5px;
+    background-color: var(--secondary-color);
+    opacity: 0.6;
+    transition: all 0.2s ease-in;
+}
+
+.noneBtn {
+    margin-left: 15px !important;
+}
+
+.noneBtn:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.deadlineTitle {
+    margin: 0;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
 
 .deadlineContainer {
     display: flex;
@@ -49,7 +91,6 @@
 }
 
 .deadlineContainer input {
-    margin-left: 15px;
     height: 40px;
     width: 140px;
     padding-left: 4px;

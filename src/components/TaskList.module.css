@@ -132,9 +132,13 @@ input[type=checkbox] {
 
 .importanceAndDeadlineContainer {
     position: fixed;
-    left: 50%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    left: 45%;
     top: 0px;
 }
+
 
 .importanceAndDeadlineContainer h5 {
     margin: 0;
@@ -142,6 +146,15 @@ input[type=checkbox] {
     font-weight: 800;
     color: var(--primary-color);
     animation: pulsate 1s ease-in-out infinite;
+}
+
+
+.importanceText {
+    animation: pulsate 1s ease-in-out infinite;
+}
+
+.deadlineText {
+
 }
 
 

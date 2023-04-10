@@ -32,13 +32,14 @@ const TaskList = () => {
         toggleEditTaskModal(prev => !prev);
     }
 
-    const receivedChangedTaskHandler = (i, newText, importanceLvl) => {
+    const receivedChangedTaskHandler = (i, newText, importanceLvl, deadline) => {
         const hasLongWord = checkInputWordLength(newText);
         const updatedTask = {
           ...tasks[i],
           taskText: newText,
           hasLongWord: hasLongWord,
-          importance: importanceLvl
+          importance: importanceLvl,
+          deadline: deadline 
         };
         const newTasks = [...tasks];
         newTasks[i] = updatedTask;
@@ -71,7 +72,8 @@ const TaskList = () => {
                         `}>
                         <div className={classes.checkBoxAndText}>
                         <div className={classes.importanceAndDeadlineContainer}>
-                            <h5>{taskImportanceToString(task.importance)}</h5>
+                            <h5 className={classes.importanceText}>{taskImportanceToString(task.importance)}</h5>
+                            <h5 className={classes.deadlineText}>{task.deadline && `DL: ${task.deadline}`}</h5>
                         </div>
                         <input 
                             type="checkbox" 

@@ -8,8 +8,6 @@ export const validateInput = inputValue => {
     if (inputValue.length > 100) {
       throw new Error('Task cannot be longer than 100 characters 😯 Please make it shorter!');
     }
-    // If all checks pass, return null(no error)
-    return null;
 }
 
 export const checkInputWordLength = taskText => {
@@ -18,6 +16,19 @@ export const checkInputWordLength = taskText => {
       return true;
   }
   return false;
+}
+
+
+export const isValidDeadline = deadline => {
+  const minDate = '2023-01-01';
+  const maxDate = '2099-12-31';
+  if (deadline < minDate) {
+    throw new Error('Invalid deadline. Date is too far back in time.');
+  }
+
+  if (deadline > maxDate) {
+    throw new Error('Invalid deadline. Date is too far ahead in time.');
+  }
 }
 
 
