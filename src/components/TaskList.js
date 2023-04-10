@@ -4,8 +4,8 @@ import { tasksContext } from '../context/tasksContext';
 import './UI/CSSvariables.module.css';
 import { useState, useContext} from 'react';
 import EditTaskModal from './Modals/EditTaskModal';
-import getEmoji from './Helpers/getEmoji';
 import { checkInputWordLength } from './Helpers/InputControl';
+import Task from './Task';
 
 const TaskList = () => {
     
@@ -52,50 +52,23 @@ const TaskList = () => {
         newTasks[i].isChecked = !newTasks[i].isChecked;
         updateTasks(newTasks);
     }
-
-    const taskImportanceToString = number => {
-        if(number === 0) return ''; 
-        if(number === 1) return '!'; 
-        if(number === 2) return '!!'; 
-        if(number === 3) return '!!!'; 
-    }
             
     return (
         <div className = {classes.tasklist}>
+            { tasks.length > 0 &&
             <ul className = {classes.taskUl}>
                 {tasks.map((task, i) =>
-                    <li 
-                        key = {i} 
-                        className = {`
-                        ${task.hasLongWord ? classes.hasLongWord : ''}
-                        ${classes.taskListItem}
-                        `}>
-                        <div className={classes.checkBoxAndText}>
-                        <div className={classes.importanceAndDeadlineContainer}>
-                            <h5 className={classes.importanceText}>{taskImportanceToString(task.importance)}</h5>
-                            <h5 className={classes.deadlineText}>{task.deadline && `DL: ${task.deadline}`}</h5>
-                        </div>
-                        <input 
-                            type="checkbox" 
-                            id = "check" 
-                            onChange= {() => checkHandler(i)} 
-                            className = {classes.check}
-                            checked = {task.isChecked}
-                        />
-                        <h3 
-                            className = {task.isChecked ? classes.hasBeenCheckedH3 : ''} 
-                            onClick = {() => checkHandler(i)}>
-                            {task.taskText}
-                            {emojiesOn && getEmoji(task.taskText)}
-                        </h3>
-                        </div>
-                        <div className={classes.editAndDeleteIcons}>
-                            <button className={classes.edit} onClick = {() => editTaskHandler(i)}></button>
-                            <button className={classes.delete} onClick = {() => removeTaskHandler(i)}></button>
-                        </div>
-                    </li>
+                <Task
+                    task = {task}
+                    i = {i}
+                    checkHandler = {checkHandler}
+                    emojiesOn = {emojiesOn}
+                    editTaskHandler = {editTaskHandler}
+                    removeTaskHandler = {removeTaskHandler}
+                />
                 )}
-            </ul>
+            </ul> }
+            {tasks.length === 0 && <h2 className={classes.ifNoTasksMsg}> ⇢ Your tasks will appear here 👋 </h2>}
         {editTaskModal && <EditTaskModal
             taskText = {taskTextContent}
             index = {taskChangeIndex}

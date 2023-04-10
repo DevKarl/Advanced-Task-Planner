@@ -1,0 +1,281 @@
+
+/* Conditional classes  _____________________________________________________________ */
+
+.hasLongWord {
+    word-break: break-all;
+}
+
+.taskListItem {
+    height: auto;
+    font-size: larger;
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    background-color: #2d7fd725;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    word-wrap: break-word;
+    overflow: hidden;
+    align-items: center;
+    animation: fadeDefault 0.2s ease forwards;
+}
+
+.taskListItem h3 {
+    color: black;
+    margin-left: 15px;
+    flex-grow: 1;
+    line-height: 1.2;
+}
+
+
+.taskListItem h3:hover {
+    cursor: pointer;
+}
+
+.checkBoxAndText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.check {
+    width: 24px;
+    height: 24px;
+    margin-left: 15px;
+    flex-shrink: 0;
+    transition: var(--primary-transition);
+    border: 2px solid var(--primary-color);
+    background-color: white;
+}
+
+input[type=checkbox] {
+    accent-color: var(--primary-color);
+}
+
+.check:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: var(--primary-transition);
+}
+
+.hasBeenCheckedH3 {
+    text-decoration: line-through;
+    opacity: 50%;
+}
+
+.editAndDeleteIcons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.editAndDeleteIcons button {
+    background-color: transparent;
+    border: none;
+}
+
+.edit {
+    background-image: url(../assets/edit.png);
+    background-size: cover;
+    background-position: center;
+    width: 31px;
+    height: 31px;
+    transition: all 0.2s ease-in-out;
+    opacity: 70%;
+    margin-left: 10px;
+}
+
+.edit:hover {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    transform: rotate(10deg);
+    opacity: 100%;
+}
+
+.delete {
+    background-image: url(../assets/closedBin.png);
+    background-size: cover;
+    background-position: center;
+    width: 31px;
+    height: 31px;
+    margin-right: 15px;
+    margin-left: 20px;
+    transition: all 0.2s ease;
+    opacity: 70%;
+}
+
+.delete:hover {
+    background-image: url('../assets/openBin.png');
+    cursor: pointer;
+    transform: scale(1.3);
+    transform: translate(2px, -1px);
+    transition: all 0.2s ease;
+    opacity: 100%;
+}
+
+
+.importanceAndDeadlineContainer {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    left: 45%;
+    top: 0px;
+}
+
+.importanceAndDeadlineContainer h5 {
+    margin: 0;
+    font-size: large;
+    font-weight: 800;
+    color: var(--primary-color);
+    animation: pulsate 1s ease-in-out infinite;
+}
+
+.importanceText {
+    animation: pulsate 1s ease-in-out infinite;
+}
+
+/*FIX LATER */
+.appearingTask {
+    animation: fadeIn 0.2s ease-in forwards;
+}
+/*FIX LATER */
+.dissapearingTask {
+    animation: fadeOut 0.2s ease-out forwards;
+}
+
+
+/* Animations _____________________________________________________________ */
+
+
+/*FIX LATER */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/*FIX LATER */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+@keyframes fadeDefault {
+    from {
+        transform: translateY(20px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 950px) {
+
+    .taskListItem {
+        height: auto;
+    }
+
+    .taskListItem h3 {
+        font-size: x-large;
+        flex-grow: 1;
+    }
+
+    .check {
+        width: 30px;
+        height: 30px;
+    }
+
+    .delete {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+
+    .delete {
+        margin-right: 8px;
+    }
+
+}
+
+
+@media only screen and (max-width: 380px) {
+
+    .taskListItem h3 {
+        font-size: large;
+    }
+
+    .check {
+        width: 23px;
+        height: 23px;
+    }
+
+    .edit {
+        width: 28px;
+        height: 28px;
+    }
+
+    .delete {
+        width: 28px;
+        height: 28px;
+        margin-left: 10px;
+    }
+
+}
+
+
+@media only screen and (max-width: 320px) {
+
+    .taskListItem h3 {
+        font-size:medium;
+    }
+
+    .check {
+        width: 20px;
+        height: 20px;
+    }
+
+    .edit {
+        width: 25px;
+        height: 25px;
+    }
+
+    .delete {
+        width: 25px;
+        height: 25px;
+        margin-left: 8px;
+    }
+}

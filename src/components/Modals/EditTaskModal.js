@@ -96,7 +96,7 @@ const EditTaskModal = props => {
                             min={'2023-01-01'}
                             max={'2099-12-31'}
                         />
-                        <button className={classes.noneBtn} onClick={handleRemoveDeadline}>Remove</button>
+                        <button className={classes.noneBtn} onClick={handleRemoveDeadline}>Clear</button>
                     </div>
                 </div>
             </div>

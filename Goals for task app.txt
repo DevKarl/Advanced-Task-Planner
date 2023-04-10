@@ -1,18 +1,6 @@
 
-Big refactor job: IMPLEMENT CONTEXT API
-
-ON BOTH:
-
-- can open edit modal:
-     edit task
-     add importance
-     add deadline
-
 ON DESKTOP:
 
-once user starts typing in input field, new button "more" pops up: can add urgency and deadline
-(not possible on mobile due to default keyboard blocking UI, not worth implementing, better to have
-more swift ability to add tasks quickly then edit them later)
 
 Important feature with urgency: exclamation marks scale 1-3 (!, !!, !!!) will be appended with 
 special design that breaks the top-border and animates with glow-effect

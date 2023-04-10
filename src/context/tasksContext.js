@@ -101,7 +101,7 @@ export const TasksContextProvider = props => {
       isChecked: false,
       date: new Date(),
       importance: 0,
-      deadline: null
+      deadline: ''
     });
   };
 
