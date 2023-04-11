@@ -61,7 +61,7 @@
     opacity: 1;
 }
 
-.noneBtn {
+.clearBtn {
     border: 1px solid var(--primary-color);
     border-radius: 12px;
     width: 60px;
@@ -70,12 +70,14 @@
     margin-left: 15px;
     background-color: var(--secondary-color);
     opacity: 0.6;
-    transition: all 0.2s ease-in;
+    transition: transform 0.2s ease-in;
 }
 
-.noneBtn:hover {
+.clearBtn:hover {
     cursor: pointer;
     opacity: 1;
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in;
 }
 
 .deadlineTitle {

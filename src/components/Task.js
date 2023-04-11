@@ -1,20 +1,13 @@
 
 import getEmoji from './Helpers/getEmoji';
 import classes from './Task.module.css';
+import getDeadlineStatus from './Helpers/getDeadlineStatus';
 import './UI/CSSvariables.module.css';
 
 
 const Task = props => {
 
     const {task, checkHandler, editTaskHandler, removeTaskHandler, emojiesOn, i} = props;
-
-    const taskImportanceToString = number => {
-        
-        if(number === 0) return ''; 
-        if(number === 1) return '!'; 
-        if(number === 2) return '!!'; 
-        if(number === 3) return '!!!'; 
-    }
 
     return(
         <li 
@@ -25,8 +18,15 @@ const Task = props => {
             `}>
             <div className={classes.checkBoxAndText}>
             <div className={classes.importanceAndDeadlineContainer}>
-                <h5 className={classes.importanceText}>{taskImportanceToString(task.importance)}</h5>
-                <h5 className={classes.deadlineText}>{task.deadline && `DL: ${task.deadline}`}</h5>
+                <div className={classes.exclamationBox}>
+                {task.importance > 0 &&
+                    Array.from({length: task.importance}).map((_, index) => (
+                    <h5 key={index} className={classes.exclamationMark}>!</h5>
+                ))}
+                </div>
+                <div className={classes.deadlineBox}>
+                    <h5 className={classes.deadlineText}>{task.deadline && `${getDeadlineStatus(task.deadline)}`}</h5>
+                </div>
             </div>
             <input 
                 type="checkbox" 

@@ -126,7 +126,6 @@ export const TasksContextProvider = props => {
           if (b.deadline === '') {
             return -1;
           }
-          console.log(`comparing ${a.deadline} and ${b.deadline}`);
           return Date.parse(a.deadline) - Date.parse(b.deadline);
         });
         updateTasks(sortedTasksDeadline);
@@ -162,7 +161,6 @@ export const TasksContextProvider = props => {
           setSortOption: setSortOption,
           clearAllTasks: clearAllTasks
       }}
-      
       >
           {props.children}
       </tasksContext.Provider>

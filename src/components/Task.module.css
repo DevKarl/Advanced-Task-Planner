@@ -6,7 +6,7 @@
 }
 
 .taskListItem {
-    height: auto;
+    height: 90px;
     font-size: larger;
     border: 2px solid var(--primary-color);
     border-radius: 12px;
@@ -117,24 +117,46 @@ input[type=checkbox] {
 
 
 .importanceAndDeadlineContainer {
-    position: fixed;
+    position: absolute;
     display: flex;
     flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
     gap: 10px;
-    left: 45%;
     top: 0px;
+    left: 0px;
 }
 
 .importanceAndDeadlineContainer h5 {
     margin: 0;
-    font-size: large;
-    font-weight: 800;
     color: var(--primary-color);
-    animation: pulsate 1s ease-in-out infinite;
+    opacity: 0.9;
 }
 
-.importanceText {
+.exclamationBox{
+    transform: rotate(-10deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    margin-left: 3px;
+    margin-top: 1px;
+}
+
+.exclamationMark {
+    transform-origin: center bottom;
     animation: pulsate 1s ease-in-out infinite;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.deadlineBox {
+    margin-right: 4%;
+    margin-top: 2px;
+}
+
+.deadlineText {
+    font-size: 14px;
 }
 
 /*FIX LATER */
@@ -176,15 +198,12 @@ input[type=checkbox] {
 @keyframes pulsate {
     0% {
         transform: scale(1);
-        opacity: 1;
     }
     50% {
         transform: scale(1.1);
-        opacity: 0.8;
     }
     100% {
         transform: scale(1);
-        opacity: 1;
     }
 }
 
@@ -201,10 +220,6 @@ input[type=checkbox] {
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 950px) {
-
-    .taskListItem {
-        height: auto;
-    }
 
     .taskListItem h3 {
         font-size: x-large;
