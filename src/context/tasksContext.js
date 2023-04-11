@@ -117,15 +117,16 @@ export const TasksContextProvider = props => {
         break;
       case "deadline":
         const sortedTasksDeadline = [...tasks].sort((a, b) => {
-          if (a.deadline === null && b.deadline === null) {
+          if (a.deadline === '' && b.deadline === '') {
             return 0;
           }
-          if (a.deadline === null) {
+          if (a.deadline === '') {
             return 1;
           }
-          if (b.deadline === null) {
+          if (b.deadline === '') {
             return -1;
           }
+          console.log(`comparing ${a.deadline} and ${b.deadline}`);
           return Date.parse(a.deadline) - Date.parse(b.deadline);
         });
         updateTasks(sortedTasksDeadline);

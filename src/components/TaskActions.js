@@ -114,7 +114,7 @@ const TaskActions = () => {
         />}
         {sortModal && <SortTasksModal
         onClose = {handleExitSortModal}
-        enteredSortOption = {handleSortOption}
+        handleSortOption = {handleSortOption}
         />}
         
         </>

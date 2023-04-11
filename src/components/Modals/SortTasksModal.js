@@ -5,7 +5,7 @@ import classes from './SortTasksModal.module.css';
 
 const SortTasksModal = props => {
 
-    const handleStartSorting = option => props.enteredSortOption(option);
+    const handleStartSorting = option => props.handleSortOption(option);
 
     return(
         <Modal 

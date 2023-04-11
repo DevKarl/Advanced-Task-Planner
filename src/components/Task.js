@@ -9,6 +9,7 @@ const Task = props => {
     const {task, checkHandler, editTaskHandler, removeTaskHandler, emojiesOn, i} = props;
 
     const taskImportanceToString = number => {
+        
         if(number === 0) return ''; 
         if(number === 1) return '!'; 
         if(number === 2) return '!!'; 

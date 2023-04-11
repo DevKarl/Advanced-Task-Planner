@@ -55,10 +55,10 @@ const TaskList = () => {
             
     return (
         <div className = {classes.tasklist}>
-            { tasks.length > 0 &&
-            <ul className = {classes.taskUl}>
+            { tasks.length > 0 && <ul className = {classes.taskUl}>
                 {tasks.map((task, i) =>
                 <Task
+                    key = {`000${i}`}
                     task = {task}
                     i = {i}
                     checkHandler = {checkHandler}
@@ -67,7 +67,7 @@ const TaskList = () => {
                     removeTaskHandler = {removeTaskHandler}
                 />
                 )}
-            </ul> }
+            </ul>}
             {tasks.length === 0 && <h2 className={classes.ifNoTasksMsg}> ⇢ Your tasks will appear here 👋 </h2>}
         {editTaskModal && <EditTaskModal
             taskText = {taskTextContent}
