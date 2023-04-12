@@ -1,5 +1,5 @@
 
-import { useState, useContext } from 'react';
+import { useState, useRef, useContext } from 'react';
 import { tasksContext } from '../context/tasksContext';
 import { validateInput } from './Helpers/InputControl';
 import classes from './InputField.module.css';
@@ -7,26 +7,23 @@ import classes from './InputField.module.css';
 const InputField = () => {
 
     const {addTask} = useContext(tasksContext);
-    
-    const [taskText, setTaskText] = useState(''); 
+    const taskTextRef = useRef('');
+
     const [error, setError] = useState(null);
 
     if(error) {throw error};
 
-    const handleChange = event => {
-        setTaskText(event.target.value);
-    }
-
     const addNewTask = () => {
         try {
-            const newTaskText = taskText.trim();
-            validateInput(newTaskText); // <-- throws error if not valid
-            addTask(newTaskText);
+            const enteredTaskText = taskTextRef.current.value.trim();
+            console.log(enteredTaskText);
+            validateInput(enteredTaskText); // <-- throws error if not valid
+            addTask(enteredTaskText);
         } 
         catch(error) {
             setError(error);
         }
-        setTaskText('');
+        taskTextRef.current.value = '';
     }
 
 
@@ -41,9 +38,8 @@ const InputField = () => {
             <input 
                 type = 'text' 
                 id = 'inputfield'
-                value={taskText}
-                onChange={handleChange}
                 onKeyDown={handleKeyDown}
+                ref={taskTextRef}
                 />
             <button onClick= {addNewTask}>Add</button>
         </div>

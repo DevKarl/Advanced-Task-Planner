@@ -1,12 +1,11 @@
 
 import classes from './EditTaskModal.module.css';
 import { tasksContext } from '../../context/tasksContext';
-import { useContext, useState } from 'react';
+import { useContext, useState} from 'react';
 import Modal from '../UI/Modal';
 import { validateInput, isValidDeadline } from '../Helpers/InputControl';
 
 const EditTaskModal = props => {
-
 
     const {tasks} = useContext(tasksContext);
     const [enteredTaskText, setEnteredTaskText] = useState(props.taskText);
