@@ -1,23 +1,20 @@
 
 import classes from './EditTaskModal.module.css';
 import { tasksContext } from '../../context/tasksContext';
-import { useContext, useState} from 'react';
+import { useContext, useState, useRef} from 'react';
 import Modal from '../UI/Modal';
 import { validateInput, isValidDeadline } from '../Helpers/InputControl';
 
 const EditTaskModal = props => {
 
     const {tasks} = useContext(tasksContext);
-    const [enteredTaskText, setEnteredTaskText] = useState(props.taskText);
+    const taskTextRef = useRef();
+    console.log('edit task rendering');
     const [error, setError] = useState(false);
     const [importanceLvl, setimportanceLvl] = useState(tasks[props.index].importance);
     const [deadline, setDeadline] = useState(tasks[props.index].deadline);
 
     if(error) {throw error};
-
-    const handleChange = e => {
-        setEnteredTaskText(e.target.value);
-    }
 
     const handleDeadlineChange = e => {
         const dateValue = e.target.value;
@@ -42,10 +39,11 @@ const EditTaskModal = props => {
 
     const changeTaskHandler = () => {
         try {
-            validateInput(enteredTaskText.trim());
+            const enteredTaskTextRef = taskTextRef.current.value.trim();
+            validateInput(enteredTaskTextRef);
             deadline !== '' && isValidDeadline(deadline);
             if(!error) {
-                props.receivedChangedTaskArgs(props.index, enteredTaskText, importanceLvl, deadline);
+                props.receivedChangedTaskArgs(props.index, enteredTaskTextRef, importanceLvl, deadline);
             } 
             closeModalHandler();
         } catch(error) {
@@ -64,11 +62,10 @@ const EditTaskModal = props => {
             <div className={classes.editTaskModalContainer}>
                 <h2 className={classes.editTodoH3}>Edit Current Task</h2>
                 <textarea
-                    value={enteredTaskText}
-                    onChange = {handleChange}
-                    autoFocus 
+                    ref={taskTextRef}
+                    defaultValue={props.taskText}
                     type='text' 
-                    className = {classes.modalInputField}
+                    className = {classes.modalInputField} 
                 ></textarea>
                 <div className={classes.importanceAndDeadlineContainer}>
                     <h3 className={classes.importanceTitle} >Importance</h3>
