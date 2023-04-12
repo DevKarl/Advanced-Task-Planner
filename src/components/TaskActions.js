@@ -44,6 +44,7 @@ const TaskActions = () => {
         sortTasks(''); //back to default (newest first)
         setSortOption(''); 
         toggleSort(false);
+        setHoveredText('Activate Sorting');
     }
 
     const handleSortOption = chosenSortOption => {
@@ -97,10 +98,10 @@ const TaskActions = () => {
                 onClick={handleClearAllTasks}
             ></button>
             <button
-                onClick={handleToggleEmoji} 
                 className={`${classes.toggleEmojiesBtn} ${emojiesOn ? classes.activatedBtn : ''}`}
                 onMouseEnter={handleEnterEmoji}
                 onMouseLeave = {handleLeave}
+                onClick={handleToggleEmoji} 
             ></button>
         </div>
         <div className={classes.hoveredTaskActionText}><h3 className={classes.hoveredTaskActionTextH3}>{hoveredText}</h3></div>
