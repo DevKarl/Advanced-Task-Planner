@@ -16,7 +16,6 @@ const InputField = () => {
     const addNewTask = () => {
         try {
             const enteredTaskText = taskTextRef.current.value.trim();
-            console.log(enteredTaskText);
             validateInput(enteredTaskText); // <-- throws error if not valid
             addTask(enteredTaskText);
         } 

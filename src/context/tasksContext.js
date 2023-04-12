@@ -57,10 +57,6 @@ export const TasksContextProvider = props => {
     }
   });
 
-  // OTHER STATES
-
-  const [newTask, setNewTask] = useState(null);
-
     // USE EFFECTS
 
   useEffect(() => {
@@ -82,27 +78,19 @@ export const TasksContextProvider = props => {
     localStorage.setItem("savedSortOption", JSON.stringify(sortOption));
   }, [sortOption]);  
 
-  useEffect(() => {
-    if (newTask) {
-      const hasLongWord = checkInputWordLength(newTask.taskText);
-      const updatedTask = {
-        ...newTask,
-        hasLongWord: hasLongWord
-      };
-      updateTasks(prevTasks => [...prevTasks, updatedTask]);
-    }
-  }, [newTask]);
-
   // FUNCTIONS 
   
   const addTask = taskText => {
-    setNewTask ({
+    const hasLongWord = checkInputWordLength(taskText);
+    const newTask =  {
       taskText: taskText,
       isChecked: false,
       date: new Date(),
       importance: 0,
-      deadline: ''
-    });
+      deadline: '',
+      hasLongWord: hasLongWord
+    };
+    updateTasks(prevTasks => [...prevTasks, newTask]);
   };
 
   const sortTasks = chosenSortOption => {

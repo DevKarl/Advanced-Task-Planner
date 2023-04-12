@@ -9,7 +9,6 @@ const EditTaskModal = props => {
 
     const {tasks} = useContext(tasksContext);
     const taskTextRef = useRef();
-    console.log('edit task rendering');
     const [error, setError] = useState(false);
     const [importanceLvl, setimportanceLvl] = useState(tasks[props.index].importance);
     const [deadline, setDeadline] = useState(tasks[props.index].deadline);
