@@ -21,12 +21,6 @@ More advanced features:
     - progress bar can be turned ON/OFF
     - different theme (color and contrasts) options can be activated
 
-Poential challenges for later
-- add seach bar to search after todos? (with preditice search🤯?)
-- remove local storage - try using database/backend and connect with API instead?
-- implement typescript or next.js for SSR for certain parts(overkill?)
-
-
 Key takeaways - react concepts:
 - Reusable Modal component with dynamic size and button props
 - Error boundary triggering different error messages
