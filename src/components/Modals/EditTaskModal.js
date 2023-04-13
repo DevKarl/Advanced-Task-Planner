@@ -3,15 +3,17 @@ import classes from './EditTaskModal.module.css';
 import { tasksContext } from '../../context/tasksContext';
 import { useContext, useState, useRef} from 'react';
 import Modal from '../UI/Modal';
-import { validateInput, isValidDeadline } from '../Helpers/InputControl';
+import { validateInput, isValidDeadline, checkInputWordLength } from '../Helpers/InputControl';
 
 const EditTaskModal = props => {
 
-    const {tasks} = useContext(tasksContext);
+    const {tasks, updateTasks} = useContext(tasksContext);
+    const {task} = props
+    const {key} = task
     const taskTextRef = useRef();
     const [error, setError] = useState(false);
-    const [importanceLvl, setimportanceLvl] = useState(tasks[props.index].importance);
-    const [deadline, setDeadline] = useState(tasks[props.index].deadline);
+    const [importanceLvl, setimportanceLvl] = useState(task.importance);
+    const [deadline, setDeadline] = useState(task.deadline);
 
     if(error) {throw error};
 
@@ -42,13 +44,44 @@ const EditTaskModal = props => {
             validateInput(enteredTaskTextRef);
             deadline !== '' && isValidDeadline(deadline);
             if(!error) {
-                props.receivedChangedTaskArgs(props.index, enteredTaskTextRef, importanceLvl, deadline);
+                changeTaskWithArgs(enteredTaskTextRef);
             } 
             closeModalHandler();
         } catch(error) {
             setError(error);
         }
     }
+
+    // const changeTaskWithArgs = (key, newText, importanceLvl, deadline) => {
+    //     const hasLongWord = checkInputWordLength(newText);
+    //     const updatedTask = {
+    //       ...tasks[i],
+    //       taskText: newText,
+    //       hasLongWord: hasLongWord,
+    //       importance: importanceLvl,
+    //       deadline: deadline 
+    //     };
+    //     const newTasks = [...tasks];
+    //     newTasks[i] = updatedTask;
+    //     updateTasks(newTasks);
+    // };
+
+    const changeTaskWithArgs = (newText) => {
+        const hasLongWord = checkInputWordLength(newText);
+        console.log(task.key);
+        console.log(tasks.map(task => task.key));
+        const index = tasks.findIndex(task => task.key === key);
+        const updatedTask = {
+            ...tasks[index],
+            taskText: newText,
+            hasLongWord: hasLongWord,
+            importance: importanceLvl,
+            deadline: deadline
+        };
+        const newTasks = [...tasks];
+        newTasks[index] = updatedTask;
+        updateTasks(newTasks);
+    };
 
     return(
         <Modal 
@@ -62,7 +95,7 @@ const EditTaskModal = props => {
                 <h2 className={classes.editTodoH3}>Edit Current Task</h2>
                 <textarea
                     ref={taskTextRef}
-                    defaultValue={props.taskText}
+                    defaultValue={task.taskText}
                     type='text' 
                     className = {classes.modalInputField} 
                 ></textarea>

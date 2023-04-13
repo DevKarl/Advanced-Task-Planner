@@ -53,6 +53,7 @@ export const TasksContextProvider = props => {
       if(tasks.length === 0) setSortOption('');
   }, [tasks]);
 
+
   useEffect(() => {
     localStorage.setItem("savedEmojiesOn", JSON.stringify(emojiesOn));
   }, [emojiesOn]);
@@ -67,10 +68,14 @@ export const TasksContextProvider = props => {
       date: new Date(),
       importance: 0,
       deadline: '',
-      hasLongWord: hasLongWord
+      hasLongWord: hasLongWord,
+      key: new Date().getTime()
     };
     updateTasks(prevTasks => [...prevTasks, newTask]);
-  };
+  }
+
+  
+  
 
   const clearAllTasks = () => {
       updateTasks([]);

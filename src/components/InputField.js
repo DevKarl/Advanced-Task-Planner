@@ -25,7 +25,6 @@ const InputField = () => {
         taskTextRef.current.value = '';
     }
 
-
     const handleKeyDown = e  => {
         if (e.keyCode === 13) {
             addNewTask();
