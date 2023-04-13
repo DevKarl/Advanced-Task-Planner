@@ -1,19 +1,18 @@
 
 import classes from './TaskActions.module.css';
 import { tasksContext } from '../context/tasksContext';
-import { React, useState, useContext, useEffect } from 'react';
+import { React, useState, useContext } from 'react';
 import ClearAllTasksModal from './Modals/ClearAllTasksModal';
 import SortTasksModal from './Modals/SortTasksModal';
 
 const TaskActions = () => {
 
-    const {tasks, sortOn, sortOption, emojiesOn, toggleEmojies, toggleSort, setSortOption, sortTasks, clearAllTasks} = useContext(tasksContext);
+    const {tasks, sortOption, emojiesOn, toggleEmojies, setSortOption, clearAllTasks} = useContext(tasksContext);
 
     // States
     const [sortModal, toggleSortModal] = useState(false);
     const [clearTasksModal, toggleclearTasksModal] = useState(false);
     const [hoveredText, setHoveredText] = useState('');
-    const [emojiMsg, setEmojiMsg] = useState('');
     const [error, setError] = useState(false);
 
     if(error) {
@@ -25,33 +24,27 @@ const TaskActions = () => {
         if (!emojiesOn) {
             toggleEmojies(true);
             setHoveredText(`${!emojiesOn ? 'Deactivate' : 'Activate'} Auto-Emojies`);
-            setEmojiMsg('Automatic Emojies Activated 🙋‍♂️');
             return
         }
         toggleEmojies(false);
         setHoveredText(`${!emojiesOn ? 'Deactivate' : 'Activate'} Auto-Emojies`);
-        setEmojiMsg('');
     }
 
     const handleToggleSort = () => {
         if(tasks.length === 0) {
             setError("Nothing to sort here 🤷‍♂️ Add some new tasks first.");
         }
-        if(!sortOn) {
+        if(sortOption === '') {
             toggleSortModal(true);
             return;
         }
-        sortTasks(''); //back to default (newest first)
         setSortOption(''); 
-        toggleSort(false);
         setHoveredText('Activate Sorting');
     }
 
     const handleSortOption = chosenSortOption => {
         toggleSortModal(false);
-        toggleSort(true);
         setSortOption(chosenSortOption);
-        sortTasks(chosenSortOption);
     }
 
     const handleClearAllTasks = () => {
@@ -72,21 +65,16 @@ const TaskActions = () => {
 
     // CSS handlers for animations 
     const handleEnterEmoji = () => setHoveredText(`${emojiesOn ? 'Deactivate' : 'Activate'} Auto-Emojies`);
-    const handleEnterSort = () => setHoveredText(`${sortOn ? 'Deactivate' : 'Activate'} Sorting`);
+    const handleEnterSort = () => setHoveredText(`${sortOption ? 'Deactivate' : 'Activate'} Sorting`);
     const handleEnterClearAll = () => setHoveredText("Clear all tasks");
     const handleLeave = () => setHoveredText("");
 
-    useEffect(() => {
-        if (emojiesOn) {
-            setEmojiMsg('Automatic Emojies Activated 🙋‍♂️');
-        }
-    }, [emojiesOn]);
 
     return(
         <>
         <div className={classes.taskActionsContainer}>
             <button 
-                className={`${classes.sortBtn} ${sortOn ? classes.activatedBtn : ''}`}
+                className={`${classes.sortBtn} ${sortOption ? classes.activatedBtn : ''}`}
                 onMouseEnter={handleEnterSort} 
                 onMouseLeave={handleLeave}
                 onClick={handleToggleSort}
@@ -106,8 +94,8 @@ const TaskActions = () => {
         </div>
         <div className={classes.hoveredTaskActionText}><h3 className={classes.hoveredTaskActionTextH3}>{hoveredText}</h3></div>
         <div className={classes.taskActionsMessages}>
-            {emojiesOn && <h4 className={classes.taskActionMsg}>{emojiMsg}</h4>}
-            {sortOn && <h4 className={classes.taskActionMsg}>{`Sorting based on: ${sortOption} ⤵️`}</h4>}
+            {emojiesOn && <h4 className={classes.taskActionMsg}>Automatic Emojies Activated 🙋‍♂️</h4>}
+            {sortOption && <h4 className={classes.taskActionMsg}>{`Sorting based on: ${sortOption} ⤵️`}</h4>}
         </div>
         {clearTasksModal && <ClearAllTasksModal
         onClose = {() => toggleclearTasksModal(prev => !prev)}

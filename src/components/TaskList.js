@@ -55,7 +55,7 @@ const TaskList = () => {
             
     return (
         <div className = {classes.tasklist}>
-            { tasks.length > 0 && <ul className = {classes.taskUl}>
+            {tasks.length > 0 && <ul className = {classes.taskUl}>
                 {tasks.map((task, i) =>
                 <Task
                     key = {`000${i}`}

@@ -5,21 +5,18 @@ import { checkInputWordLength } from "../components/Helpers/InputControl";
 export const tasksContext = React.createContext({
     // ONLY for syntax highlighting
     tasks: [],
-    sortOn: false,
     sortOption: '',
     emojiesOn: false,
     addTask: () => {},
     updateTasks: () => {},
     toggleEmojies: () => {},
-    toggleSort: () => {},
     setSortOption: () => {},
-    sortTasks: () => {},
     clearAllTasks: () => {},
 });
 
 export const TasksContextProvider = props => {
 
-  // STATES - IN LOCAL STORAGE 
+  // STATES - LOCAL STORAGE 
 
   const [tasks, updateTasks] = useState(() => {
       const savedTasks = localStorage.getItem("savedTasks");
@@ -39,15 +36,6 @@ export const TasksContextProvider = props => {
     }
   });
 
-  const [sortOn, toggleSort] = useState(() => {
-    const savedSortOn = localStorage.getItem("savedSortOn");
-    if (savedSortOn) {
-      return JSON.parse(savedSortOn);
-    } else {
-      return false;
-    }
-  });
-
   const [sortOption, setSortOption] = useState(() => {
     const savedSortOption = localStorage.getItem("savedSortOption");
     if (savedSortOption) {
@@ -57,26 +45,17 @@ export const TasksContextProvider = props => {
     }
   });
 
-    // USE EFFECTS
+
+  // USE EFFECTS
 
   useEffect(() => {
       localStorage.setItem("savedTasks", JSON.stringify(tasks));
-      if(tasks.length === 0) {
-        toggleSort(false);
-      }
+      if(tasks.length === 0) setSortOption('');
   }, [tasks]);
-
-  useEffect(() => {
-    localStorage.setItem("savedSortOn", JSON.stringify(sortOn));
-  }, [sortOn]);
 
   useEffect(() => {
     localStorage.setItem("savedEmojiesOn", JSON.stringify(emojiesOn));
   }, [emojiesOn]);
-
-  useEffect(() => {
-    localStorage.setItem("savedSortOption", JSON.stringify(sortOption));
-  }, [sortOption]);  
 
   // FUNCTIONS 
   
@@ -93,43 +72,6 @@ export const TasksContextProvider = props => {
     updateTasks(prevTasks => [...prevTasks, newTask]);
   };
 
-  const sortTasks = chosenSortOption => {
-    switch(chosenSortOption) {
-      case "newest":
-        const sortedTasksNew = [...tasks].sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
-        updateTasks(sortedTasksNew);
-        break;
-      case "importance":
-        const sortedTasksImportance = [...tasks].sort((a, b) => b.importance - a.importance);
-        updateTasks(sortedTasksImportance);
-        break;
-      case "deadline":
-        const sortedTasksDeadline = [...tasks].sort((a, b) => {
-          if (a.deadline === '' && b.deadline === '') {
-            return 0;
-          }
-          if (a.deadline === '') {
-            return 1;
-          }
-          if (b.deadline === '') {
-            return -1;
-          }
-          return Date.parse(a.deadline) - Date.parse(b.deadline);
-        });
-        updateTasks(sortedTasksDeadline);
-        break; 
-      case "unchecked":
-        const sortedTasksUnfinished = [...tasks].sort((a, b) => a.isChecked - b.isChecked);
-        updateTasks(sortedTasksUnfinished);
-        break;
-      // DEFAULT IS ALWAYS OLDEST FIRST
-      default:
-        const sortedTasksOld = [...tasks].sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
-        updateTasks(sortedTasksOld);
-        break;
-    }
-  }
-
   const clearAllTasks = () => {
       updateTasks([]);
   }
@@ -138,14 +80,11 @@ export const TasksContextProvider = props => {
       <tasksContext.Provider
       value={{
           tasks: tasks,
-          sortOn: sortOn,
           sortOption: sortOption,
           emojiesOn: emojiesOn,
           addTask: addTask,
           updateTasks: updateTasks,
           toggleEmojies: toggleEmojies,
-          toggleSort: toggleSort,
-          sortTasks: sortTasks,
           setSortOption: setSortOption,
           clearAllTasks: clearAllTasks
       }}
