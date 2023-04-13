@@ -10,9 +10,6 @@ const TaskList = () => {
     
     // CONTEXT 
     const {tasks, sortOption} = useContext(tasksContext); 
-    
-    
-    console.log(tasks.map(task => task.key));
             
     return (
         <div className = {classes.tasklist}>

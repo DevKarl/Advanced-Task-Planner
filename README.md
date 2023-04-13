@@ -7,14 +7,19 @@ The basic stuff - tasks can be:
 - edited
 - checked off
 - deleted 
-- stored in local storage
+- tasks are stored in local storage(LS)
+- all tasks can be cleared with one button
 
-More advanced:
-- tasks be filtered based on multiple options
-- tasks have optional urgency level with dynamic badges(!, !! or !!!)
-- tasks have optional deadline displayed with dynamic coloring (in 3 days: orange, tomorrow: red color)
-- progress bar filling up
-- easter-egg-like feature(non explicit): emoji button with text on hover "activate/deactive automatic emojies"
+More advanced features:
+- tasks be sorted based on 4 options: newest, unchecked, importance and deadline
+- tasks have optional importance level with dynamic badges(!, !! or !!!)
+- tasks have optional deadline displayed with dynamic messages (backwards and forwards in time)
+- progress-bar showing % of tasks completed
+- auto-emojies can be toggled (certain words will append emoji to end of task text)
+- settings in upper-right corner, where:
+    - saving sort and auto emojies in LS can be toggled ON/OFF
+    - progress bar can be turned ON/OFF
+    - different theme (color and contrasts) options can be activated
 
 Poential challenges for later
 - add seach bar to search after todos? (with preditice search🤯?)
@@ -22,12 +27,12 @@ Poential challenges for later
 - implement typescript or next.js for SSR for certain parts(overkill?)
 
 
-Key takeaways - react concepts, architecture etc:
-- Reusable components (modal, UI with card, btns etc.)
-- Error boundary 
-- Memoization
-- Dynamic CSS styling (word-break ) 
-
+Key takeaways - react concepts:
+- Reusable Modal component with dynamic size and button props
+- Error boundary triggering different error messages
+- Sort during changes (re-renders on each task change), no need to turn OFF and back ON
+    - required big refactor: replaced index with key prop everywhere 
+- Dynamic CSS styling (word-break vs break all)   
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

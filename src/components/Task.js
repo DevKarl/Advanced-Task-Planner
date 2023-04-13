@@ -13,8 +13,6 @@ const Task = props => {
     const {task} = props;
     const {key} = task;
 
-    console.log(key);
-
     // STATES
     const [editTaskModal, toggleEditTaskModal] = useState(false);
 
