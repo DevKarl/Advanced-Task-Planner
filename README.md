@@ -31,10 +31,9 @@ Key takeaways - react concepts:
 - Reusable Modal component with dynamic size and button props
 - Error boundary triggering different error messages
 - Sort during changes (re-renders on each task change), no need to turn OFF and back ON
-    - required big refactor: replaced index with key prop everywhere and stopped mutating 
-      context array on sort, only use sort function on displaying tasks instead (hardest part!)
+    - hardest part, required refactor: replaced index with key prop everywhere and stopped mutating 
+      tasks state array on sort inside context, only use for displaying sorted tasks instead 
 - Dynamic CSS styling (word-break vs break all)   
-
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
