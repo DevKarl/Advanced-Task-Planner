@@ -24,6 +24,7 @@ More advanced features:
 Key takeaways - react concepts:
 - Reusable Modal component with dynamic size and button props
 - Error boundary triggering different error messages
+- Context API (no prop drilling)
 - Sort during changes (re-renders on each task change), no need to turn OFF and back ON
     - hardest part, required refactor: replaced index with key prop everywhere and stopped mutating 
       tasks state array on sort inside context, only use for displaying sorted tasks instead 

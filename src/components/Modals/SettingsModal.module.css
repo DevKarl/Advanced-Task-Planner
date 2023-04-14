@@ -1,0 +1,10 @@
+
+.settingsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.changeColorThemeContainer {
+    display: flex;
+}

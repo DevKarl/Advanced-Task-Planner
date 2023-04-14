@@ -1,70 +1,40 @@
-import settings from '../../assets/settings.png';
 import Modal from '../UI/Modal';
-import { useState } from 'react';
+import classes from './SettingsModal.module.css';
 
-const SettingsModal = () => {
+const SettingsModal = props => {
 
-    const [style, setStyle] = useState({
-        backgroundImage: `url(${settings})`,
-        backgroundSize: 'cover',
-        width: '30px',
-        height: '30px',
-        alignSelf: 'end',
-        marginRight: '5px',
-        marginTop: '5px',
-        transition: 'transform 0.3s ease-in-out',
-        transform: 'rotate(0deg)',
-        cursor: 'pointer',
-    });
 
-    const [settingsModalActive, togglesettingsModalActive] = useState(false);
-
-    const handleMouseEnter = () => {
-        setStyle({
-            ...style,
-            transform: 'rotate(90deg)',
-        });
-    };
-
-    const handleMouseLeave = () => {
-        setStyle({
-            ...style,
-            transform: 'rotate(0deg)',
-        });
-    };
-
-    const handleClick = () => {
-        setStyle({
-            ...style,
-            transform: 'rotate(90deg)',
-        });
-        togglesettingsModalActive(prev => !prev);
-    };
+    const handleCloseSettingsModal = () => props.togglesettingsModalActive();
 
     const handleModalMainBtnClick = () => {
-        console.log('clicked settings main btn');
+        console.log('settings main btn clicked');
     }
 
     return (
-        <>
-        <div
-            style={style}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            onClick={handleClick}
-        ></div>
-        {settingsModalActive && <Modal 
-            closeModalHandler = {togglesettingsModalActive}
+        <Modal 
+            closeModalHandler = {handleCloseSettingsModal}
+            modalTaller = {true}
             hasTwoBtns = 'true'
             btn1Text = 'Save changes'
             btn2Text = 'Close'
-            mainBtnClick = {handleModalMainBtnClick}
-            autoFocus
+            btn1Click = {handleModalMainBtnClick}
+            btn2Click = {handleCloseSettingsModal}
         >
+            <div className={classes.settingsContainer}>
+                <div className={classes.changeColorThemeContainer}>
+                    <h3>Change Color Theme</h3>
+                    <div className={classes.colorPickerBox}>
+                        <p>Blue</p>
+                        <p>Yellow</p>
+                        <p>Orange</p>
+                        <p>Blue</p>
 
-            
-        </Modal>}
-        </>
+                    </div> 
+                </div>
+                <h3>Save Sort-Option</h3>   
+                <h3>Save Auto-Emojies</h3>
+            </div>   
+        </Modal>
     );
 
 };

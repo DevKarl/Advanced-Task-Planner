@@ -6,14 +6,14 @@ import InputField from "./InputField";
 import TaskList from "./TaskList";
 import './UI/CSSvariables.module.css';
 import TaskActions from './TaskActions';
-import SettingsModal from './Modals/SettingsModal';
+import SettingsWheel from './SettingsWheel';
 
 const Container = () => {
 
     return(
         <main className = {classes.container}>
           <TasksContextProvider>
-            <SettingsModal/>
+            <SettingsWheel/>
             <Header/>
             <InputField/>
             <TaskActions/>

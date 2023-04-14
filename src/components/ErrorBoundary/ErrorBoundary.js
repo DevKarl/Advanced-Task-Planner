@@ -7,15 +7,10 @@ class ErrorBoundary extends Component {
         super();
         this.state = {hasError: false, errorMessage: ''};
     }
- 
-    componentDidCatch(error) {
-        this.setState({hasError: true, errorMessage: error.message});
-    }
 
-    // static getDerivedStateFromError(error) {
-    //     console.log('get derived state recieved error', error);
-    //     return {hasError: true, errorMessage: error.message}
-    // }
+    static getDerivedStateFromError(error) {
+        return {hasError: true, errorMessage: error.message}
+    }
 
 
     render() {

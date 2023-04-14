@@ -6,7 +6,7 @@ import classes from './InputField.module.css';
 
 const InputField = () => {
 
-    const {addTask} = useContext(tasksContext);
+    const { addTask } = useContext(tasksContext);
     const taskTextRef = useRef('');
 
     const [error, setError] = useState(null);
@@ -16,7 +16,7 @@ const InputField = () => {
     const addNewTask = () => {
         try {
             const enteredTaskText = taskTextRef.current.value.trim();
-            validateInput(enteredTaskText); // <-- throws error if not valid
+            validateInput(enteredTaskText); // <-- throws error if not valid (empty etc.)
             addTask(enteredTaskText);
         } 
         catch(error) {
