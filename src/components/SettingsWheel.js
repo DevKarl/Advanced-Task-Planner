@@ -3,7 +3,7 @@ import { useState } from 'react';
 import SettingsModal from './Modals/SettingsModal';
 
 const SettingsWheel = () => {
-
+    
     // STATES
 
     const [style, setStyle] = useState({
@@ -56,10 +56,6 @@ const SettingsWheel = () => {
         {settingsModalActive && <SettingsModal togglesettingsModalActive = {() => togglesettingsModalActive(prev => !prev)}/>}
         </>
     )
-
-
-
-
 
 }
 

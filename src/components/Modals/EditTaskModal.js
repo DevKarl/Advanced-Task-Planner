@@ -54,8 +54,6 @@ const EditTaskModal = props => {
 
     const changeTaskWithArgs = (newText) => {
         const hasLongWord = checkInputWordLength(newText);
-        console.log(task.key);
-        console.log(tasks.map(task => task.key));
         const index = tasks.findIndex(task => task.key === key);
         const updatedTask = {
             ...tasks[index],

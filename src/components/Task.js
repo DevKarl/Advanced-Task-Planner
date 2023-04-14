@@ -8,7 +8,7 @@ import EditTaskModal from './Modals/EditTaskModal';
 import { useState, useContext } from 'react';
 
 const Task = props => {
-
+    
     const {tasks, updateTasks, emojiesOn} = useContext(tasksContext);  
     const {task} = props;
     const {key} = task;
