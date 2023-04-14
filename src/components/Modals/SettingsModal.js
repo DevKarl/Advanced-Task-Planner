@@ -1,8 +1,8 @@
-import settings from '../assets/settings.png';
-import Modal from './UI/Modal';
+import settings from '../../assets/settings.png';
+import Modal from '../UI/Modal';
 import { useState } from 'react';
 
-const Settings = props => {
+const SettingsModal = () => {
 
     const [style, setStyle] = useState({
         backgroundImage: `url(${settings})`,
@@ -59,11 +59,15 @@ const Settings = props => {
             btn1Text = 'Save changes'
             btn2Text = 'Close'
             mainBtnClick = {handleModalMainBtnClick}
-        />}
+            autoFocus
+        >
+
+            
+        </Modal>}
         </>
     );
 
 };
 
 
-export default Settings;
+export default SettingsModal;

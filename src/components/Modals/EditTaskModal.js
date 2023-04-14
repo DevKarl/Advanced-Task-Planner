@@ -52,20 +52,6 @@ const EditTaskModal = props => {
         }
     }
 
-    // const changeTaskWithArgs = (key, newText, importanceLvl, deadline) => {
-    //     const hasLongWord = checkInputWordLength(newText);
-    //     const updatedTask = {
-    //       ...tasks[i],
-    //       taskText: newText,
-    //       hasLongWord: hasLongWord,
-    //       importance: importanceLvl,
-    //       deadline: deadline 
-    //     };
-    //     const newTasks = [...tasks];
-    //     newTasks[i] = updatedTask;
-    //     updateTasks(newTasks);
-    // };
-
     const changeTaskWithArgs = (newText) => {
         const hasLongWord = checkInputWordLength(newText);
         console.log(task.key);
@@ -92,7 +78,7 @@ const EditTaskModal = props => {
         clickedEnter = {changeTaskHandler}
         >
             <div className={classes.editTaskModalContainer}>
-                <h2 className={classes.editTodoH3}>Edit Current Task</h2>
+                <h2 className={classes.editTodoH3} autoFocus>Edit Current Task</h2>
                 <textarea
                     ref={taskTextRef}
                     defaultValue={task.taskText}

@@ -1,9 +1,11 @@
 import classes from './Modal.module.css';
 import ReactDOM from 'react-dom';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import '../UI/CSSvariables.module.css';
 
 const Modal = props => {
+
+    const modalRef = useRef(null);
 
     const closeModal = () => props.closeModalHandler();
 
@@ -16,12 +18,17 @@ const Modal = props => {
         }
     }
 
+    useEffect(() => {
+        modalRef.current.focus();
+    }, [])
+
     return ReactDOM.createPortal(
         <>
             <div 
                 className = {`${classes.modalRegularSize} ${props.modalTaller ? classes.modalTaller : ''}`} 
                 onKeyDown = {handleKeyDown}
                 tabIndex = {0}
+                ref={modalRef}
                 >
                 <button className={classes.closeModalBtn} onClick = {closeModal}></button>
                 <div>{props.children}</div>
