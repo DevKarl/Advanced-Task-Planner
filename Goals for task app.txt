@@ -1,10 +1,8 @@
 
-ON DESKTOP:
 
-. add progress bar that fills up (percentage of completed tasks)
-. improve button animations: don't use scale on all of them(add modern hover effects)
-. CHALLENGE: add settings-wheel with modal where user can cutomize todo colors, what more
-. Refactor notes:
-    - check if two way bindings are implemented correctly (value and onChange)
-    - naming convention.. rename everything to somethingHandler from handleSomething
-. Fix textarea input for modal window?
+.add progress bar that fills up (percentage of completed tasks)
+.Finish settings modal functionality with all the options
+.Refactoring:
+    - make sure handlers have same naming-convention (handlerSomething or somethingHandler)
+    - fix task actions buttons animation, not depending on click duration, give it fixed duration on click 
+    - 

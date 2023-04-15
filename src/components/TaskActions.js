@@ -94,7 +94,7 @@ const TaskActions = () => {
         </div>
         <div className={classes.hoveredTaskActionText}><h3 className={classes.hoveredTaskActionTextH3}>{hoveredText}</h3></div>
         <div className={classes.taskActionsMessages}>
-            {emojiesOn && <h4 className={classes.taskActionMsg}>Automatic Emojies Activated 🙋‍♂️</h4>}
+            {emojiesOn && <h4 className={classes.taskActionMsg}>Auto-Emojies Activated 🙋‍♂️</h4>}
             {sortOption && <h4 className={classes.taskActionMsg}>{`Sorting based on: ${sortOption} ⤵️`}</h4>}
         </div>
         {clearTasksModal && <ClearAllTasksModal

@@ -69,7 +69,7 @@ const EditTaskModal = props => {
 
     return(
         <Modal 
-        btnText = {'Change'}
+        btnText = {'SAVE'}
         modalTaller = {true}
         closeModalHandler = {closeModalHandler}
         mainBtnClick = {changeTaskHandler}
