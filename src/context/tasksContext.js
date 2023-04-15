@@ -74,9 +74,6 @@ export const TasksContextProvider = props => {
     updateTasks(prevTasks => [...prevTasks, newTask]);
   }
 
-  
-  
-
   const clearAllTasks = () => {
       updateTasks([]);
   }

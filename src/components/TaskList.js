@@ -11,6 +11,7 @@ const TaskList = () => {
     const {tasks, sortOption} = useContext(tasksContext); 
             
     return (
+        <>
         <div className = {classes.tasklist}>
             {tasks.length > 0 && 
             <ul className = {classes.taskUl}>
@@ -23,6 +24,7 @@ const TaskList = () => {
             </ul>}
             {tasks.length === 0 && <h2 className={classes.ifNoTasksMsg}> ⇢ Your tasks will appear here 👋 </h2>}
         </div>
+        </>
     )
 
 };

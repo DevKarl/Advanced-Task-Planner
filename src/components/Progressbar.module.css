@@ -1,0 +1,22 @@
+.progressbarContainer {
+    width: 20rem;
+    height: 20px;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+  
+.progressbar {
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    font-weight: 600;
+    transition: width 0.2s ease;
+}
+
+.progressbarText {
+    left: 50%;
+    color: white;
+    text-align: center;
+}
+  
