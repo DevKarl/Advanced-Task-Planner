@@ -5,4 +5,6 @@
 .Refactoring:
     - make sure handlers have same naming-convention (handlerSomething or somethingHandler)
     - fix task actions buttons animation, not depending on click duration, give it fixed duration on click 
-    - 
+    - disable buttons on sort and delete all, if the tasks arr is empty and remove errors for this
+    - don't throw errors from helper functions, make them return booleans instead and throw from components
+    - Make a decision: ref(direct DOM manipulation) or state (re-renders but no direct DOM-manipulation) for task input and editTask

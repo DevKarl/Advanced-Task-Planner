@@ -1,3 +1,8 @@
+.progressbarOuterContainer {
+    height: 20px;
+}
+
+
 .progressbarContainer {
     width: 20rem;
     height: 20px;
