@@ -10,6 +10,9 @@ const SettingsModal = props => {
         console.log('settings main btn clicked');
     }
 
+    // blue, green, yellow, grey, orange, purple, teal, pink
+    const colors = ['#2d7fd7', "#4caf50", "#ffd54f", "#9e9e9e", "#ff9800", "#7b1fa2", "#00796b", "#e91e63"];
+
     return (
         <Modal 
             closeModalHandler = {handleCloseSettingsModal}
@@ -24,11 +27,12 @@ const SettingsModal = props => {
                 <div className={classes.changeColorThemeContainer}>
                     <h3>Change Color Theme</h3>
                     <div className={classes.colorPickerBox}>
-                        <p>Blue</p>
-                        <p>Yellow</p>
-                        <p>Orange</p>
-                        <p>Blue</p>
+                        {colors.map((col, i) => {
+                            
 
+
+
+                        })}
                     </div> 
                 </div>
                 <h3>Save Sort-Option</h3>   
