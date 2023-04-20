@@ -8,6 +8,7 @@ const SettingsWheel = () => {
 
     const [style, setStyle] = useState({
         backgroundImage: `url(${settings})`,
+        opacity: '80%',
         backgroundSize: 'cover',
         width: '30px',
         height: '30px',
@@ -27,6 +28,7 @@ const SettingsWheel = () => {
         setStyle({
             ...style,
             transform: 'rotate(90deg)',
+            opacity: '100%'
         });
     };
 
@@ -34,6 +36,7 @@ const SettingsWheel = () => {
         setStyle({
             ...style,
             transform: 'rotate(0deg)',
+            opacity: '80%'
         });
     };
 

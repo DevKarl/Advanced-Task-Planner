@@ -5,10 +5,41 @@
     justify-content: center;
 }
 
+.changeColorHeader {
+    margin-bottom: 15px;
+    margin-top: 2px;
+}
+
 .changeColorThemeContainer {
     display: flex;
+    flex-direction: column;
 }
 
 .colorPickerBox {
-    
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+    margin-bottom: 8px;
+}
+
+.colorItem {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: black;
+    font-size: xx-large;
+    text-align: center;
+    font-weight: 700;
+    opacity: 70%;
+    animation-play-state: paused;
+}
+
+.colorItem:hover {
+    cursor: pointer;
+}
+
+.colorItemSelected {
+    opacity: 100% !important;
+    scale: 1.2;
+    transition: all 0.2s ease-in-out;
 }
