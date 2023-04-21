@@ -14,16 +14,14 @@ const SettingsModal = props => {
 
     const handleColorClick = col => {
         setSelectedColor(col);
-
     }
 
-    // blue, green, yellow, grey, orange, purple, teal, pink, cyan
     const colors = ['#2d7fd7', "#4caf50", "#ffd54f", "#9e9e9e", "#ff9800", "#7b1fa2", "#00796b", "#e91e63", "#00bcd4"];
 
     return (
         <Modal style = {{height: '1000px'}}
             closeModalHandler = {handleCloseSettingsModal}
-            modalTaller = {true}
+            modalXtraTall = {true}
             hasTwoBtns = 'true'
             btn1Text = 'Save'
             btn2Text = 'Close'
@@ -39,15 +37,25 @@ const SettingsModal = props => {
                                 key = {i} 
                                 className={`${classes.colorItem} ${selectedColor === col ? classes.colorItemSelected : ''}`} 
                                 style={{ backgroundColor: col }}
-                                onClick={() => {
-                                    handleColorClick(col);
-                                }}
+                                onClick={() => handleColorClick(col)}
                             >{selectedColor === col ? '✔' : ''}</div>
                         })}
                     </div> 
                 </div>
-                <h3>Save Sort-Option</h3>   
-                <h3>Save Auto-Emojies</h3>
+                <div className={classes.saveBtnOptContainer}>
+                    <h3 className={classes.saveSortOptHeader}>Save Sort-Option</h3>
+                    <label className={classes.switch}>
+                        <input type="checkbox"/>
+                        <span className={classes.sliderRound}></span>
+                    </label>
+                </div>
+                <div className={classes.saveBtnOptContainer}>
+                    <h3 className={classes.saveAutoEmojiesHeader}>Save Auto-Emojies</h3>
+                    <label className={classes.switch}>
+                        <input type="checkbox"/>
+                        <span className={classes.sliderRound}></span>
+                    </label>
+                </div>
             </div>   
         </Modal>
     );

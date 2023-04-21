@@ -34,6 +34,14 @@
     margin: 0 !important;
 }
 
+.modalXtraTall {
+    height: 30rem !important;
+    top: calc(50% - 15rem) !important;
+    width: 22rem !important;
+    left: calc(50% - 11rem) !important;
+    margin: 0 !important;
+}
+
 @keyframes slide-down {
     from {
         opacity: 0;
@@ -103,6 +111,13 @@
         width: 20rem;
         left: calc(50% - 10rem);
     }
+
+    .modalXtraTall {
+        height: 30rem !important;
+        top: calc(50% - 15rem) !important;
+        width: 18rem !important;
+        left: calc(50% - 9rem) !important;
+    }
 }
 
 
@@ -121,5 +136,14 @@
         width: 16rem;
         left: calc(50% - 8rem);
         margin: 0 !important;
+    }
+}
+
+@media only screen and (max-width: 290px) {
+    .modalXtraTall {
+        height: 30rem !important;
+        top: calc(50% - 15rem) !important;
+        width: 17rem !important;
+        left: calc(50% - 8.5rem) !important;
     }
 }
