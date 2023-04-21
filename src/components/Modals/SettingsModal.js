@@ -1,15 +1,21 @@
 import Modal from '../UI/Modal';
 import classes from './SettingsModal.module.css';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { tasksContext } from '../../context/tasksContext';
 
 const SettingsModal = props => {
 
+    const {saveEmojies, setSaveEmojies, saveSortOption, setSaveSortOption } = useContext(tasksContext);
+    const [saveEmojiesState, toggleSaveEmojiesState] = useState(saveEmojies);
+    const [saveSortOptionState, toggleSaveSortOptionState] = useState(saveSortOption);
     const [selectedColor, setSelectedColor] = useState('#2d7fd7');
 
     const handleCloseSettingsModal = () => props.togglesettingsModalActive();
 
     const handleModalMainBtnClick = () => {
-        console.log('settings main btn clicked');
+        setSaveEmojies(saveEmojiesState);
+        setSaveSortOption(saveSortOptionState);
+        handleCloseSettingsModal();
     }
 
     const handleColorClick = col => {
@@ -30,7 +36,7 @@ const SettingsModal = props => {
         >
             <div className={classes.settingsContainer}>
                 <div className={classes.changeColorThemeContainer}>
-                    <h3 className={classes.changeColorHeader}>Change Theme-Color</h3>
+                    <h3 className={classes.changeColorHeader}>Change Theme Color</h3>
                     <div className={classes.colorPickerBox}>
                         {colors.map((col, i) => {
                             return <div 
@@ -45,14 +51,22 @@ const SettingsModal = props => {
                 <div className={classes.saveBtnOptContainer}>
                     <h3 className={classes.saveSortOptHeader}>Save Sort-Option</h3>
                     <label className={classes.switch}>
-                        <input type="checkbox"/>
+                        <input 
+                            type="checkbox"
+                            checked={saveSortOptionState}
+                            onChange={() => toggleSaveSortOptionState(prev => !prev)}
+                        />
                         <span className={classes.sliderRound}></span>
                     </label>
                 </div>
                 <div className={classes.saveBtnOptContainer}>
                     <h3 className={classes.saveAutoEmojiesHeader}>Save Auto-Emojies</h3>
                     <label className={classes.switch}>
-                        <input type="checkbox"/>
+                        <input 
+                            type="checkbox"
+                            checked={saveEmojiesState}
+                            onChange={() => toggleSaveEmojiesState(prev => !prev)}
+                        />
                         <span className={classes.sliderRound}></span>
                     </label>
                 </div>

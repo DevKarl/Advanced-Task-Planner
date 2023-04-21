@@ -81,7 +81,7 @@
     border-radius: 34px;
 }
   
-.sliderRound:before {
+.sliderRound::before {
     position: absolute;
     content: "";
     height: 26px;
@@ -101,6 +101,6 @@ input:focus + .sliderRound {
     box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .sliderRound:before {
+input:checked + .sliderRound::before {
     transform: translateX(26px);
 }

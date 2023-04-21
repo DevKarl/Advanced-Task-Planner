@@ -7,16 +7,39 @@ export const tasksContext = React.createContext({
     tasks: [],
     sortOption: '',
     emojiesOn: false,
+    saveEmojies: false,
+    saveSortOption: false,
     addTask: () => {},
     updateTasks: () => {},
     toggleEmojies: () => {},
     setSortOption: () => {},
+    toggleSaveEmojies: () => {},
+    toggleSaveSortOption: () => {},
     clearAllTasks: () => {},
 });
 
 export const TasksContextProvider = props => {
 
-  // STATES - LOCAL STORAGE 
+  // STATES - LOCAL STORAGE
+  
+  const [saveEmojies, setSaveEmojies] = useState(() => {
+    const savedSaveEmojies = localStorage.getItem("savedSaveEmojies");
+    if (savedSaveEmojies) {
+      return JSON.parse(savedSaveEmojies);
+    } else {
+      return false;
+    }
+  });
+
+  const [saveSortOption, setSaveSortOption] = useState(() => {
+    const savedSaveSortOption = localStorage.getItem("savedSaveSortOption");
+    if (savedSaveSortOption) {
+      return JSON.parse(savedSaveSortOption);
+    } else {
+      return false;
+    }
+  });
+
 
   const [tasks, updateTasks] = useState(() => {
       const savedTasks = localStorage.getItem("savedTasks");
@@ -45,7 +68,6 @@ export const TasksContextProvider = props => {
     }
   });
 
-
   // USE EFFECTS
 
   useEffect(() => {
@@ -53,10 +75,25 @@ export const TasksContextProvider = props => {
       if(tasks.length === 0) setSortOption('');
   }, [tasks]);
 
+  useEffect(() => {
+      localStorage.setItem('savedSaveEmojies', JSON.stringify(saveEmojies));
+      if(saveEmojies) {
+        localStorage.setItem('savedEmojiesOn', JSON.stringify(emojiesOn));
+      }
+      else {
+        localStorage.removeItem('savedEmojiesOn');
+      }
+  }, [emojiesOn, saveEmojies]);
 
   useEffect(() => {
-    localStorage.setItem("savedEmojiesOn", JSON.stringify(emojiesOn));
-  }, [emojiesOn]);
+    localStorage.setItem('savedSaveSortOption', JSON.stringify(saveSortOption));
+    if (saveSortOption) {
+      localStorage.setItem('savedSortOption', JSON.stringify(sortOption));
+    } 
+    else {
+      localStorage.removeItem('savedSortOption');
+    }
+  }, [sortOption, saveSortOption]);
 
   // FUNCTIONS 
   
@@ -84,10 +121,14 @@ export const TasksContextProvider = props => {
           tasks: tasks,
           sortOption: sortOption,
           emojiesOn: emojiesOn,
+          saveEmojies: saveEmojies,
+          saveSortOption: saveSortOption,
           addTask: addTask,
           updateTasks: updateTasks,
           toggleEmojies: toggleEmojies,
           setSortOption: setSortOption,
+          setSaveEmojies: setSaveEmojies,
+          setSaveSortOption: setSaveSortOption,
           clearAllTasks: clearAllTasks
       }}
       >
