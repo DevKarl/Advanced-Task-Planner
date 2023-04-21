@@ -5,16 +5,19 @@ import { tasksContext } from '../../context/tasksContext';
 
 const SettingsModal = props => {
 
-    const {saveEmojies, setSaveEmojies, saveSortOption, setSaveSortOption } = useContext(tasksContext);
+    const {saveEmojies, setSaveEmojies, saveSortOption, setSaveSortOption, themeColor, setThemeColor } = useContext(tasksContext);
     const [saveEmojiesState, toggleSaveEmojiesState] = useState(saveEmojies);
     const [saveSortOptionState, toggleSaveSortOptionState] = useState(saveSortOption);
-    const [selectedColor, setSelectedColor] = useState('#2d7fd7');
+    const [selectedColor, setSelectedColor] = useState(themeColor);
+    console.log(themeColor, selectedColor);
+    
 
     const handleCloseSettingsModal = () => props.togglesettingsModalActive();
 
     const handleModalMainBtnClick = () => {
         setSaveEmojies(saveEmojiesState);
         setSaveSortOption(saveSortOptionState);
+        setThemeColor(selectedColor);
         handleCloseSettingsModal();
     }
 
@@ -22,8 +25,8 @@ const SettingsModal = props => {
         setSelectedColor(col);
     }
 
-    const colors = ['#2d7fd7', "#4caf50", "#ffd54f", "#9e9e9e", "#ff9800", "#7b1fa2", "#00796b", "#e91e63", "#00bcd4"];
-
+    const colors = ["#2d7fd7", "#4caf50", "#c1c111", "#9e9e9e", "#ff9800", "#7b1fa2", "#00796b", "#e91e63", "#00bcd4"];
+    
     return (
         <Modal style = {{height: '1000px'}}
             closeModalHandler = {handleCloseSettingsModal}

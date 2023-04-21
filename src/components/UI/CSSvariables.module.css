@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #2d7fd7;
-    --card-background-color: rgba(243, 251, 255, 0.671);
+    --primary-color:  #2d7fd7;
+    --card-background-color: rgb(211, 211, 211);
     --primary-transition: 0.2s all ease-in-out;
 }

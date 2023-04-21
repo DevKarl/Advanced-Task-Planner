@@ -12,6 +12,10 @@
     margin-top: 2px;
 }
 
+.something {
+    background-color: rgb(193, 193, 17);
+}
+
 .changeColorThemeContainer {
     display: flex;
     flex-direction: column;
@@ -94,11 +98,11 @@
 }
 
 input:checked + .sliderRound {
-    background-color: #2196F3;
+    background-color: var(--primary-color);
 }
   
 input:focus + .sliderRound {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px var(--primary-color);
 }
 
 input:checked + .sliderRound::before {

@@ -17,7 +17,7 @@
     text-transform: uppercase;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: var(--secondary-color);
+    background-color: transparent;
     box-shadow: 3px 3px 0px var(--primary-color),
                 3px 3px 0px #222222;
 }
