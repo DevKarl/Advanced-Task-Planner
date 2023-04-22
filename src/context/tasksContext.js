@@ -1,6 +1,7 @@
 
 import React, {useState, useEffect} from "react";
 import { checkInputWordLength } from "../components/Helpers/InputControl";
+import themeColorCombinations from "../components/Helpers/themeColorCombinations";
 
 export const tasksContext = React.createContext({
     // ONLY for syntax highlighting
@@ -9,7 +10,7 @@ export const tasksContext = React.createContext({
     emojiesOn: false,
     saveEmojies: false,
     saveSortOption: false,
-    themeColor: '',
+    themeColors: {},
     addTask: () => {},
     updateTasks: () => {},
     toggleEmojies: () => {},
@@ -17,14 +18,15 @@ export const tasksContext = React.createContext({
     toggleSaveEmojies: () => {},
     toggleSaveSortOption: () => {},
     clearAllTasks: () => {},
-    setThemeColor: () => {}
+    setThemeColors: () => {}
 });
 
 export const TasksContextProvider = props => {
 
-  // STATES - LOCAL STORAGE
+  console.log(themeColorCombinations);
   
 
+  // STATES - LOCAL STORAGE
 
   const [tasks, updateTasks] = useState(() => {
       const savedTasks = localStorage.getItem("savedTasks");
@@ -71,12 +73,15 @@ export const TasksContextProvider = props => {
     }
   });
 
-  const [themeColor, setThemeColor] = useState(() => {
-    const savedThemeColor = localStorage.getItem("savedThemeColor");
-    if (savedThemeColor) {
-      return JSON.parse(savedThemeColor)
+
+
+  const [themeColors, setThemeColors] = useState(() => {
+    const savedThemeColors = localStorage.getItem("savedThemeColors");
+    if (savedThemeColors) {
+      return JSON.parse(savedThemeColors)
     } else {
-      return '#2d7fd7';
+      // default is blue
+      return themeColorCombinations[0];
     }
   });
 
@@ -108,10 +113,10 @@ export const TasksContextProvider = props => {
   }, [sortOption, saveSortOption]);
 
   useEffect(() => {
-    localStorage.setItem('savedThemeColor', JSON.stringify(themeColor));
+    localStorage.setItem('savedThemeColors', JSON.stringify(themeColors));
     const root = document.documentElement;
-    root.style.setProperty('--primary-color', themeColor);
-  }, [themeColor])
+    root.style.setProperty('--primary-color', themeColors.blue.primaryColor);
+  }, [themeColors])
 
   // FUNCTIONS 
   
@@ -132,6 +137,10 @@ export const TasksContextProvider = props => {
   const clearAllTasks = () => {
       updateTasks([]);
   }
+
+  const updateThemeColors = hex => {
+    
+  }
     
   return(
       <tasksContext.Provider
@@ -141,7 +150,7 @@ export const TasksContextProvider = props => {
           emojiesOn: emojiesOn,
           saveEmojies: saveEmojies,
           saveSortOption: saveSortOption,
-          themeColor: themeColor,
+          themeColors: themeColors,
           addTask: addTask,
           updateTasks: updateTasks,
           toggleEmojies: toggleEmojies,
@@ -149,7 +158,7 @@ export const TasksContextProvider = props => {
           setSaveEmojies: setSaveEmojies,
           setSaveSortOption: setSaveSortOption,
           clearAllTasks: clearAllTasks,
-          setThemeColor: setThemeColor
+          setThemeColors: setThemeColors
       }}
       >
           {props.children}

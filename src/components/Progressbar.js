@@ -5,7 +5,7 @@ import { useContext } from 'react';
 
 const Progressbar = () => {
 
-    const { tasks, emojiesOn } = useContext(tasksContext);
+    const { tasks } = useContext(tasksContext);
     const completedTasks = tasks.filter(task => task.isChecked);
     let percentageComplete = Math.round((completedTasks.length / tasks.length) * 100);
     if (!percentageComplete) percentageComplete = 0;

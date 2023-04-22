@@ -26,6 +26,7 @@ const SettingsModal = props => {
     }
 
     const colors = ["#2d7fd7", "#4caf50", "#c1c111", "#9e9e9e", "#ff9800", "#7b1fa2", "#00796b", "#e91e63", "#00bcd4"];
+
     
     return (
         <Modal style = {{height: '1000px'}}

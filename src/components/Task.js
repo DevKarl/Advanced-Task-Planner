@@ -52,7 +52,6 @@ const Task = props => {
                 </div>
                 <input 
                     type="checkbox" 
-                    id = "check" 
                     onChange= {checkHandler} 
                     className = {classes.check}
                     checked = {task.isChecked}
