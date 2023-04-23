@@ -7,7 +7,7 @@ import { validateInput, isValidDeadline, checkInputWordLength } from '../Helpers
 
 const EditTaskModal = props => {
 
-    const {tasks, updateTasks} = useContext(tasksContext);
+    const {tasks, updateTasks, themeColors} = useContext(tasksContext);
     const {task} = props
     const {key} = task
     const taskTextRef = useRef();
@@ -67,6 +67,10 @@ const EditTaskModal = props => {
         updateTasks(newTasks);
     };
 
+    const defaultBorderStyle = {
+        border: `2px solid ${themeColors.primaryColor}`
+    }
+
     return(
         <Modal 
         btnText = {'SAVE'}
@@ -78,6 +82,7 @@ const EditTaskModal = props => {
             <div className={classes.editTaskModalContainer}>
                 <h2 className={classes.editTodoH3} autoFocus>Edit Current Task</h2>
                 <textarea
+                    style={defaultBorderStyle}
                     ref={taskTextRef}
                     defaultValue={task.taskText}
                     type='text' 
@@ -86,29 +91,34 @@ const EditTaskModal = props => {
                 <div className={classes.importanceAndDeadlineContainer}>
                     <h3 className={classes.importanceTitle} >Importance</h3>
                     <div className={classes.importanceContainer}>
-                        <button 
-                            className={importanceLvl === 1 ? classes.importanceLvlBtnActive : classes.importanceLvlBtnStandard} 
+                        <button
+                            style={{border: `2px solid ${themeColors.primaryColor}`, backgroundColor: `${importanceLvl === 1 ? themeColors.primaryColor : ''}`}}
                             onClick={() => handleSetImportanceLvl(1)}>
                             !</button>
-                        <button 
-                            className={importanceLvl === 2 ? classes.importanceLvlBtnActive : classes.importanceLvlBtnStandard} 
+                        <button
+                            style={{border: `2px solid ${themeColors.primaryColor}`, backgroundColor: `${importanceLvl === 2 ? themeColors.primaryColor : ''}`}} 
                             onClick={() => handleSetImportanceLvl(2)}>
                             !!</button>
-                        <button 
-                            className={importanceLvl === 3 ? classes.importanceLvlBtnActive : classes.importanceLvlBtnStandard} 
+                        <button
+                            style={{border: `2px solid ${themeColors.primaryColor}`, backgroundColor: `${importanceLvl === 3 ? themeColors.primaryColor : ''}`}} 
                             onClick={() => handleSetImportanceLvl(3)}>
                             !!!</button>
                     </div>
                     <h3 className={classes.deadlineTitle}>Deadline</h3>
                     <div className={classes.deadlineContainer}>
-                        <input 
+                        <input
+                            style={defaultBorderStyle} 
                             type='date' 
                             onChange={handleDeadlineChange} 
                             value={deadline}
                             min={'2023-01-01'}
                             max={'2099-12-31'}
                         />
-                        <button className={classes.clearBtn} onClick={handleRemoveDeadline}>Clear</button>
+                        <button
+                            style={defaultBorderStyle} 
+                            className={classes.clearBtn} 
+                            onClick={handleRemoveDeadline}>
+                        Clear</button>
                     </div>
                 </div>
             </div>

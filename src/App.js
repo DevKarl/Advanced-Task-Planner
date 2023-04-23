@@ -1,14 +1,21 @@
 
 import Container from "./components/Container";
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import { TasksContextProvider } from "./context/tasksContext";
+import BackgroundCover from "./components/BackgroundCover";
+
 
 function App() {
 
   return (
-      <ErrorBoundary>
-        <Container>
-        </Container>
-      </ErrorBoundary>
+      <TasksContextProvider>
+        <ErrorBoundary>
+          <BackgroundCover>
+            <Container>
+            </Container>
+          </BackgroundCover>
+        </ErrorBoundary>
+      </TasksContextProvider>
   );
 }
 

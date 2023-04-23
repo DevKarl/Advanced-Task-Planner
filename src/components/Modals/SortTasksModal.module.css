@@ -23,10 +23,8 @@
 .sortOptionsContainer button {
     padding: 10px 24px;
     border-radius: 12px;
-    border: 2px solid var(--primary-color);
     background-color: white;
     font-size: medium;
-    color: var(--primary-color);
     font-weight: 700;
     text-transform: uppercase;
     transition: all 0.1s ease-in-out;

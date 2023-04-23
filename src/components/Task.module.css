@@ -8,10 +8,8 @@
 .taskListItem {
     height: 90px;
     font-size: larger;
-    border: 2px solid var(--primary-color);
     border-radius: 12px;
     margin-bottom: 20px;
-    background-color: #2d7fd725;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -45,12 +43,7 @@
     margin-left: 15px;
     flex-shrink: 0;
     transition: var(--primary-transition);
-    border: 2px solid var(--primary-color);
     background-color: white;
-}
-
-input[type=checkbox] {
-    accent-color: var(--primary-color);
 }
 
 .check:hover {
@@ -129,7 +122,6 @@ input[type=checkbox] {
 
 .importanceAndDeadlineContainer h5 {
     margin: 0;
-    color: var(--primary-color);
     opacity: 0.9;
 }
 

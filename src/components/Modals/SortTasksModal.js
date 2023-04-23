@@ -2,10 +2,19 @@
 
 import Modal from "../UI/Modal";
 import classes from './SortTasksModal.module.css';
+import { useContext } from 'react';
+import { tasksContext } from "../../context/tasksContext";
 
 const SortTasksModal = props => {
 
+    const {themeColors} = useContext(tasksContext);
+
     const handleStartSorting = option => props.handleSortOption(option);
+
+    const btnStyles = {
+        border: `2px solid ${themeColors.primaryColor}`,
+        color: themeColors.primaryColor
+    }
 
     return(
         <Modal 
@@ -17,10 +26,10 @@ const SortTasksModal = props => {
             <div className={classes.sortTasksContainer}>
                 <h2 className={classes.sortTasksTitle}>Sort based on..</h2>
                 <div className={classes.sortOptionsContainer}>
-                    <button onClick={() => handleStartSorting('newest')}>Newest</button>
-                    <button onClick={() => handleStartSorting('unchecked')}>Unchecked</button>
-                    <button onClick={() => handleStartSorting('importance')}>Importance ❗️</button>
-                    <button onClick={() => handleStartSorting('deadline')}>Deadline ⏳</button>
+                    <button style={btnStyles} onClick={() => handleStartSorting('newest')}>Newest</button>
+                    <button style={btnStyles} onClick={() => handleStartSorting('unchecked')}>Unchecked</button>
+                    <button style={btnStyles} onClick={() => handleStartSorting('importance')}>Importance ❗️</button>
+                    <button style={btnStyles} onClick={() => handleStartSorting('deadline')}>Deadline ⏳</button>
                 </div>
             </div>
         </Modal>

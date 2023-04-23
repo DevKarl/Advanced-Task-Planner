@@ -1,9 +1,12 @@
 import classes from './Modal.module.css';
 import ReactDOM from 'react-dom';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
+import { tasksContext } from '../../context/tasksContext';
 import '../UI/CSSvariables.module.css';
 
 const Modal = props => {
+
+    const {themeColors} = useContext(tasksContext);
 
     const modalRef = useRef(null);
 
@@ -22,6 +25,10 @@ const Modal = props => {
         modalRef.current.focus();
     }, [])
 
+    const btnStyle = {
+        backgroundColor: themeColors.primaryColor
+    }
+
     return ReactDOM.createPortal(
         <>
             <div 
@@ -36,7 +43,8 @@ const Modal = props => {
                 >
                 <button className={classes.closeModalBtn} onClick = {closeModal}></button>
                 <div>{props.children}</div>
-                {props.btnText && <button 
+                {props.btnText && <button
+                    style={btnStyle} 
                     className={classes.modalBtn}
                     onClick = {props.mainBtnClick}
                 >
@@ -44,15 +52,17 @@ const Modal = props => {
                 </button>}
                 {props.hasTwoBtns &&
                 <div className={classes.hasTwoBtnsBtnContainer}>
-                    <button 
+                    <button
+                        style={btnStyle}  
                         className={classes.modalBtn}
                         onClick = {props.btn1Click}
                     >
                         {props.btn1Text}
                     </button>
-                    <button 
-                    className={classes.modalBtn}
-                    onClick = {props.btn2Click}
+                    <button
+                        style={btnStyle}  
+                        className={classes.modalBtn}
+                        onClick = {props.btn2Click}
                     >
                         {props.btn2Text}
                     </button>

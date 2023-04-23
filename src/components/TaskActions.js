@@ -7,7 +7,7 @@ import SortTasksModal from './Modals/SortTasksModal';
 
 const TaskActions = () => {
 
-    const {tasks, sortOption, emojiesOn, toggleEmojies, setSortOption, clearAllTasks} = useContext(tasksContext);
+    const {tasks, sortOption, emojiesOn, toggleEmojies, setSortOption, clearAllTasks, themeColors} = useContext(tasksContext);
 
     // States
     const [sortModal, toggleSortModal] = useState(false);
@@ -69,30 +69,41 @@ const TaskActions = () => {
     const handleEnterClearAll = () => setHoveredText("Clear all tasks");
     const handleLeave = () => setHoveredText("");
 
+    const btnStyles = {
+        border: `2px solid ${themeColors.primaryColor}`,
+        boxShadow: `3px 3px 0px ${themeColors.primaryColor},
+        3px 3px 0px #222222`
+    }
+
 
     return(
         <>
         <div className={classes.taskActionsContainer}>
-            <button 
+            <button
+                style={btnStyles} 
                 className={`${classes.sortBtn} ${sortOption ? classes.activatedBtn : ''}`}
                 onMouseEnter={handleEnterSort} 
                 onMouseLeave={handleLeave}
                 onClick={handleToggleSort}
             ></button>
-            <button 
+            <button
+                style={btnStyles}  
                 className={classes.clearAllTasksBtn}
                 onMouseEnter = {handleEnterClearAll} 
                 onMouseLeave = {handleLeave}
                 onClick={handleClearAllTasks}
             ></button>
             <button
+                style={btnStyles} 
                 className={`${classes.toggleEmojiesBtn} ${emojiesOn ? classes.activatedBtn : ''}`}
                 onMouseEnter={handleEnterEmoji}
                 onMouseLeave = {handleLeave}
                 onClick={handleToggleEmoji} 
             ></button>
         </div>
-        <div className={classes.hoveredTaskActionText}><h3 className={classes.hoveredTaskActionTextH3}>{hoveredText}</h3></div>
+        <div className={classes.hoveredTaskActionText}>
+            <h3 style={{color: themeColors.primaryColor}} className={classes.hoveredTaskActionTextH3}>{hoveredText}</h3>
+        </div>
         <div className={classes.taskActionsMessages}>
             {emojiesOn && <h4 className={classes.taskActionMsg}>Auto-Emojies Activated</h4>}
             {sortOption && <h4 className={classes.taskActionMsg}>{`Sorting based on ${sortOption} ⤵️`}</h4>}

@@ -11,6 +11,7 @@ export const tasksContext = React.createContext({
     saveEmojies: false,
     saveSortOption: false,
     themeColors: {},
+    themeColorCombinations: [],
     addTask: () => {},
     updateTasks: () => {},
     toggleEmojies: () => {},
@@ -18,13 +19,10 @@ export const tasksContext = React.createContext({
     toggleSaveEmojies: () => {},
     toggleSaveSortOption: () => {},
     clearAllTasks: () => {},
-    setThemeColors: () => {}
+    handleChangeThemeColor: () => {}
 });
 
-export const TasksContextProvider = props => {
-
-  console.log(themeColorCombinations);
-  
+export const TasksContextProvider = props => {  
 
   // STATES - LOCAL STORAGE
 
@@ -114,8 +112,6 @@ export const TasksContextProvider = props => {
 
   useEffect(() => {
     localStorage.setItem('savedThemeColors', JSON.stringify(themeColors));
-    const root = document.documentElement;
-    root.style.setProperty('--primary-color', themeColors.blue.primaryColor);
   }, [themeColors])
 
   // FUNCTIONS 
@@ -138,8 +134,9 @@ export const TasksContextProvider = props => {
       updateTasks([]);
   }
 
-  const updateThemeColors = hex => {
-    
+  const handleChangeThemeColor = primaryColor => {
+    const newThemeColors = themeColorCombinations.find(color => color.primaryColor === primaryColor);
+    if(newThemeColors) setThemeColors(newThemeColors);
   }
     
   return(
@@ -151,6 +148,7 @@ export const TasksContextProvider = props => {
           saveEmojies: saveEmojies,
           saveSortOption: saveSortOption,
           themeColors: themeColors,
+          themeColorCombinations: themeColorCombinations,
           addTask: addTask,
           updateTasks: updateTasks,
           toggleEmojies: toggleEmojies,
@@ -158,7 +156,7 @@ export const TasksContextProvider = props => {
           setSaveEmojies: setSaveEmojies,
           setSaveSortOption: setSaveSortOption,
           clearAllTasks: clearAllTasks,
-          setThemeColors: setThemeColors
+          handleChangeThemeColor: handleChangeThemeColor
       }}
       >
           {props.children}

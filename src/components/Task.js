@@ -9,7 +9,7 @@ import { useState, useContext } from 'react';
 
 const Task = props => {
     
-    const {tasks, updateTasks, emojiesOn} = useContext(tasksContext);  
+    const {tasks, updateTasks, emojiesOn, themeColors} = useContext(tasksContext);  
     const {task} = props;
     const {key} = task;
 
@@ -32,15 +32,21 @@ const Task = props => {
         updateTasks(updatedTasks);
     }
 
+    const tasklistItemStyles = {
+        border: `2px solid ${themeColors.primaryColor}`,
+        backgroundColor: themeColors.taskItemColor
+    }
+
     return(
         <>
             <li
+                style={tasklistItemStyles}
                 className = {`
                 ${task.hasLongWord ? classes.hasLongWord : ''}
                 ${classes.taskListItem}
                 `}>
                 <div className={classes.checkBoxAndText}>
-                <div className={classes.importanceAndDeadlineContainer}>
+                <div className={classes.importanceAndDeadlineContainer} style={{color: themeColors.primaryColor}}>
                     <div className={classes.exclamationBox}>
                     {task.importance > 0 && Array.from({length: task.importance}).map((_, i) => (
                     <h5 key={i} className={classes.exclamationMark}>!</h5>
@@ -50,7 +56,11 @@ const Task = props => {
                         <h5 className={classes.deadlineText}>{task.deadline && `${getDeadlineStatus(task.deadline)}`}</h5>
                     </div>
                 </div>
-                <input 
+                <input
+                    style={{ 
+                        border: `2px solid ${themeColors.primaryColor}`, 
+                        accentColor: themeColors.primaryColor 
+                    }} 
                     type="checkbox" 
                     onChange= {checkHandler} 
                     className = {classes.check}

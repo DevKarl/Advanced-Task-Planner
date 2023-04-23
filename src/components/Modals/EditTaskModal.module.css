@@ -33,7 +33,6 @@
 }
 
 .importanceContainer button {
-    border: 2px solid var(--primary-color);
     border-radius: 12px;
     width: 50px;
     height: 50px;
@@ -44,30 +43,20 @@
 .importanceContainer button:hover {
     transform: scale(1.05);
     transition: transform 0.2s ease-in;
-}
-
-.importanceLvlBtnStandard {
-    opacity: 0.6;
-}
-
-.importanceLvlBtnActive {
-    opacity: 1;
-    background-color: var(--primary-color);
+    cursor: pointer;
 }
 
 .importanceLvlBtnStandard:hover, .importanceLvlBtnActive:hover {
     cursor: pointer;
-    opacity: 1;
 }
 
 .clearBtn {
-    border: 2px solid var(--primary-color);
     border-radius: 12px;
     width: 60px;
     height: 40px;
     font-size: small;
     margin-left: 15px;
-    opacity: 0.6;
+    opacity: 0.8;
     transition: transform 0.2s ease-in;
 }
 
@@ -97,7 +86,6 @@
     padding-left: 4px;
     padding-right: 4px;
     font-size: large;
-    border: 1px solid var(--primary-color);
     border-radius: 12px;
     font-weight: 600;
 }
@@ -109,7 +97,6 @@
     margin-bottom: 15px;
     height: 80px;
     resize: none;
-    border: 2px solid var(--primary-color);
     border-radius: 12px;
     font-size: large;
     font-family: inherit;
@@ -125,7 +112,6 @@
 
     .modalInputField {
         padding: 6px 12px;
-        border: 2px solid var(--primary-color);
         border-radius: 12px;
         font-size: large;
     }

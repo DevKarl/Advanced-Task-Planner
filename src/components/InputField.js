@@ -6,7 +6,7 @@ import classes from './InputField.module.css';
 
 const InputField = () => {
 
-    const { addTask } = useContext(tasksContext);
+    const { addTask, themeColors } = useContext(tasksContext);
     const taskTextRef = useRef('');
 
     const [error, setError] = useState(null);
@@ -33,13 +33,14 @@ const InputField = () => {
 
     return(
         <div className = {classes.inputfield}>
-            <input 
+            <input
+                style={{border: `2px solid ${themeColors.primaryColor}`}} 
                 type = 'text' 
                 id = 'inputfield'
                 onKeyDown={handleKeyDown}
                 ref={taskTextRef}
                 />
-            <button onClick= {addNewTask}>Add</button>
+            <button style={{backgroundColor: themeColors.primaryColor}} onClick= {addNewTask} >Add</button>
         </div>
     )
 };

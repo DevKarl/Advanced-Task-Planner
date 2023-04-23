@@ -5,7 +5,6 @@
 
 .inputfield input {
     padding: 12px 60px;
-    border: 2px solid var(--primary-color);
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
     font-size: large;
@@ -16,7 +15,6 @@
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
     border-left: none;
-    background-color: var(--primary-color);
     border: none;
     font-size: large;
     color: white;

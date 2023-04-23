@@ -13,13 +13,10 @@
     border-radius: 12px;
     font-size: large;
     font-weight: 700;
-    border: 2px solid var(--primary-color);
     text-transform: uppercase;
     background-repeat: no-repeat;
     background-position: center;
     background-color: transparent;
-    box-shadow: 3px 3px 0px var(--primary-color),
-                3px 3px 0px #222222;
 }
 
 .taskActionsMessages {
@@ -85,7 +82,6 @@
 
 .hoveredTaskActionText {
     margin: 0px;
-    color: var(--primary-color);
     font-size: large;
 }
 
