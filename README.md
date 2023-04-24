@@ -7,28 +7,27 @@ The basic stuff - tasks can be:
 - edited
 - checked off
 - deleted 
-- tasks are stored in local storage(LS)
-- all tasks can be cleared with one button
+- stored in local storage(LS)
+- cleared(all) with one button 
 
 More advanced features:
-- tasks be sorted based on 4 options: newest, unchecked, importance and deadline
-- tasks have optional importance level with dynamic badges(!, !! or !!!)
-- tasks have optional deadline displayed with dynamic messages (backwards and forwards in time)
-- progress-bar showing % of tasks completed
-- auto-emojies can be toggled (certain words will append emoji to end of task text)
+- user can add optional importance level with dynamic badges(!, !! or !!!) on tasks
+- user can add optional deadline on tasks, which are displayed with dynamic messages 
+- sorting can be turned on based on 4 options: newest, unchecked, importance and deadline (top to bottom)
+- progress-bar showing % of tasks completed (checked off)
+- auto-emojies can be toggled ON/OFF (certain words will append emojies to end of the task text)
 - settings in upper-right corner, where:
-    - saving sort and auto emojies in LS can be toggled ON/OFF
+    - user can choose 9 different theme colors
+    - saving sort and saving auto emojies in LS can be toggled ON/OFF
     - progress bar can be turned ON/OFF
-    - different theme (color and contrasts) options can be activated
 
 Key takeaways - react concepts:
 - Reusable Modal component with dynamic size and button props
 - Error boundary triggering different error messages
 - Context API (no prop drilling)
-- Sort during changes (re-renders on each task change), no need to turn OFF and back ON
-    - hardest part, required refactor: replaced index with key prop everywhere and stopped mutating 
-      tasks state array on sort inside context, only use for displaying sorted tasks instead 
-- Dynamic CSS styling (word-break vs break all)   
+- Sort is always live once turned ON, will sort when any change is done during changes (no need to turn OFF and back ON)  
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

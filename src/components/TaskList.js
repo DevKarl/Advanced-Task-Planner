@@ -1,14 +1,14 @@
 import classes from './TaskList.module.css';
 import { tasksContext } from '../context/tasksContext';
 import './UI/CSSvariables.module.css';
-import { useContext} from 'react';
+import { useContext } from 'react';
 import getSortedTasks from './Helpers/getSortedTasks';
 import Task from './Task';
 
 const TaskList = () => {
     
     // CONTEXT 
-    const {tasks, sortOption} = useContext(tasksContext); 
+    const {tasks, sortOption, themeColors} = useContext(tasksContext); 
             
     return (
         <>
@@ -22,7 +22,10 @@ const TaskList = () => {
                 />
                 )}
             </ul>}
-            {tasks.length === 0 && <h2 className={classes.ifNoTasksMsg}> ⇢ Your tasks will appear here 👋 </h2>}
+            {tasks.length === 0 && 
+                <h2 style={{color: themeColors.backgroundColor}} className={classes.ifNoTasksMsg}> 
+                    ⇢ Your tasks will appear here 👋🏼 
+                </h2>}
         </div>
         </>
     )

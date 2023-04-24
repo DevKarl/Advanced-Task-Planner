@@ -13,7 +13,8 @@ const BackgroundCover = props => {
         height: '100vh',
         position: 'fixed',
         top: 0,
-        left: 0
+        left: 0,
+        overflow: 'scroll'
     }
 
     return(
