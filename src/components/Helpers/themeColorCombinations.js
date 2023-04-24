@@ -14,49 +14,49 @@ const themeColorCombinations = [
     primaryColor: '#4caf50',
     cardColor: '#e8f5e9',
     taskItemColor: '#4caf5025',
-    backgroundColor: '#81c784'
+    backgroundColor: '#b3ddb5'
   },
   {
     primaryColor: '#c1c111',
     cardColor: '#fff9c4',
     taskItemColor: '#c1c11125',
-    backgroundColor: '#e6ee9c'
+    backgroundColor: '#ebf1b0'
   },
   {
-    primaryColor: '#9e9e9e',
+    primaryColor: '#616161',
     cardColor: '#f5f5f5',
     taskItemColor: '#9e9e9e25',
-    backgroundColor: '#bdbdbd'
+    backgroundColor: '#d7d7d7'
   },
   {
     primaryColor: '#ff9800',
     cardColor: '#fff3e0',
     taskItemColor: '#ff980025',
-    backgroundColor: '#ffb74d'
+    backgroundColor: '#ffd494'
   },
   {
     primaryColor: '#7b1fa2',
     cardColor: '#f3e5f5',
     taskItemColor: '#7b1fa225',
-    backgroundColor: '#ba68c8'
+    backgroundColor: '#d6a4de'
   },
   {
     primaryColor: '#00796b',
     cardColor: '#e0f2f1',
     taskItemColor: '#00796b25',
-    backgroundColor: '#4db6ac'
+    backgroundColor: '#a6dad5'
   },
   {
     primaryColor: '#e91e63',
     cardColor: '#fce4ec',
     taskItemColor: '#e91e6325',
-    backgroundColor: '#f06292'
+    backgroundColor: '#f7b0c8'
   },
   {
     primaryColor: '#00bcd4',
     cardColor: '#e0f7fa',
     taskItemColor: '#00bcd425',
-    backgroundColor: '#26c6da'
+    backgroundColor: '#a8e8f0'
   }
 ];
 

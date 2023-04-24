@@ -8,7 +8,7 @@ import Task from './Task';
 const TaskList = () => {
     
     // CONTEXT 
-    const {tasks, sortOption, themeColors} = useContext(tasksContext); 
+    const {tasks, sortOption, themeColors} = useContext(tasksContext);
             
     return (
         <>

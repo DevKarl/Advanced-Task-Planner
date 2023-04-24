@@ -25,28 +25,6 @@
     font-weight: 400;
 }
 
-
-
-/* Scrollbar styling  _____________________________________________________________ */
-
-::-webkit-scrollbar {
-    background: rgba(255, 255, 255, 0.468);
-    width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #2d7fd7a4;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #2d7fd7;
-}
-
-::-webkit-scrollbar-track:hover {
-    background: white;
-}
-
 /* below desktop - tablets/ipads etc */
 
 @media only screen and (max-width: 950px) {

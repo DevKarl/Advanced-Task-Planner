@@ -14,7 +14,7 @@ const BackgroundCover = props => {
         position: 'fixed',
         top: 0,
         left: 0,
-        overflow: 'scroll'
+        overflow: 'scroll',
     }
 
     return(
