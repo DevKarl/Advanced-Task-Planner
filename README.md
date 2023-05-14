@@ -16,6 +16,7 @@ More advanced features:
 - sorting can be turned on based on 4 options: newest, unchecked, importance and deadline (top to bottom)
 - progress-bar showing % of tasks completed (checked off)
 - auto-emojies can be toggled ON/OFF (certain words will append emojies to end of the task text)
+- hidden easter egg! 🙇‍♂️ add some tasks then try checking them all off
 - settings in upper-right corner, where:
     - user can choose 9 different theme colors
     - saving sort and saving auto emojies in LS can be toggled ON/OFF

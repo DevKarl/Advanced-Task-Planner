@@ -4,7 +4,6 @@ import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import { TasksContextProvider } from "./context/ContextProvider";
 import BackgroundCover from "./components/BackgroundCover";
 
-
 function App() {
 
   return (
