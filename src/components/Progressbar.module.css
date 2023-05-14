@@ -1,5 +1,6 @@
 .progressbarOuterContainer {
     height: 20px;
+    margin-bottom: 1rem;
 }
 
 
@@ -22,5 +23,11 @@
     left: 50%;
     color: white;
     text-align: center;
+}
+
+@media only screen and (max-width: 360px) {
+    .progressbarContainer {
+        width: 18rem;
+    }
 }
   
