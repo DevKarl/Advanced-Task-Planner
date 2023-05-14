@@ -1,6 +1,6 @@
 
 import classes from './EditTaskModal.module.css';
-import { tasksContext } from '../../context/tasksContext';
+import { tasksContext } from '../../context/TasksContext';
 import { useContext, useState, useRef} from 'react';
 import Modal from '../UI/Modal';
 import { validateInput, isValidDeadline, checkInputWordLength } from '../Helpers/InputControl';

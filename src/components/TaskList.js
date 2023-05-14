@@ -1,5 +1,5 @@
 import classes from './TaskList.module.css';
-import { tasksContext } from '../context/tasksContext';
+import { tasksContext } from "../context/TasksContext";
 import './UI/CSSvariables.module.css';
 import { useContext } from 'react';
 import getSortedTasks from './Helpers/getSortedTasks';

@@ -3,9 +3,7 @@ import classes from './ErrorModal.module.css';
 import '../UI/CSSvariables.module.css';
 import Modal from '../UI/Modal';
 import { useContext } from 'react';
-import { tasksContext } from '../../context/tasksContext';
-
-
+import { tasksContext } from '../../context/TasksContext';
 
 const ErrorModal = props => {
 

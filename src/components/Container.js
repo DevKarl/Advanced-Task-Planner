@@ -7,7 +7,7 @@ import './UI/CSSvariables.module.css';
 import TaskActions from './TaskActions';
 import SettingsWheel from './SettingsWheel';
 import Progressbar from './Progressbar';
-import { tasksContext } from '../context/tasksContext';
+import { tasksContext } from "../context/TasksContext";
 import { useContext } from 'react';
 
 const Container = () => {

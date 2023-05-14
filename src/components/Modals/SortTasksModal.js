@@ -1,9 +1,7 @@
-
-
 import Modal from "../UI/Modal";
 import classes from './SortTasksModal.module.css';
 import { useContext } from 'react';
-import { tasksContext } from "../../context/tasksContext";
+import { tasksContext } from '../../context/TasksContext';
 
 const SortTasksModal = props => {
 

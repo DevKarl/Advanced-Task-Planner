@@ -1,4 +1,4 @@
-import { tasksContext } from '../context/tasksContext';
+import { tasksContext } from "../context/TasksContext";
 import classes from './Progressbar.module.css';
 import './UI/CSSvariables.module.css';
 import { useContext } from 'react';

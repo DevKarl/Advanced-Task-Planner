@@ -1,7 +1,7 @@
 import classes from './Modal.module.css';
 import ReactDOM from 'react-dom';
 import React, { useEffect, useRef, useContext } from 'react';
-import { tasksContext } from '../../context/tasksContext';
+import { tasksContext } from '../../context/TasksContext';
 import '../UI/CSSvariables.module.css';
 
 const Modal = props => {

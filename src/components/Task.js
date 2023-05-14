@@ -1,5 +1,5 @@
 
-import { tasksContext } from '../context/tasksContext';
+import { tasksContext } from "../context/TasksContext";
 import './UI/CSSvariables.module.css';
 import classes from './Task.module.css';
 import getDeadlineStatus from './Helpers/getDeadlineStatus';

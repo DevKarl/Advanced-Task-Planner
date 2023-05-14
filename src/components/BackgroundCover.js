@@ -1,6 +1,6 @@
 
 import { useContext } from "react";
-import { tasksContext } from "../context/tasksContext";
+import { tasksContext } from "../context/TasksContext";
 
 
 const BackgroundCover = props => {

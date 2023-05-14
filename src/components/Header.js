@@ -1,6 +1,6 @@
 import classes from './Header.module.css';
 import { useContext } from 'react';
-import { tasksContext } from '../context/tasksContext';
+import { tasksContext } from "../context/TasksContext";
 
 const Header = () => {
 

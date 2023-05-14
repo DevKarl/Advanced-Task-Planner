@@ -1,7 +1,7 @@
 import Modal from '../UI/Modal';
 import classes from './SettingsModal.module.css';
 import { useState, useContext } from 'react';
-import { tasksContext } from '../../context/tasksContext';
+import { tasksContext } from '../../context/TasksContext';
 
 const SettingsModal = props => {
 

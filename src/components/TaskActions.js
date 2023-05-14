@@ -1,6 +1,6 @@
 
 import classes from './TaskActions.module.css';
-import { tasksContext } from '../context/tasksContext';
+import { tasksContext } from "../context/TasksContext";
 import { React, useState, useContext } from 'react';
 import ClearAllTasksModal from './Modals/ClearAllTasksModal';
 import SortTasksModal from './Modals/SortTasksModal';
