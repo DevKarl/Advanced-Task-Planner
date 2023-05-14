@@ -26,62 +26,18 @@ export const TasksContextProvider = props => {
 
   // STATES - LOCAL STORAGE
 
-  const [tasks, updateTasks] = useState(() => {
-      const savedTasks = localStorage.getItem("savedTasks");
-      if (savedTasks) {
-        return JSON.parse(savedTasks);
-      } else {
-        return [];
-      }
-  });
-
-  const [saveEmojies, setSaveEmojies] = useState(() => {
-    const savedSaveEmojies = localStorage.getItem("savedSaveEmojies");
-    if (savedSaveEmojies) {
-      return JSON.parse(savedSaveEmojies);
-    } else {
-      return false;
-    }
-  });
-
-  const [saveSortOption, setSaveSortOption] = useState(() => {
-    const savedSaveSortOption = localStorage.getItem("savedSaveSortOption");
-    if (savedSaveSortOption) {
-      return JSON.parse(savedSaveSortOption);
-    } else {
-      return false;
-    }
-  });
-
-  const [emojiesOn, toggleEmojies] = useState(() => {
-    const savedEmojiesOn = localStorage.getItem("savedEmojiesOn");
-    if (savedEmojiesOn) {
-      return JSON.parse(savedEmojiesOn);
-    } else {
-      return false;
-    }
-  });
-
-  const [sortOption, setSortOption] = useState(() => {
-    const savedSortOption = localStorage.getItem("savedSortOption");
-    if (savedSortOption) {
-      return JSON.parse(savedSortOption);
-    } else {
-      return '';
-    }
-  });
-
-
-
-  const [themeColors, setThemeColors] = useState(() => {
-    const savedThemeColors = localStorage.getItem("savedThemeColors");
-    if (savedThemeColors) {
-      return JSON.parse(savedThemeColors)
-    } else {
-      // default is blue
-      return themeColorCombinations[0];
-    }
-  });
+  const getLocalStorageItem = (key, defaultValue) => {
+    const savedItem = localStorage.getItem(key);
+    return savedItem ? JSON.parse(savedItem) : defaultValue;
+  };
+  
+  const [tasks, updateTasks] = useState(() => getLocalStorageItem("savedTasks", []));
+  const [saveEmojies, setSaveEmojies] = useState(() => getLocalStorageItem("savedSaveEmojies", false));
+  const [saveSortOption, setSaveSortOption] = useState(() => getLocalStorageItem("savedSaveSortOption", false));
+  const [emojiesOn, toggleEmojies] = useState(() => getLocalStorageItem("savedEmojiesOn", false));
+  const [sortOption, setSortOption] = useState(() => getLocalStorageItem("savedSortOption", ""));
+  const [themeColors, setThemeColors] = useState(() => getLocalStorageItem("savedThemeColors", themeColorCombinations[0]));
+  
 
   // USE EFFECTS
 
