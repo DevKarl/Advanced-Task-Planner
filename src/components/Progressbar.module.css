@@ -13,7 +13,7 @@
 }
 
 .pulsate {
-    animation: pulsate 1s 4;
+    animation: pulsate 0.8s 5;
 }
   
 .progressbar {
@@ -36,7 +36,7 @@
     }
     50% {
       opacity: 0.5;
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
     100% {
       opacity: 1;

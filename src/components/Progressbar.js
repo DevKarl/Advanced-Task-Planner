@@ -22,7 +22,7 @@ const Progressbar = () => {
         { completedTasks.length > 0 &&
         <div
         className={`${classes.progressbarContainer} ${
-            allTasksChecked ? classes.pulsate : ""
+            (allTasksChecked && tasks.length >= 3) ? classes.pulsate : ""
         }`}
         >
             <div className={classes.progressbar} style={progressBarStyles}>

@@ -14,19 +14,25 @@ export const TasksContextProvider = props => {
   };
   
   const [tasks, updateTasks] = useState(() => getLocalStorageItem("savedTasks", []));
+  const [allTasksDone, setAllTasksDone] = useState(() => getLocalStorageItem("allTasksDone", false));
   const [saveEmojies, setSaveEmojies] = useState(() => getLocalStorageItem("savedSaveEmojies", false));
   const [saveSortOption, setSaveSortOption] = useState(() => getLocalStorageItem("savedSaveSortOption", false));
   const [emojiesOn, toggleEmojies] = useState(() => getLocalStorageItem("savedEmojiesOn", false));
   const [sortOption, setSortOption] = useState(() => getLocalStorageItem("savedSortOption", ""));
   const [themeColors, setThemeColors] = useState(() => getLocalStorageItem("savedThemeColors", themeColorCombinations[0]));
-  
 
   // USE EFFECTS
 
   useEffect(() => {
+      if(tasks.every(task => task.isChecked === true)) {
+        setAllTasksDone(true)
+      } else {
+        setAllTasksDone(false)
+      }
       localStorage.setItem("savedTasks", JSON.stringify(tasks));
+      localStorage.setItem("allTasksDone", JSON.stringify(allTasksDone));
       if(tasks.length === 0) setSortOption('');
-  }, [tasks]);
+  }, [tasks, allTasksDone]);
 
   useEffect(() => {
       localStorage.setItem('savedSaveEmojies', JSON.stringify(saveEmojies));
@@ -81,6 +87,7 @@ export const TasksContextProvider = props => {
       <tasksContext.Provider
       value={{
           tasks: tasks,
+          allTasksDone: allTasksDone,
           sortOption: sortOption,
           emojiesOn: emojiesOn,
           saveEmojies: saveEmojies,

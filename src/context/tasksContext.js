@@ -7,6 +7,7 @@ export const tasksContext = React.createContext({
     emojiesOn: false,
     saveEmojies: false,
     saveSortOption: false,
+    allTasksDone: false,
     themeColors: {},
     themeColorCombinations: [],
     addTask: () => {},
