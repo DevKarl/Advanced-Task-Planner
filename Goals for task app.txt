@@ -1,6 +1,3 @@
-
-. confetti animation --> fix height, get dynamic height of entire webpage, not viewport height 
-. confetti animation --> refactor, make the useEffect debounce on resize
 .In settings modal: add toggle for progress bar
 .Add tags for tasks + filter option for the tags where tags show up as filter options
     - filter options: 

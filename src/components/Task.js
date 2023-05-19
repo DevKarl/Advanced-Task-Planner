@@ -9,7 +9,7 @@ import { useState, useContext } from 'react';
 
 const Task = props => {
     
-    const {tasks, updateTasks, emojiesOn, themeColors} = useContext(tasksContext);  
+    const {tasks, updateTasks, declareHasInteracted, emojiesOn, themeColors} = useContext(tasksContext);  
     const {task} = props;
     const {key} = task;
 
@@ -18,6 +18,7 @@ const Task = props => {
 
     // HANDLERS 
     const checkHandler = () => {
+        declareHasInteracted();
         const newTasks = tasks.map(task => {
             if (task.key === key) {
             return {...task, isChecked: !task.isChecked};

@@ -13,36 +13,39 @@ import ReactConfetti from 'react-confetti';
 
 const Container = () => {
     
-    const {themeColors, tasks, allTasksDone} = useContext(tasksContext);
+    const {themeColors, tasks, allTasksDone, hasInteracted} = useContext(tasksContext);
 
     const confettiColors = Object.values(themeColors);
 
     const refContainer = useRef();
-    const height = refContainer.current ? Math.max(window.innerHeight, refContainer.current.offsetHeight) : window.innerHeight;
+    const height = refContainer.current ? Math.max(window.innerHeight, refContainer.current.offsetHeight)+20 : window.innerHeight+20;
     const [width, setWidth] = useState(window.innerWidth);
+    
+    const debounce = (cb) => {
+        let timeout;
+        return () => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                cb();                
+            }, 400);
+        }
+    }
 
     const updateWidth = () => {
         setWidth(window.innerWidth)
     }
   
     useEffect(() => {
-      window.addEventListener('resize', updateWidth)
-      return () => {
-        window.removeEventListener('resize', updateWidth)
-      }
+        window.addEventListener('resize', debounce(updateWidth))
+        return () => {
+            window.removeEventListener('resize', updateWidth)
+        }
     }, []);
-  
-    // if (refContainer.current) {
-    //   console.log(refContainer.current.offsetHeight);
-    //   console.log(window.innerWidth);
-    //   console.log(dimensions);
-    // }
 
-    console.log(height, width);
 
     return(
         <main ref = {refContainer} style={{backgroundColor: themeColors.cardColor}} className = {classes.container}>
-            {(allTasksDone && tasks.length >= 3) && <ReactConfetti
+            {(allTasksDone && tasks.length >= 3 && hasInteracted === true) && <ReactConfetti
             colors={confettiColors} 
             numberOfPieces = {500} 
             gravity={0.15} 

@@ -21,6 +21,8 @@ export const TasksContextProvider = props => {
   const [sortOption, setSortOption] = useState(() => getLocalStorageItem("savedSortOption", ""));
   const [themeColors, setThemeColors] = useState(() => getLocalStorageItem("savedThemeColors", themeColorCombinations[0]));
 
+  const [hasInteracted, setHasInteracted] = useState(false);
+  
   // USE EFFECTS
 
   useEffect(() => {
@@ -59,6 +61,10 @@ export const TasksContextProvider = props => {
   }, [themeColors])
 
   // TASK ACTION HANDLERS  
+
+  const declareHasInteracted = () => {
+    setHasInteracted(true);
+  }
   
   const addTask = taskText => {
     const hasLongWord = checkInputWordLength(taskText);
@@ -87,6 +93,7 @@ export const TasksContextProvider = props => {
       <tasksContext.Provider
       value={{
           tasks: tasks,
+          hasInteracted: hasInteracted,
           allTasksDone: allTasksDone,
           sortOption: sortOption,
           emojiesOn: emojiesOn,
@@ -95,6 +102,7 @@ export const TasksContextProvider = props => {
           themeColors: themeColors,
           themeColorCombinations: themeColorCombinations,
           addTask: addTask,
+          declareHasInteracted: declareHasInteracted,
           updateTasks: updateTasks,
           toggleEmojies: toggleEmojies,
           setSortOption: setSortOption,

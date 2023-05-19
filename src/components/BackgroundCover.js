@@ -11,6 +11,7 @@ const BackgroundCover = props => {
         backgroundColor: themeColors.backgroundColor,
         width: '100vw',
         height: '100vh',
+        position: 'fixed',
         top: 0,
         left: 0,
         overflow: 'scroll',

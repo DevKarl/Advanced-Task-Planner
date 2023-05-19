@@ -3,6 +3,7 @@ import React from "react";
 export const tasksContext = React.createContext({
     // ONLY for syntax highlighting
     tasks: [],
+    hasInteracted: false,
     sortOption: '',
     emojiesOn: false,
     saveEmojies: false,
@@ -11,6 +12,7 @@ export const tasksContext = React.createContext({
     themeColors: {},
     themeColorCombinations: [],
     addTask: () => {},
+    declareHasInteracted: () => {},
     updateTasks: () => {},
     toggleEmojies: () => {},
     setSortOption: () => {},

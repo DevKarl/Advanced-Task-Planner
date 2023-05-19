@@ -5,7 +5,7 @@ import { useContext } from 'react';
 
 const Progressbar = () => {
 
-    const { tasks, themeColors } = useContext(tasksContext);
+    const { tasks, themeColors, hasInteracted } = useContext(tasksContext);
     const completedTasks = tasks.filter(task => task.isChecked);
     const allTasksChecked = tasks.every(task => task.isChecked === true);
     let percentageComplete = Math.round((completedTasks.length / tasks.length) * 100);
@@ -22,7 +22,7 @@ const Progressbar = () => {
         { completedTasks.length > 0 &&
         <div
         className={`${classes.progressbarContainer} ${
-            (allTasksChecked && tasks.length >= 3) ? classes.pulsate : ""
+            (allTasksChecked && tasks.length >= 3 && hasInteracted === true) ? classes.pulsate : ""
         }`}
         >
             <div className={classes.progressbar} style={progressBarStyles}>
