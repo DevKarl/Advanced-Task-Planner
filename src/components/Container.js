@@ -47,8 +47,8 @@ const Container = () => {
         <main ref = {refContainer} style={{backgroundColor: themeColors.cardColor}} className = {classes.container}>
             {(allTasksDone && tasks.length >= 3 && hasInteracted === true) && <ReactConfetti
             colors={confettiColors} 
-            numberOfPieces = {500} 
-            gravity={0.15} 
+            numberOfPieces = {600} 
+            gravity={0.20} 
             recycle = {false}
             width={width}
             height={height}
