@@ -1,6 +1,6 @@
 # Advanced Task Planner
 
-First Personal React Project - CURRENTLY IN WORK 👨🏼‍💻🔧!
+First Personal React Project - Task planner app
 
 The basic stuff - tasks can be:
 - added
