@@ -120,7 +120,7 @@
 
 
 /* Very small phones (galaxy fold etc.)*/
-@media only screen and (max-width: 330px) {
+@media only screen and (max-width: 356px) {
     .modalRegularSize {
         width: 16rem;
         left: calc(50% - 9rem);

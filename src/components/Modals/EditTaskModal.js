@@ -76,11 +76,15 @@ const EditTaskModal = props => {
 
     return(
         <Modal 
-        btnText = {'SAVE'}
+        btn1Text = {'SAVE'}
+        btn2Text = {'DELETE'}
+        btn2Style = {{backgroundColor: themeColors.primaryColor, opacity: '50%'}}
         modalTaller = {true}
+        hasTwoBtns = {true}
         closeModalHandler = {closeModalHandler}
-        mainBtnClick = {changeTaskHandler}
         clickedEnter = {changeTaskHandler}
+        btn1Click = {changeTaskHandler}
+        btn2Click = {props.removeTask}
         >
             <div className={classes.editTaskModalContainer}>
                 <h2 className={classes.editTodoH3} autoFocus>Edit Current Task</h2>

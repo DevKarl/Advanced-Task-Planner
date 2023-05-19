@@ -60,7 +60,7 @@ const Modal = props => {
                         {props.btn1Text}
                     </button>
                     <button
-                        style={btnStyle}  
+                        style= {props.btn2Style ? props.btn2Style: btnStyle}  
                         className={classes.modalBtn}
                         onClick = {props.btn2Click}
                     >

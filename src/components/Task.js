@@ -82,6 +82,7 @@ const Task = props => {
             {editTaskModal && <EditTaskModal
             task = {task}
             toggleEditTaskModal = {toggleEditTaskModal}
+            removeTask = {removeTaskHandler}
             />}
         </>
     )

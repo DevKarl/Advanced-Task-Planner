@@ -8,10 +8,10 @@ const SettingsWheel = () => {
 
     const [style, setStyle] = useState({
         backgroundImage: `url(${settings})`,
-        opacity: '80%',
+        opacity: '70%',
         backgroundSize: 'cover',
-        width: '30px',
-        height: '30px',
+        width: '35px',
+        height: '35px',
         alignSelf: 'end',
         marginRight: '5px',
         marginTop: '5px',
