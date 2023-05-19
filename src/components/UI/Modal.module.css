@@ -11,7 +11,7 @@
 .modalRegularSize {
     position: fixed;
     width: 30rem;
-    left: calc(50% - 15rem);
+    left: calc(50% - 16rem);
     height: 16rem;
     top: calc(50% - 8rem);
     display: flex;
@@ -30,7 +30,7 @@
     height: 28rem !important;
     top: calc(50% - 14rem) !important;
     width: 24rem;
-    left: calc(50% - 12rem);
+    left: calc(50% - 13rem);
     margin: 0 !important;
 }
 
@@ -38,7 +38,7 @@
     height: 30rem !important;
     top: calc(50% - 15rem) !important;
     width: 22rem !important;
-    left: calc(50% - 11rem) !important;
+    left: calc(50% - 12rem) !important;
     margin: 0 !important;
 }
 
@@ -107,14 +107,14 @@
 @media only screen and (max-width: 570px) {
     .modalRegularSize {
         width: 20rem;
-        left: calc(50% - 10rem);
+        left: calc(50% - 11rem);
     }
 
     .modalXtraTall {
         height: 30rem !important;
         top: calc(50% - 15rem) !important;
         width: 18rem !important;
-        left: calc(50% - 9rem) !important;
+        left: calc(50% - 10rem) !important;
     }
 }
 

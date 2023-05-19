@@ -13,6 +13,7 @@ export const tasksContext = React.createContext({
     themeColorCombinations: [],
     addTask: () => {},
     declareHasInteracted: () => {},
+    resetHasInteracted: () => {},
     updateTasks: () => {},
     toggleEmojies: () => {},
     setSortOption: () => {},

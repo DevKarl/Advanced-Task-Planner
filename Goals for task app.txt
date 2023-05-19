@@ -1,7 +1,3 @@
-.In settings modal: add toggle for progress bar
-.Add tags for tasks + filter option for the tags where tags show up as filter options
-    - filter options: 
-.Deactive sort btn, clear all tasks btn if there are no tasks, same with filter btn, remove modal error for these
 .Fix background colors on all colors except blue, make it less dark and fix yellow color
 .Refactoring:
     - make sure handlers have same naming-convention (handlerSomething or somethingHandler)

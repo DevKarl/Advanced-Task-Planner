@@ -65,6 +65,10 @@ export const TasksContextProvider = props => {
   const declareHasInteracted = () => {
     setHasInteracted(true);
   }
+
+  const resetHasInteracted = () => {
+    setHasInteracted(false);
+  }
   
   const addTask = taskText => {
     const hasLongWord = checkInputWordLength(taskText);
@@ -103,6 +107,7 @@ export const TasksContextProvider = props => {
           themeColorCombinations: themeColorCombinations,
           addTask: addTask,
           declareHasInteracted: declareHasInteracted,
+          resetHasInteracted: resetHasInteracted,
           updateTasks: updateTasks,
           toggleEmojies: toggleEmojies,
           setSortOption: setSortOption,

@@ -7,7 +7,7 @@ import { validateInput, isValidDeadline, checkInputWordLength } from '../Helpers
 
 const EditTaskModal = props => {
 
-    const {tasks, updateTasks, themeColors} = useContext(tasksContext);
+    const {tasks, updateTasks, themeColors, resetHasInteracted} = useContext(tasksContext);
     const {task} = props
     const {key} = task
     const taskTextRef = useRef();
@@ -15,7 +15,10 @@ const EditTaskModal = props => {
     const [importanceLvl, setimportanceLvl] = useState(task.importance);
     const [deadline, setDeadline] = useState(task.deadline);
 
-    if(error) {throw error};
+    if(error) {
+        resetHasInteracted();
+        throw error
+    };
 
     const handleDeadlineChange = e => {
         const dateValue = e.target.value;

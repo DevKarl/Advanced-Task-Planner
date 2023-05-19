@@ -6,12 +6,15 @@ import classes from './InputField.module.css';
 
 const InputField = () => {
 
-    const { addTask, themeColors } = useContext(tasksContext);
+    const { addTask, themeColors, resetHasInteracted} = useContext(tasksContext);
     const taskTextRef = useRef('');
 
     const [error, setError] = useState(null);
 
-    if(error) {throw error};
+    if(error) {
+        resetHasInteracted();
+        throw error
+    };
 
     const addNewTask = () => {
         try {
