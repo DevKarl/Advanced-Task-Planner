@@ -123,25 +123,46 @@
 @media only screen and (max-width: 330px) {
     .modalRegularSize {
         width: 16rem;
-        left: calc(50% - 8rem);
-        height: 19rem;
-        top: calc(50% - 9.5rem);
+        left: calc(50% - 9rem);
+        height: 15rem;
+        top: calc(50% - 7.5rem);
     }
 
     .modalTaller {
         height: 28rem !important;
         top: calc(50% - 14rem) !important;
-        width: 16rem;
-        left: calc(50% - 8rem);
+        width: 15rem;
+        left: calc(50% - 8.5rem);
         margin: 0 !important;
     }
-}
 
-@media only screen and (max-width: 290px) {
     .modalXtraTall {
         height: 30rem !important;
         top: calc(50% - 15rem) !important;
         width: 17rem !important;
+        left: calc(50% - 9.5rem) !important;
+    }
+}
+
+@media only screen and (max-width: 290px) {
+
+    .modalRegularSize {
+        width: 15rem;
+        left: calc(50% - 8.5rem);
+    }
+
+    .modalTaller {
+        height: 28rem !important;
+        top: calc(50% - 14rem) !important;
+        width: 15rem;
+        left: calc(50% - 8.5rem);
+        margin: 0 !important;
+    }
+
+    .modalXtraTall {
+        height: 30rem !important;
+        top: calc(50% - 15rem) !important;
+        width: 15rem !important;
         left: calc(50% - 8.5rem) !important;
     }
 }
