@@ -2,7 +2,8 @@
 
 First Personal React Project - Task planner app
 
-Live demo here 👉 https://lambent-sprite-2d4ce8.netlify.app/ 
+👉 <a href = 'https://lambent-sprite-2d4ce8.netlify.app/' target = '_blank'> Click here for live demo </a>
+
 
 The basic stuff - tasks can be:
 - added
