@@ -2,9 +2,12 @@
 
 First Personal React Project - Task planner app
 
-👉 <a href = 'https://lambent-sprite-2d4ce8.netlify.app/' target='_blank'> Click here for live demo </a
-
 👉 [Click here for live demo](https://lambent-sprite-2d4ce8.netlify.app/)
+
+👉 [Click here for live demo](https://lambent-sprite-2d4ce8.netlify.app/){:target="_blank"}
+
+<a href="https://lambent-sprite-2d4ce8.netlify.app/" target="_blank">external link</a>
+
 
 The basic stuff - tasks can be:
 - added
