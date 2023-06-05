@@ -12,6 +12,7 @@ const Task = props => {
     const {tasks, updateTasks, declareHasInteracted, emojiesOn, themeColors} = useContext(tasksContext);  
     const {task} = props;
     const {key} = task;
+    console.log(task);
 
     // STATES
     const [editTaskModal, toggleEditTaskModal] = useState(false);
@@ -33,7 +34,7 @@ const Task = props => {
         updateTasks(updatedTasks);
     }
 
-    const tasklistItemStyles = {
+    const taskListItemThemeStyles = {
         border: `2px solid ${themeColors.primaryColor}`,
         backgroundColor: themeColors.taskItemColor
     }
@@ -41,7 +42,7 @@ const Task = props => {
     return(
         <>
             <li
-                style={tasklistItemStyles}
+                style={taskListItemThemeStyles}
                 className = {`
                 ${task.hasLongWord ? classes.hasLongWord : ''}
                 ${classes.taskListItem}
