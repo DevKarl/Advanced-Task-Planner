@@ -19,17 +19,15 @@ More advanced features:
 - progress-bar showing % of tasks completed (checked off)
 - auto-emojies can be toggled ON/OFF (certain words will append emojies to end of the task text)
 - confetti animation easter egg! 🙇‍♂️ add at least 3 tasks, and check them off 🎊
-- settings in upper-right corner, where:
+- app-settings in upper-right corner (Click the wheel ⚙️) :
     - user can choose 9 different theme colors
     - saving sort and saving auto emojies in LS can be toggled ON/OFF
-    - progress bar can be turned ON/OFF
 
 Key takeaways - react concepts:
-- Reusable Modal component with dynamic size and button props
-- Error boundary triggering different error messages
+- Reusable and dynamic modal components
+- Error boundary for different scenarios
 - Context API (no prop drilling)
-- Sort is always live once turned ON, will sort when any change is done during changes (no need to turn OFF and back ON)  
-
-
-
+- Sorting is always live during changes (no mutation of tasks array state)
+ 
+ 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
