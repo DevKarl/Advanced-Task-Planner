@@ -99,15 +99,21 @@ const EditTaskModal = props => {
                     <h3 className={classes.importanceTitle} >Importance</h3>
                     <div className={classes.importanceContainer}>
                         <button
-                            style={{border: `2px solid ${themeColors.primaryColor}`, backgroundColor: `${importanceLvl === 1 ? themeColors.primaryColor : ''}`}}
+                            style={
+                                {border: `2px solid ${themeColors.primaryColor}`, 
+                                backgroundColor: `${importanceLvl === 1 ? themeColors.primaryColor : ''}`}}
                             onClick={() => handleSetImportanceLvl(1)}>
                             !</button>
                         <button
-                            style={{border: `2px solid ${themeColors.primaryColor}`, backgroundColor: `${importanceLvl === 2 ? themeColors.primaryColor : ''}`}} 
+                            style={
+                                {border: `2px solid ${themeColors.primaryColor}`, 
+                                backgroundColor: `${importanceLvl === 2 ? themeColors.primaryColor : ''}`}} 
                             onClick={() => handleSetImportanceLvl(2)}>
                             !!</button>
                         <button
-                            style={{border: `2px solid ${themeColors.primaryColor}`, backgroundColor: `${importanceLvl === 3 ? themeColors.primaryColor : ''}`}} 
+                            style={
+                                {border: `2px solid ${themeColors.primaryColor}`, 
+                                backgroundColor: `${importanceLvl === 3 ? themeColors.primaryColor : ''}`}} 
                             onClick={() => handleSetImportanceLvl(3)}>
                             !!!</button>
                     </div>
@@ -125,7 +131,8 @@ const EditTaskModal = props => {
                             style={defaultBorderStyle} 
                             className={classes.clearBtn} 
                             onClick={handleRemoveDeadline}>
-                        Clear</button>
+                        Clear
+                        </button>
                     </div>
                 </div>
             </div>

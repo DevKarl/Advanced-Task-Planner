@@ -1,0 +1,6 @@
+fiks animasjoner 
+fiks alt med css
+fjern 'delete' på desktop
+få ikoner til å dukke opp utenfor
+fiks logo bug (!!!) m.m.
+fjern scrollbar ved confetti
