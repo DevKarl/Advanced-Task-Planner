@@ -47,6 +47,7 @@ const Task = props => {
                 style={taskListItemThemeStyles}
                 className = {`
                 ${task.hasLongWord ? classes.hasLongWord : ''}
+                ${classes.taskListItem}
                 `}>
                 <div className={classes.checkBoxAndText}>
                 <div className={classes.importanceAndDeadlineContainer} style={{color: themeColors.primaryColor}}>

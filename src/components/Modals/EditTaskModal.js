@@ -100,19 +100,22 @@ const EditTaskModal = props => {
                     <div className={classes.importanceContainer}>
                         <button
                             style={
-                                {border: `2px solid ${themeColors.primaryColor}`, 
+                                {border: `2px solid ${themeColors.primaryColor}`,
+                                fontFamily: 'inherit', 
                                 backgroundColor: `${importanceLvl === 1 ? themeColors.primaryColor : ''}`}}
                             onClick={() => handleSetImportanceLvl(1)}>
                             !</button>
                         <button
                             style={
                                 {border: `2px solid ${themeColors.primaryColor}`, 
+                                fontFamily: 'inherit',
                                 backgroundColor: `${importanceLvl === 2 ? themeColors.primaryColor : ''}`}} 
                             onClick={() => handleSetImportanceLvl(2)}>
                             !!</button>
                         <button
                             style={
-                                {border: `2px solid ${themeColors.primaryColor}`, 
+                                {border: `2px solid ${themeColors.primaryColor}`,
+                                fontFamily: 'inherit', 
                                 backgroundColor: `${importanceLvl === 3 ? themeColors.primaryColor : ''}`}} 
                             onClick={() => handleSetImportanceLvl(3)}>
                             !!!</button>

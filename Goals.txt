@@ -1,6 +1,0 @@
-fiks animasjoner --> Legg til React Transition Group
-fiks alt med css
-fjern 'delete' på desktop
-få ikoner til å dukke opp utenfor
-fiks logo bug (!!!) m.m. --> fjern animasjon
-fjern scrollbar ved confetti

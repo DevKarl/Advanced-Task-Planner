@@ -11,7 +11,8 @@ const SortTasksModal = props => {
 
     const btnStyles = {
         border: `2px solid ${themeColors.primaryColor}`,
-        color: themeColors.primaryColor
+        color: themeColors.primaryColor,
+        fontFamily: 'inherit'
     }
 
     return(
