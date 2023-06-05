@@ -39,13 +39,14 @@ const Task = props => {
         backgroundColor: themeColors.taskItemColor
     }
 
+    // fadeOutClass
+
     return(
         <>
             <li
                 style={taskListItemThemeStyles}
                 className = {`
                 ${task.hasLongWord ? classes.hasLongWord : ''}
-                ${classes.taskListItem}
                 `}>
                 <div className={classes.checkBoxAndText}>
                 <div className={classes.importanceAndDeadlineContainer} style={{color: themeColors.primaryColor}}>
@@ -80,11 +81,11 @@ const Task = props => {
                     <button className={classes.delete} onClick = {removeTaskHandler}></button>
                 </div>
             </li>
-            {editTaskModal && <EditTaskModal
-            task = {task}
-            toggleEditTaskModal = {toggleEditTaskModal}
-            removeTask = {removeTaskHandler}
-            />}
+        {editTaskModal && <EditTaskModal
+        task = {task}
+        toggleEditTaskModal = {toggleEditTaskModal}
+        removeTask = {removeTaskHandler}
+        />}
         </>
     )
 }

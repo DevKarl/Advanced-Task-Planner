@@ -151,6 +151,10 @@
     font-size: 14px;
 }
 
+.fadeOutClass {
+    animation: fadeOut 0.2s ease-out forwards;
+}
+
 /* Animations _____________________________________________________________ */
 
 
@@ -162,6 +166,16 @@
         transform: translateY(0px);
     }
 }
+
+@keyframes fadeOut {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-20px);
+    }
+}
+
 
 @keyframes pulsate {
     0% {
