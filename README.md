@@ -1,4 +1,4 @@
-# Advanced Task Planner
+# React Task Planner
 
 First Personal React Project - Task planner app
 
