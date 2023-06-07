@@ -26,8 +26,7 @@ More advanced features:
 Key takeaways - react concepts:
 - Reusable and dynamic modal components
 - Error boundary for different scenarios
-- Context API (no prop drilling)
+- Context API (no prop drilling!)
 - Sorting is always live during changes (no mutation of tasks array state)
- 
  
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
