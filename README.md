@@ -2,8 +2,6 @@
 
 First Personal React Project - Task Planner App.
 
-Just another 'todo-list' app 😑? No, wait! ✋ Its got some cool and unique features..
-
 👉 [Click here for live demo](https://lambent-sprite-2d4ce8.netlify.app/)
 
 The basic stuff - tasks can be:
