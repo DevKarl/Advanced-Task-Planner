@@ -11,12 +11,9 @@ The basic stuff - tasks can be:
 - edited
 - checked off
 - deleted 
-- cleared(all) with one button
+- cleared(all) with one button 
 
-who cares right ? 😑.. 
- 
-
-Now the fun part - more advanced features 🤔:
+The more 'advanced' features 🤔:
 - user can add optional importance level with dynamic badges(!, !! or !!!) on tasks
 - user can add optional deadline on tasks, which are displayed with dynamic messages 
 - tasks are stored in local storage and handled with Context API
