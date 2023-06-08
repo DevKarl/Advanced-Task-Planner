@@ -19,8 +19,8 @@ The more 'advanced' features 🤔:
 and the sorting is always live between editing, adding and deleting tasks.
 - progress-bar showing % of tasks completed (checked off)
 - auto-emojies can be toggled ON/OFF (certain words will cause emojies to append to the end of the tasks text)
-- confetti animation easter egg! 🙇‍♂️ add at least 3 tasks, and check them off 🎊 
-- app-settings in upper-right corner (Click the wheel ⚙️) :
+- Hidden easter egg with animation 🙇‍♂️ 🎊 
+- app-settings in upper-right corner (--> ⚙️ ) :
     - user can choose 9 different theme colors for the entire app
     - saving sort-option and saving auto-emojies between re-fresh can be toggled ON/OFF by the user
 
