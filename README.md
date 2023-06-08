@@ -1,6 +1,8 @@
 # React Task Planner
 
-First Personal React Project - Task planner app
+First Personal React Project - Task Planner App.
+
+Just another 'todo-list' app 😑? No, wait! ✋ Its got some cool and unique features..
 
 👉 [Click here for live demo](https://lambent-sprite-2d4ce8.netlify.app/)
 
@@ -9,24 +11,28 @@ The basic stuff - tasks can be:
 - edited
 - checked off
 - deleted 
-- cleared(all) with one button 
+- cleared(all) with one button
 
-More advanced features:
+who cares right ? 😑.. 
+ 
+
+Now the fun part - more advanced features 🤔:
 - user can add optional importance level with dynamic badges(!, !! or !!!) on tasks
 - user can add optional deadline on tasks, which are displayed with dynamic messages 
-- tasks stored in local storage(LS)
-- sorting can be turned on based on 4 options: newest, unchecked, importance and deadline (top to bottom)
+- tasks are stored in local storage and handled with Context API
+- sorting with 4 options: newest, unchecked, importance and deadline (top to bottom priority)
+and the sorting is always live between editing, adding and deleting tasks.
 - progress-bar showing % of tasks completed (checked off)
-- auto-emojies can be toggled ON/OFF (certain words will append emojies to end of the task text)
-- confetti animation easter egg! 🙇‍♂️ add at least 3 tasks, and check them off 🎊
+- auto-emojies can be toggled ON/OFF (certain words will cause emojies to append to the end of the tasks text)
+- confetti animation easter egg! 🙇‍♂️ add at least 3 tasks, and check them off 🎊 
 - app-settings in upper-right corner (Click the wheel ⚙️) :
-    - user can choose 9 different theme colors
-    - saving sort and saving auto emojies in LS can be toggled ON/OFF
+    - user can choose 9 different theme colors for the entire app
+    - saving sort-option and saving auto-emojies between re-fresh can be toggled ON/OFF by the user
 
 Key takeaways - react concepts:
-- Reusable and dynamic modal components
+- Reusable and dynamic modal components (various sizes, btn options etc. controlled by props)
 - Error boundary for different scenarios
-- Context API (no prop drilling!)
+- Context API (prevents prop drilling!)
 - Sorting is always live during changes (no mutation of tasks array state)
  
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
